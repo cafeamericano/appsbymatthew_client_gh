@@ -4,10 +4,10 @@
 
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <router-link to="/">Featured Apps</router-link>
+                    <router-link :to="{name:'Applications-Featured'}">Featured Apps</router-link>
                 </li>
                 <li class='nav-item'>
-                    <router-link :to="{name:'AddRecord'}">All Applications</router-link>
+                    <router-link :to="{name:'Applications-All'}">All Applications</router-link>
                 </li>
             </ul>
 

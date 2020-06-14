@@ -8,7 +8,7 @@
                     <router-link to="/">Welcome</router-link>
                 </li>
                 <li class='nav-item'>
-                    <router-link :to="{name:'Applications'}">Applications</router-link>
+                    <router-link :to="{name:'Applications-Featured'}">Applications</router-link>
                 </li>
                 <li class='nav-item'>
                     <router-link :to="{name:'Skills-Simple'}">Skills</router-link>

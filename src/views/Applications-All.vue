@@ -1,7 +1,17 @@
 <template>
     <div>
         <NavbarApplications/>
-        <router-view />
+        <section v-if="applicationsLoaded" class='animated fadeIn'>
+            <table class="table table-striped">
+                <div v-for='(item, index) in allApplications.filter(item => 1 == 1)' :key='index'>
+                    <ApplicationRow v-bind='item' :rownum='index'/>
+                </div>
+            </table>
+        </section>
+
+        <section v-else>
+            <ScreenOverlay :content='loadingMessage'/>
+        </section>
 
     </div>
 </template>
@@ -9,6 +19,7 @@
 <script>
 
 // @ is an alias to /src
+// import ApplicationPreview from "@/components/ApplicationPreview.vue";
 import ApplicationRow from "@/components/ApplicationRow.vue";
 import ScreenOverlay from "@/components/ScreenOverlay.vue";
 import NavbarApplications from "@/components/Navbars/Applications.vue";
@@ -16,6 +27,7 @@ import NavbarApplications from "@/components/Navbars/Applications.vue";
 export default {
     name: "Applications",
     components: {
+        // ApplicationPreview,
         ApplicationRow,
         ScreenOverlay,
         NavbarApplications
@@ -40,7 +52,7 @@ export default {
     methods: {
         pullApplications() {
             var self = this;
-            fetch("https://central-api-go.appspot.com/KeywordFactory/api/allkeywords").then(function (response) {
+            fetch("https://central-api-flask-cm6ud432ka-uc.a.run.app/AppGalleryLite/api/applications").then(function (response) {
                 return response.json();
             }).then(function (result) {
                 self.allApplications = result;
@@ -51,3 +63,9 @@ export default {
     }
 };
 </script>
+
+<style>
+    td {
+        white-space: nowrap;
+    }
+</style>

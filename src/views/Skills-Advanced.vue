@@ -1,20 +1,12 @@
 <template>
     <div>
         <NavbarSkills/>
-        <section v-if="skillsLoaded" class='animated slideInUp container-fluid'>
-            <!-- <div class='row'> -->
-
-                <!-- Active -->
-                                    <table class="table">
-
-                <div v-for='item in allSkills.filter(item => 1 == 1)' :key='item.title'>
-                    <!-- <SkillPreview v-bind='item'/> -->
-                        <SkillRow v-bind='item'/>
+        <section v-if="skillsLoaded" class='animated fadeIn'>
+            <table class="table table-striped">
+                <div v-for='(item, index) in allSkills.filter(item => 1 == 1)' :key='index'>
+                    <SkillRow v-bind='item' :rownum='index'/>
                 </div>
-                                    </table>
-
-
-            <!-- </div> -->
+            </table>
         </section>
 
         <section v-else>
