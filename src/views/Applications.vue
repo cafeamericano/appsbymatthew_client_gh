@@ -20,34 +20,12 @@ export default {
         ScreenOverlay,
         NavbarApplications
     },
-    mounted: function() {
-        this.pullApplications();
-        // this.pullKeywords();
-    },
     data() {
         return {
-            componentKey: 0,
-            allApplications: [],
-            applicationsLoaded: false,
-            loadingMessage: `
-                <div>Loading list of applications...</div>
-                <div class="spinner-grow text-success" role="status">
-                    <span class="sr-only">Loading...</span>
-                </div>
-            `
+            message: null
         }
     },
     methods: {
-        pullApplications() {
-            var self = this;
-            fetch("https://central-api-go.appspot.com/KeywordFactory/api/allkeywords").then(function (response) {
-                return response.json();
-            }).then(function (result) {
-                self.allApplications = result;
-                self.componentKey +=1;
-                self.applicationsLoaded = true;
-            });
-        }
     }
 };
 </script>

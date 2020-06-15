@@ -9,6 +9,9 @@
                 <li class='nav-item'>
                     <router-link :to="{name:'Applications-All'}">All Applications</router-link>
                 </li>
+                <li class='nav-item'>
+                    <router-link :to="{name:'Applications-Create'}">Add New</router-link>
+                </li>
             </ul>
 
         </nav>

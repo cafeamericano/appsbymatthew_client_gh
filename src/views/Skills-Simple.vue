@@ -1,77 +1,77 @@
 <template>
     <div>
         <NavbarSkills/>
-        <section v-if="skillsLoaded" class='animated slideInUp container-fluid'>
+        <section v-if="skillsLoaded" class='animated slideInUp container pb-4'>
 
             <!-- Language -->
-            <h5 class="text-left mt-4">Languages</h5>
+            <br/><h5 class="text-left">Languages</h5>
             <hr/>
-            <div class="row">    
-                <div class="col-2" v-for='item in allSkills.filter(item => item.type == "language")' :key='item.title'>
-                    <div class='card p-2 mt-1 mb-1 border rounded-0'>{{item.name}}</div>
+            <div class="row bg-glass p-2">    
+                <div class="col-4 text-left" v-for='item in allSkills.filter(item => item.type == "language")' :key='item.title'>
+                    <div class=''>{{item.name}}</div>
                 </div>
             </div>
 
             <!-- Front End Frameworks  -->
-            <h5 class="text-left mt-4">Front End Frameworks</h5>
+            <br/><h5 class="text-left">Front End Frameworks</h5>
             <hr/>
-            <div class="row">
-                <div class="col-2" v-for='item in allSkills.filter(item => item.type == "front-end-framework")' :key='item.title'>
-                    <div class='card p-2 mt-1 mb-1 border rounded-0'>{{item.name}}</div>
+            <div class="row bg-glass p-2">
+                <div class="col-4 text-left" v-for='item in allSkills.filter(item => item.type == "front-end-framework")' :key='item.title'>
+                    <div class=''>{{item.name}}</div>
                 </div>
             </div>
 
             <!-- Back End Frameworks  -->
-            <h5 class="text-left mt-4">Back End Frameworks</h5>
+            <br/><h5 class="text-left">Back End Frameworks</h5>
             <hr/>
-            <div class="row">
-                <div class="col-2" v-for='item in allSkills.filter(item => item.type == "back-end-framework")' :key='item.title'>
-                    <div class='card p-2 mt-1 mb-1 border rounded-0'>{{item.name}}</div>
+            <div class="row bg-glass p-2">
+                <div class="col-4 text-left" v-for='item in allSkills.filter(item => item.type == "back-end-framework")' :key='item.title'>
+                    <div class=''>{{item.name}}</div>
                 </div>
             </div>
 
             <!-- Library  -->
-            <h5 class="text-left mt-4">Library</h5>
+            <br/><h5 class="text-left">Library</h5>
             <hr/>
-            <div class="row">
-                <div class="col-2" v-for='item in allSkills.filter(item => item.type == "library")' :key='item.title'>
-                    <div class='card p-2 mt-1 mb-1 border rounded-0'>{{item.name}}</div>
+            <div class="row bg-glass p-2">
+                <div class="col-4 text-left" v-for='item in allSkills.filter(item => item.type == "library")' :key='item.title'>
+                    <div class=''>{{item.name}}</div>
                 </div>
             </div>
 
             <!-- Database  -->
-            <h5 class="text-left mt-4">Database</h5>
+            <br/><h5 class="text-left">Database</h5>
             <hr/>
-            <div class="row">
-                <div class="col-2" v-for='item in allSkills.filter(item => item.type == "database")' :key='item.title'>
-                    <div class='card p-2 mt-1 mb-1 border rounded-0'>{{item.name}}</div>
+            <div class="row bg-glass p-2">
+                <div class="col-4 text-left" v-for='item in allSkills.filter(item => item.type == "database")' :key='item.title'>
+                    <div class=''>{{item.name}}</div>
                 </div>
             </div>
 
             <!-- ORM  -->
-            <h5 class="text-left mt-4">ORMs</h5>
+            <br/><h5 class="text-left">ORMs</h5>
             <hr/>
-            <div class="row">
-                <div class="col-2" v-for='item in allSkills.filter(item => item.type == "orm")' :key='item.title'>
-                    <div class='card p-2 mt-1 mb-1 border rounded-0'>{{item.name}}</div>
+            <div class="row bg-glass p-2">
+                <div class="col-4 text-left" v-for='item in allSkills.filter(item => item.type == "orm")' :key='item.title'>
+                    <div class=''>{{item.name}}</div>
                 </div>
             </div>
 
             <!-- Deployment -->
-            <h5 class="text-left mt-4">Deployment Technologies</h5>
+            <br/><h5 class="text-left">Deployment Technologies</h5>
             <hr/>
-            <div class="row">
-                <div class="col-2" v-for='item in allSkills.filter(item => item.type == "deployment")' :key='item.title'>
-                    <div class='card p-2 mt-1 mb-1 border rounded-0'>{{item.name}}</div>
+            <div class="row bg-glass p-2">
+                <div class="col-4 text-left" v-for='item in allSkills.filter(item => item.type == "deployment")' :key='item.title'>
+                    <div class=''>{{item.name}}</div>
                 </div>
             </div>
 
             <!-- Other -->
-            <h5 class="text-left mt-4">Other</h5>
+            <br/><h5 class="text-left">Other</h5>
             <hr/>
-            <div class="row">
-                <div class="col-2" v-for='item in allSkills.filter(item => item.type == "other")' :key='item.title'>
-                    <div class='card p-2 mt-1 mb-1 border rounded-0'>{{item.name}}</div>
+            <div class="row bg-glass p-2">
+                <div class="col-4 text-left" v-for='item in allSkills.filter(item => item.type == "other")' :key='item.title'>
+                    <div class=''>{{item.name}}</div>
                 </div>
             </div>
 
@@ -91,6 +91,7 @@ import SkillPreview from "@/components/SkillPreview.vue";
 import SkillRow from "@/components/SkillRow.vue";
 import ScreenOverlay from "@/components/ScreenOverlay.vue";
 import NavbarSkills from "@/components/Navbars/Skills.vue";
+import global from '@/global.js';
 
 export default {
     name: "Skills",
@@ -100,15 +101,11 @@ export default {
         ScreenOverlay,
         NavbarSkills
     },
-    mounted: function() {
-        this.pullSkills();
-        // this.pullKeywords();
-    },
     data() {
         return {
             componentKey: 0,
-            allSkills: [],
-            skillsLoaded: false,
+            allSkills: global.skills,
+            skillsLoaded: global.skillsLoaded,
             loadingMessage: `
                 <div>Loading list of skills...</div>
                 <div class="spinner-grow text-success" role="status">

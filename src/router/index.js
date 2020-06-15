@@ -28,6 +28,12 @@ const routes = [
       import(/* webpackChunkName: "about" */ "../views/Applications-All.vue") // Lazy loading
   },
   {
+    path: "/applications/create",
+    name: "Applications-Create",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/Applications-Create.vue") // Lazy loading
+  },
+  {
     path: "/skills",
     name: "Skills",
     component: () =>

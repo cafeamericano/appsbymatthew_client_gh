@@ -2,6 +2,17 @@
     <div>
         <NavbarApplications/>
         <section v-if="applicationsLoaded" class='animated fadeIn'>
+            <thead>
+                <th style="width: 50px" class="border-left">#</th>
+                <th style="width: 70px" class="border-left"></th>
+                <th style="width: 50px" class="border-left"></th>
+                <th style="width: 200px" class="border-left">App Name</th>
+                <th style="width: 150px" class="border-left">Commands</th>
+                <th style="width: 150px" class="border-left">Publish Date</th>
+                <th style="width: 250px" class="border-left">Primary Language</th>
+                <th style="width: 100px" class="border-left">Featured</th>
+                <th style="width: 80px" class="border-left"></th>
+            </thead>
             <table class="table table-striped">
                 <div v-for='(item, index) in allApplications.filter(item => 1 == 1)' :key='index'>
                     <ApplicationRow v-bind='item' :rownum='index'/>
@@ -19,28 +30,23 @@
 <script>
 
 // @ is an alias to /src
-// import ApplicationPreview from "@/components/ApplicationPreview.vue";
 import ApplicationRow from "@/components/ApplicationRow.vue";
 import ScreenOverlay from "@/components/ScreenOverlay.vue";
 import NavbarApplications from "@/components/Navbars/Applications.vue";
+import global from "@/global.js";
 
 export default {
     name: "Applications",
     components: {
-        // ApplicationPreview,
         ApplicationRow,
         ScreenOverlay,
         NavbarApplications
     },
-    mounted: function() {
-        this.pullApplications();
-        // this.pullKeywords();
-    },
     data() {
         return {
             componentKey: 0,
-            allApplications: [],
-            applicationsLoaded: false,
+            allApplications: global.applications,
+            applicationsLoaded: global.applicationsLoaded,
             loadingMessage: `
                 <div>Loading list of applications...</div>
                 <div class="spinner-grow text-success" role="status">
@@ -48,24 +54,19 @@ export default {
                 </div>
             `
         }
-    },
-    methods: {
-        pullApplications() {
-            var self = this;
-            fetch("https://central-api-flask-cm6ud432ka-uc.a.run.app/AppGalleryLite/api/applications").then(function (response) {
-                return response.json();
-            }).then(function (result) {
-                self.allApplications = result;
-                self.componentKey +=1;
-                self.applicationsLoaded = true;
-            });
-        }
     }
 };
 </script>
 
-<style>
+<style scoped>
     td {
         white-space: nowrap;
+    }
+    th {
+        text-align: left;
+        padding-left: 12px;
+    }
+    .table {
+        margin-bottom: 0px;
     }
 </style>

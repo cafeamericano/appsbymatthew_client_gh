@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class='bg bg-light pb-3'>
+  <div id="app" class='bg bg-light'>
 
     <NavbarMain/>
     <router-view />
@@ -10,6 +10,7 @@
 <script>
 
 import NavbarMain from "@/components/Navbars/Main.vue";
+import global from "@/global.js";
 
 export default {
     name: "App",
@@ -19,6 +20,32 @@ export default {
     data: function() {
         return {
             copyrightMessage: '©2020 Matthew Farmer'
+        }
+	},
+	mounted: function() {
+		this.pullApplications();
+		this.pullSkills();
+    },
+    methods: {
+        pullApplications() {
+            var self = this;
+            fetch("https://central-api-flask-cm6ud432ka-uc.a.run.app/AppGalleryLite/api/applications").then(function (response) {
+                return response.json();
+            }).then(function (result) {
+              global.applicationsLoaded = true;
+              global.applications = result;
+              console.log(result)
+            });
+		},
+		pullSkills() {
+            var self = this;
+            fetch("https://central-api-go.appspot.com/KeywordFactory/api/allkeywords").then(function (response) {
+                return response.json();
+            }).then(function (result) {
+              global.skillsLoaded = true;
+              global.skills = result;
+              console.log(result)
+            });
         }
     }
 }

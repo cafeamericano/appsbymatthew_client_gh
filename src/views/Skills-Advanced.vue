@@ -23,6 +23,7 @@ import SkillPreview from "@/components/SkillPreview.vue";
 import SkillRow from "@/components/SkillRow.vue";
 import ScreenOverlay from "@/components/ScreenOverlay.vue";
 import NavbarSkills from "@/components/Navbars/Skills.vue";
+import global from "@/global.js";
 
 export default {
     name: "Skills",
@@ -32,15 +33,11 @@ export default {
         ScreenOverlay,
         NavbarSkills
     },
-    mounted: function() {
-        this.pullSkills();
-        // this.pullKeywords();
-    },
     data() {
         return {
             componentKey: 0,
-            allSkills: [],
-            skillsLoaded: false,
+            allSkills: global.skills,
+            skillsLoaded: global.skillsLoaded,
             loadingMessage: `
                 <div>Loading list of skills...</div>
                 <div class="spinner-grow text-success" role="status">
@@ -48,18 +45,15 @@ export default {
                 </div>
             `
         }
-    },
-    methods: {
-        pullSkills() {
-            var self = this;
-            fetch("https://central-api-go.appspot.com/KeywordFactory/api/allkeywords").then(function (response) {
-                return response.json();
-            }).then(function (result) {
-                self.allSkills = result;
-                self.componentKey +=1;
-                self.skillsLoaded = true;
-            });
-        }
     }
 };
 </script>
+
+<style scoped>
+    td {
+        white-space: nowrap;
+    }
+    .table {
+        margin-bottom: 0px;
+    }
+</style>
