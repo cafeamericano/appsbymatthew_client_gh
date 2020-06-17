@@ -36,10 +36,14 @@
     margin-right: 20px;
     font-weight: bold;
     color: #2c3e50;
+    padding: 5px;
 }
 
 #nav a.router-link-exact-active {
-  color: #42b983;
+    background-color: #42b983;
+    border-radius: 10px;
+    color: white;
+    transition: background-color 0.5s, color 0.5s;
 }
 
 </style>

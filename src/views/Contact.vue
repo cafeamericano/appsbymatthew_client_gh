@@ -1,25 +1,34 @@
 <template>
     <div>
         <NavbarContact/>
-        <div class='text-left container p-3 animated fadeInUp'>
+        <div class='text-left container p-3 animated fadeIn'>
             <div class="row">
             <ContactCard 
                 :title='"GitHub"'
                 :body='"View my source code and explore my repositories"'
                 :linkRef='"https://github.com/cafeamericano"'
-                :linkIcon='"fas fa-external-link-alt"'
+                :linkIcon='"fab fa-github fa-2x"'
+            />
+
+            <ContactCard 
+                :title='"Bitbucket"'
+                :body='"Connect with me on LinkedIn."'
+                :linkRef='"https://www.linkedin.com/in/matthew-farmer-204930182"'
+                :linkIcon='"fab fa-bitbucket fa-2x text-primary"'
             />
 
             <ContactCard 
                 :title='"LinkedIn"'
                 :body='"Connect with me on LinkedIn."'
                 :linkRef='"https://www.linkedin.com/in/matthew-farmer-204930182"'
-                :linkIcon='"fas fa-external-link-alt"'
+                :linkIcon='"fab fa-linkedin fa-2x text-primary"'
             />
 
             <ContactCard 
                 :title='"Email"'
-                :body='"Email me directly at mfarmer5102@gmail.com"'
+                :body='"Connect with me on LinkedIn."'
+                :linkRef='"https://www.linkedin.com/in/matthew-farmer-204930182"'
+                :linkIcon='"far fa-envelope fa-2x text-danger"'
             />
             </div>
         </div>

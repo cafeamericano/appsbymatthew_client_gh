@@ -2,7 +2,8 @@
     <div>
         <NavbarApplications/>
         <section v-if="applicationsLoaded" class='animated fadeIn'>
-            <thead>
+            <StandardTable/>
+            <!-- <thead>
                 <th style="width: 50px" class="border-left">#</th>
                 <th style="width: 70px" class="border-left"></th>
                 <th style="width: 50px" class="border-left"></th>
@@ -17,7 +18,7 @@
                 <div v-for='(item, index) in allApplications.filter(item => 1 == 1)' :key='index'>
                     <ApplicationRow v-bind='item' :rownum='index'/>
                 </div>
-            </table>
+            </table> -->
         </section>
 
         <section v-else>
@@ -30,6 +31,7 @@
 <script>
 
 // @ is an alias to /src
+import StandardTable from "@/components/StandardTable.vue";
 import ApplicationRow from "@/components/ApplicationRow.vue";
 import ScreenOverlay from "@/components/ScreenOverlay.vue";
 import NavbarApplications from "@/components/Navbars/Applications.vue";
@@ -40,7 +42,8 @@ export default {
     components: {
         ApplicationRow,
         ScreenOverlay,
-        NavbarApplications
+        NavbarApplications,
+        StandardTable
     },
     data() {
         return {

@@ -1,16 +1,17 @@
 <template>
-    <main class="col-4 mb-3">
-        <div class='card frosted-bg rounded-0 p-3'>
+    <main class="col-12 mb-3">
+        <div class='card p-3 pt-4'>
             <div class="row">
-                <div class="col-9">
+                <div class="col-1 text-center">
+                    <i :class='linkIcon'></i>
+                </div>
+                <div class='col-3 text-left pt-1'>
                     <h5 v-html=title></h5>
                 </div>
-                <div class='col-3 text-right'>
-                    <a :href='linkRef' download target='_blank' class="seagreen"><i :class='linkIcon'></i></a>
+                <div class='col-7 text-left pt-1'>
+                    <p v-html=body></p>
                 </div>
             </div>
-            <hr/>
-            <p v-html=body></p>
         </div>
     </main>
 </template>

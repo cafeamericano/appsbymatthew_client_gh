@@ -1,7 +1,7 @@
 <template>
     <div>
         <NavbarApplications/>
-        <section v-if="applicationsLoaded" class='animated slideInUp container pb-4'>
+        <section v-if="applicationsLoaded" class='animated fadeIn container pb-4'>
 
             <div class="row">    
                 <div class="col-4" v-for='item in applications.filter(item => item.isFeatured)' :key='item.title'>

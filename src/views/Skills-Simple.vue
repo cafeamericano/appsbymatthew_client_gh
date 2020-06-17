@@ -1,77 +1,77 @@
 <template>
     <div>
         <NavbarSkills/>
-        <section v-if="skillsLoaded" class='animated slideInUp container pb-4'>
+        <section v-if="skillsLoaded" class='animated fadeIn container pb-4'>
 
             <!-- Language -->
             <br/><h5 class="text-left">Languages</h5>
             <hr/>
-            <div class="row bg-glass p-2">    
+            <div class="row p-2">    
                 <div class="col-4 text-left" v-for='item in allSkills.filter(item => item.type == "language")' :key='item.title'>
-                    <div class=''>{{item.name}}</div>
+                    <div class='card mb-2 p-2'>{{item.name}}</div>
                 </div>
             </div>
 
             <!-- Front End Frameworks  -->
             <br/><h5 class="text-left">Front End Frameworks</h5>
             <hr/>
-            <div class="row bg-glass p-2">
+            <div class="row p-2">
                 <div class="col-4 text-left" v-for='item in allSkills.filter(item => item.type == "front-end-framework")' :key='item.title'>
-                    <div class=''>{{item.name}}</div>
+                    <div class='card mb-2 p-2'>{{item.name}}</div>
                 </div>
             </div>
 
             <!-- Back End Frameworks  -->
             <br/><h5 class="text-left">Back End Frameworks</h5>
             <hr/>
-            <div class="row bg-glass p-2">
+            <div class="row p-2">
                 <div class="col-4 text-left" v-for='item in allSkills.filter(item => item.type == "back-end-framework")' :key='item.title'>
-                    <div class=''>{{item.name}}</div>
+                    <div class='card mb-2 p-2'>{{item.name}}</div>
                 </div>
             </div>
 
             <!-- Library  -->
             <br/><h5 class="text-left">Library</h5>
             <hr/>
-            <div class="row bg-glass p-2">
+            <div class="row p-2">
                 <div class="col-4 text-left" v-for='item in allSkills.filter(item => item.type == "library")' :key='item.title'>
-                    <div class=''>{{item.name}}</div>
+                    <div class='card mb-2 p-2'>{{item.name}}</div>
                 </div>
             </div>
 
             <!-- Database  -->
             <br/><h5 class="text-left">Database</h5>
             <hr/>
-            <div class="row bg-glass p-2">
+            <div class="row p-2">
                 <div class="col-4 text-left" v-for='item in allSkills.filter(item => item.type == "database")' :key='item.title'>
-                    <div class=''>{{item.name}}</div>
+                    <div class='card mb-2 p-2'>{{item.name}}</div>
                 </div>
             </div>
 
             <!-- ORM  -->
             <br/><h5 class="text-left">ORMs</h5>
             <hr/>
-            <div class="row bg-glass p-2">
+            <div class="row p-2">
                 <div class="col-4 text-left" v-for='item in allSkills.filter(item => item.type == "orm")' :key='item.title'>
-                    <div class=''>{{item.name}}</div>
+                    <div class='card mb-2 p-2'>{{item.name}}</div>
                 </div>
             </div>
 
             <!-- Deployment -->
             <br/><h5 class="text-left">Deployment Technologies</h5>
             <hr/>
-            <div class="row bg-glass p-2">
+            <div class="row p-2">
                 <div class="col-4 text-left" v-for='item in allSkills.filter(item => item.type == "deployment")' :key='item.title'>
-                    <div class=''>{{item.name}}</div>
+                    <div class='card mb-2 p-2'>{{item.name}}</div>
                 </div>
             </div>
 
             <!-- Other -->
             <br/><h5 class="text-left">Other</h5>
             <hr/>
-            <div class="row bg-glass p-2">
+            <div class="row p-2">
                 <div class="col-4 text-left" v-for='item in allSkills.filter(item => item.type == "other")' :key='item.title'>
-                    <div class=''>{{item.name}}</div>
+                    <div class='card mb-2 p-2'>{{item.name}}</div>
                 </div>
             </div>
 

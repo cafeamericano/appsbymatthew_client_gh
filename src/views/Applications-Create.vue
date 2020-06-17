@@ -1,37 +1,83 @@
 <template>
     <div>
         <NavbarApplications/>
-        <section v-if="applicationsLoaded" class='animated slideInUp container pb-4'>
+        <div class="pt-2 pb-4 pl-4 pr-4">
+            <section class='animated fadeIn container-fluid pt-2 pb-4 pl-4 pr-4'>
 
-            <!-- <div class="row">    
-                <div class="col-4" v-for='item in applications.filter(item => item.isFeatured)' :key='item.title'>
-                    <div class='card mt-3 mb-1 border rounded-0'>
-                        <h5 class='text-left pl-2 pr-2 pt-2'>{{item.title}}</h5>
-                        <div class="text-left pl-2 pr-2 pb-1">
-                            <i v-if="item.keywords.includes('React')" title='React' class="fab fa-react fa-lg text-primary p-1"></i>
-                            <i v-if="item.keywords.includes('Vue')" title='Vue' class="fab fa-vuejs fa-lg text-success p-1"></i>
-                            <i v-if="item.keywords.includes('Angular')" title='Angular' class="fab fa-angular fa-lg text-danger p-1"></i>
-                            <i v-if="item.keywords.includes('Node')" title='Node' class="fab fa-node fa-lg text-secondary p-1"></i>
-                            <i v-if="item.keywords.includes('JavaScript')" title='JavaScript' class="fab fa-js fa-lg text-warning p-1"></i>
-                            <i v-if="item.keywords.includes('Python')" title='Python' class="fab fa-python fa-lg text-info p-1"></i>
-                            <i v-if="item.keywords.includes('Go')" title='Go' class="fa-lg text-primary p-1"><strong>GO</strong></i>
-                        </div>
-                        <img :src='item.imagePath' style="width: 100%"/>
-                        <div class="text-right p-2">
-                            <small v-if="item.deployedLink"><a :href='item.deployedLink' class="p-2">Experience</a></small>
-                            <small v-if="item.frontendRepoLink">|<a :href='item.frontendRepoLink' class="p-2">Client Source</a></small>
-                            <small v-if="item.backendRepoLink">|<a :href='item.backendRepoLink' class="p-2">API Source</a></small>
-                        </div>
+                <div class="row mb-3">
+                    <div class="col pr-0 text-right">
+                        <span class="btn btn-secondary rounded-0">Cancel</span>
+                        <span class="btn btn-primary rounded-0">Save</span>
                     </div>
                 </div>
-            </div> -->
 
-        </section>
+                <div class="row text-left">
+                    <div class="col-8">
+                        <section class="card p-3 mb-3">
+                            <div class="row">
+                                <div class="col-4"><label class="text-left pt-1">Title</label></div>
+                                <div class="col-8"><input type="text" class="form-control mb-3" placeholder="Title"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4"><label class="text-left pt-1">Image Path</label></div>
+                                <div class="col-8"><input type="text" class="form-control mb-3" placeholder="Image Path"></div>
+                            </div>
+                        </section>
+                        <section class="card p-3">
+                            <div class="row">
+                                <div class="col-4"><label class="text-left pt-1">Application Type</label></div>
+                                <div class="col-8"><input type="text" class="form-control mb-3" placeholder="Application Type"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4"><label class="text-left pt-1">Deployed Link</label></div>
+                                <div class="col-8"><input type="text" class="form-control mb-3" placeholder="Deployed Link"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4"><label class="text-left pt-1">Description</label></div>
+                                <div class="col-8"><input type="text" class="form-control mb-3" placeholder="Description"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4"><label class="text-left pt-1">Is Featured</label></div>
+                                <div class="col-8"><input type="text" class="form-control mb-3" placeholder="Is Featured"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4"><label class="text-left pt-1">Keywords</label></div>
+                                <div class="col-8"><input type="text" class="form-control mb-3" placeholder="Keywords"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4"><label class="text-left pt-1">Primary Language</label></div>
+                                <div class="col-8"><input type="text" class="form-control mb-3" placeholder="Primary Language"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4"><label class="text-left pt-1">Publish Date</label></div>
+                                <div class="col-8"><input type="text" class="form-control mb-3" placeholder="Publish Date"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4"><label class="text-left pt-1">Support Status</label></div>
+                                <div class="col-8"><input type="text" class="form-control mb-3" placeholder="Support Status"></div>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="col-4 card p-3">
+                        <!-- <section class="card p-3"> -->
+                            <h5 class="p-1 pb-3 text-center border-bottom"><strong>Skills Employed</strong></h5>
+                            <div v-for='(item, index) in skills.filter(item => 1 == 1)' :key='index'>
+                                <div v-bind:class='index % 2 == 0 ? "row bg-light p-1" : "row bg-gray p-1"'>
+                                    <div class="col-2"><input type='checkbox'/></div>
+                                    <div class="col-10">{{item.name}}</div>
+                                </div>
+                            </div>
+                            <small class="p-1 pb-3 text-center border-top">Displaying {{skills.length}} skills</small>
+                        <!-- </section> -->
+                    </div>
+                </div>
 
-        <section v-else>
-            <ScreenOverlay :content='loadingMessage'/>
-        </section>
+            </section>
 
+            <!-- <section v-else>
+                <ScreenOverlay :content='loadingMessage'/>
+            </section> -->
+        </div>
     </div>
 </template>
 
@@ -50,14 +96,15 @@ export default {
     },
     mounted: {
         doStuff: function() {
-            console.log(global.applicationsLoaded)
+            console.log(global.skills)
         }
     },
     data() {
+        console.log('***', global.skills)
         return {
             componentKey: 0,
-            applications: global.applications,
-            applicationsLoaded: global.applicationsLoaded,
+            skills: global.skills,
+            skillsLoaded: global.skillsLoaded,
             loadingMessage: `
                 <div>Loading list of Applications...</div>
                 <div class="spinner-grow text-success" role="status">

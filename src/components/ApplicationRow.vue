@@ -7,9 +7,9 @@
 
             <td style="width: 200px" class="border-left">{{ $attrs.title }}</td>
             <td style="width: 150px" class="border-left">
-                <span class="material-icons">zoom_in</span>
-                <span class="material-icons">create</span>
-                <span class="material-icons">delete_outline</span>
+                <!-- <span @click='processViewDetails' class="material-icons">zoom_in</span> -->
+                <span @click='processEdit' class="material-icons">create</span>
+                <span @click='processDelete' class="material-icons">delete_outline</span>
             </td>
             <td style="width: 150px" class="border-left">{{ $attrs.publishDate }}</td>
             <td style="width: 250px" class="border-left">{{ $attrs.language }}</td>
@@ -22,6 +22,7 @@
                 <div v-if='$attrs.showOnPortfolio'><span class="material-icons">check</span></div>
                 <div v-else></div>            
             </td>
+            <td style="width: 250px" class="border-left">{{ $attrs.supportStatus }}</td>
 
         </tr>
     </section>
@@ -33,7 +34,8 @@ export default {
     name: 'SkillPreview',
     data: function () {
         var self = this;
-        console.log(self.rownum)
+        recordId = self.oid
+        console.log(self.data)
         return {
             rowBg: self.rownum % 2 == 0 ? 'bg-light' : 'bg-secondary'
             // Properties go here
@@ -42,7 +44,31 @@ export default {
     props: [],
     methods: {
         processRightClick(e) {
+            console.log(this.$attrs)
             e.preventDefault();
+            // alert(this.$attrs._id.$oid)
+        },
+        processViewDetails() {
+            alert('View details for : ' + this.$attrs.title)
+        },
+        processEdit() {
+            confirm('Process edit for : ' + this.$attrs.title)
+        },
+        processDelete() {
+            var self = this;
+            alert('prepping')
+            if (confirm(`Are you sure you would like to delete ${self.$attrs.title}`)){
+                var url = 'https://central-api-flask-cm6ud432ka-uc.a.run.app/AppGalleryLite/api/applications'
+                fetch(url, {
+                    method: "DELETE",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        _id: self.$attrs._id.$oid
+                    })
+                }).then(response => {
+                    // self.$router.go(-1)
+                });
+            }
         }
     }
 }
