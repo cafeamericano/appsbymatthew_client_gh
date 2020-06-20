@@ -134,7 +134,9 @@ export default {
                 self.props.rows = self.$attrs.rows.filter(row => {
                     let thisValue = e.target.value;
                     let thatValue = row[filterBy];
-                    return thisValue.toLowerCase() == thatValue.toLowerCase();
+                    console.log(row)
+                    console.log(e.target.value, row[filterBy])
+                    return thatValue.toLowerCase().includes(thisValue.toLowerCase());
                 });
             }
         },
