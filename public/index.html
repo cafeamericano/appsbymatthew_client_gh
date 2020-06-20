@@ -22,8 +22,24 @@
     />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+    <link
+      href="https://unpkg.com/gridjs/dist/theme/mermaid.min.css"
+      rel="stylesheet"
+    />
+
     <!-- Custom CSS -->
     <style>
+        html::-webkit-scrollbar {
+            -webkit-appearance: none;
+            width: 0px;
+        }
+
+        html::-webkit-scrollbar-thumb {
+            border-radius: 4px;
+            background-color: rgba(0, 0, 0, .5);
+            box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+        }
+
         #app {
             background-image: url('https://images.unsplash.com/photo-1449247709967-d4461a6a6103?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2000&q=80');
             background-size: cover;
@@ -68,6 +84,7 @@
     <noscript>
       <strong>We're sorry but Apps by Matthew doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
+    <script src="https://unpkg.com/gridjs/dist/gridjs.development.js"></script>
     <div id="app"></div>
     <!-- built files will be auto injected -->
   </body>

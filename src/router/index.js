@@ -40,6 +40,18 @@ const routes = [
       import(/* webpackChunkName: "edit" */ "../views/Skills.vue") // Lazy loading
   },
   {
+    path: "/skills/create",
+    name: "Skills-Create",
+    component: () =>
+      import(/* webpackChunkName: "edit" */ "../views/Skills-Create.vue") // Lazy loading
+  },
+  {
+    path: "/skills/edit",
+    name: "Skills-Edit",
+    component: () =>
+      import(/* webpackChunkName: "edit" */ "../views/Skills-Edit.vue") // Lazy loading
+  },
+  {
     path: "/skills/simple",
     name: "Skills-Simple",
     component: () =>
