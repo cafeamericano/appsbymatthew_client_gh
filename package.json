@@ -5,13 +5,14 @@
   "scripts": {
     "dev": "vue-cli-service serve",
     "start": "vue-cli-service serve",
-    "serve": "vue-cli-service serve",
+    "serve": "npx serve docs",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "core-js": "^3.6.4",
     "lodash": "^4.17.15",
+    "serve": "^11.3.2",
     "vue": "^2.6.11",
     "vue-router": "^3.1.5"
   },

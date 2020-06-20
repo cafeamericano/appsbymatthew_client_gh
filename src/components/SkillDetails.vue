@@ -1,5 +1,5 @@
 <template>
-    <main class="container p-3">
+    <main class="container p-3 animated fadeIn">
 
         <div class="row mb-3">
             <div class="col pr-0 text-right">

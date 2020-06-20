@@ -1,7 +1,7 @@
 <template>
-    <div id="nav" style="width: 100%; overflow-x: scroll">
+    <div id="nav" style="width: 100%; overflow-x: scroll;">
         <nav class="navbar navbar-expand navbar-light bg-light">
-            <a class="navbar-brand" href="#">appsbymatthew.com</a>
+            <a class="navbar-brand" href="#" style=" font-family: 'MuseoModerno', cursive;">appsbymatthew.com</a>
 
             <ul class="navbar-nav">
                 <li class="nav-item">

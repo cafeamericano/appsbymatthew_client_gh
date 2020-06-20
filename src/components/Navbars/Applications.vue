@@ -20,7 +20,7 @@
 
 <style scoped>
     .navbar {
-        background-color: #42b983;
+        background-color:darkslategray;
     }
 
     #nav a {

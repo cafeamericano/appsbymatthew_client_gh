@@ -20,17 +20,21 @@
 
 <style scoped>
     .navbar {
-        background-color: #42b983;
+        background-color:darkslategray;
     }
 
     #nav a {
         margin-right: 20px;
         font-weight: bold;
-        color: white
+        color: white;
+        padding: 5px;
     }
 
     #nav a.router-link-exact-active {
-        color: #2c3e50;
+        color: #42b983;
+        border-radius: 10px;
+        background-color: white;
+        transition: background-color 0.5s, color 0.5s;
     }
 
 </style>

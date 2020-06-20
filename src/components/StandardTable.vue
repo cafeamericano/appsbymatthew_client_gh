@@ -1,7 +1,7 @@
 <template>
     <div style="overflow-x: scroll; font-size: 14px">
-        <div class="text-right p-1">1 | 2 | 3
-        </div>
+        <!-- <div class="text-right p-1">1 | 2 | 3
+        </div> -->
         <table style="min-width: 100%">
 
 
@@ -26,7 +26,8 @@
                     "color: " +             "white" +                                   ";" +
                     "background-color: " +  "rgb(175,175,175)" +                        ";" +
                     "border:" +             "1px solid rgba(210,210,210)" +             ";" +
-                    "padding: " +           "8px" +                                     ";"
+                    "padding: " +           "8px" +                                     ";" +
+                    "cursor: " +            "pointer" +                                 ";"
                 '
             >
                 {{col.header}}
@@ -39,7 +40,7 @@
             <tr>
                 <td style="padding: 5px; background-color: rgb(205, 205, 205)"/>
                 <td v-for='(item) in props.filterBar.filter(item => 1 == 1)' 
-                    style="padding: 5px; background-color: rgb(205, 205, 205)"
+                    style="padding: 5px; background-color: rgb(205, 205, 205);"
                 >
                     <input v-if='item.type == "text"'
                         :disabled='item.disabled'
