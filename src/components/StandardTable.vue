@@ -42,11 +42,16 @@
                     style="padding: 5px; background-color: rgb(205, 205, 205)"
                 >
                     <input v-if='item.type == "text"'
+                        :disabled='item.disabled'
                         v-on:keyup.enter="applyFilter(item.associatedDataField, $event)"
                         type="text" 
                         style="border: none; border-radius: 5px; padding: 8px; width: 100%;"
                     />
-                    <select @change='applyFilter(item.associatedDataField, $event)' v-if='item.type == "select"' style="border: none; border-radius: 5px; padding: 8px; width: 100%;">
+                    <select 
+                        :disabled='item.disabled'
+                        @change='applyFilter(item.associatedDataField, $event)' 
+                        v-if='item.type == "select"' 
+                        style="border: none; border-radius: 5px; padding: 8px; width: 100%;">
                         <option default value=''>Select</option>
                         <option 
                             v-for='(opt) in item.options' 

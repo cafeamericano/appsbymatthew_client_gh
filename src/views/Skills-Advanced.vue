@@ -65,7 +65,8 @@ var tableColumns = [
 var filterBar = [
     {
         type: 'text',
-        associatedDataField: 'name'
+        associatedDataField: 'name',
+        disabled: false
     },
     {
         type: 'select',
@@ -80,10 +81,17 @@ var filterBar = [
             {label: 'Operating System', value: 'operating-system'},
             {label: 'Other', value: 'other'},
         ],
-        associatedDataField: 'type'
+        associatedDataField: 'type',
+        disabled: false
     },
-    {},
-    {}
+    {
+        type: 'text',
+        disabled: true
+    },
+    {
+        type: 'text',
+        disabled: true
+    }
 ]
 
 import SkillPreview from "@/components/SkillPreview.vue";

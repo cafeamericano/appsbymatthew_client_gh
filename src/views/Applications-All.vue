@@ -137,15 +137,37 @@ var tableColumns = [
 var filterBar = [
     {
         type: 'text',
-        associatedDataField: 'title'
+        associatedDataField: 'title',
+        disabled: false
     },
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
+    {
+        type: 'text',
+        disabled: true
+    },
+    {
+        type: 'text',
+        disabled: true
+    },
+    {
+        type: 'text',
+        disabled: true
+    },
+    {
+        type: 'text',
+        disabled: true
+    },
+    {
+        type: 'text',
+        disabled: true
+    },
+    {
+        type: 'text',
+        disabled: true
+    },
+    {
+        type: 'text',
+        disabled: true
+    },
     {
         type: 'text',
         associatedDataField: 'keywords'
