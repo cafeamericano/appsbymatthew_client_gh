@@ -9,6 +9,9 @@
                 <li class='nav-item'>
                     <router-link :to="{name:'Skills-Advanced'}">Advanced View</router-link>
                 </li>
+                <li class='nav-item'>
+                    <router-link :to="{name:'Skills-Create'}">Add New</router-link>
+                </li>
             </ul>
 
         </nav>

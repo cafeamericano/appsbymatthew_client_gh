@@ -2,7 +2,7 @@
     <div>
         <NavbarApplications/>
         <div class="pt-2 pb-4 pl-4 pr-4">
-            <section class='animated fadeIn container-fluid pt-2 pb-4 pl-4 pr-4'>
+            <section class='animated fadeIn container pt-2 pb-4 pl-4 pr-4'>
 
                 <div class="row mb-3">
                     <div class="col pr-0 text-right">
@@ -13,56 +13,79 @@
 
                 <div class="row text-left">
                     <div class="col-8">
-                        <section class="card p-3 mb-3">
-                            <div class="row">
-                                <div class="col-4"><label class="text-left pt-1">Title</label></div>
-                                <div class="col-8"><input type="text" class="form-control mb-3" placeholder="Title"></div>
+                        <section class="card p-3 mb-3 shadow">
+                            
+                           <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Title</span>
+                                </div>
+                                <input type="text" class="form-control">
                             </div>
-                            <div class="row">
-                                <div class="col-4"><label class="text-left pt-1">Image Path</label></div>
-                                <div class="col-8"><input type="text" class="form-control mb-3" placeholder="Image Path"></div>
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Image Thumbnail</span>
+                                </div>
+                                <input type="text" class="form-control">
                             </div>
-                        </section>
-                        <section class="card p-3">
-                            <div class="row">
-                                <div class="col-4"><label class="text-left pt-1">Application Type</label></div>
-                                <div class="col-8"><input type="text" class="form-control mb-3" placeholder="Application Type"></div>
+                            
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Application Type</span>
+                                </div>
+                                <input type="text" class="form-control">
                             </div>
-                            <div class="row">
-                                <div class="col-4"><label class="text-left pt-1">Deployed Link</label></div>
-                                <div class="col-8"><input type="text" class="form-control mb-3" placeholder="Deployed Link"></div>
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Deployed Link</span>
+                                </div>
+                                <input type="text" class="form-control">
                             </div>
-                            <div class="row">
-                                <div class="col-4"><label class="text-left pt-1">Description</label></div>
-                                <div class="col-8"><input type="text" class="form-control mb-3" placeholder="Description"></div>
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Description</span>
+                                </div>
+                                <input type="text" class="form-control">
                             </div>
-                            <div class="row">
-                                <div class="col-4"><label class="text-left pt-1">Is Featured</label></div>
-                                <div class="col-8"><input type="text" class="form-control mb-3" placeholder="Is Featured"></div>
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Is Featured</span>
+                                </div>
+                                <input type="text" class="form-control">
                             </div>
-                            <div class="row">
-                                <div class="col-4"><label class="text-left pt-1">Keywords</label></div>
-                                <div class="col-8"><input type="text" class="form-control mb-3" placeholder="Keywords"></div>
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Primary Language</span>
+                                </div>
+                                <input type="text" class="form-control">
                             </div>
-                            <div class="row">
-                                <div class="col-4"><label class="text-left pt-1">Primary Language</label></div>
-                                <div class="col-8"><input type="text" class="form-control mb-3" placeholder="Primary Language"></div>
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Publish Date</span>
+                                </div>
+                                <input type="text" class="form-control">
                             </div>
-                            <div class="row">
-                                <div class="col-4"><label class="text-left pt-1">Publish Date</label></div>
-                                <div class="col-8"><input type="text" class="form-control mb-3" placeholder="Publish Date"></div>
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Support Status</span>
+                                </div>
+                                <input type="text" class="form-control">
                             </div>
-                            <div class="row">
-                                <div class="col-4"><label class="text-left pt-1">Support Status</label></div>
-                                <div class="col-8"><input type="text" class="form-control mb-3" placeholder="Support Status"></div>
-                            </div>
+
                         </section>
                     </div>
-                    <div class="col-4 card p-3">
+
+                    <div class="col-4 card p-3 shadow">
                         <!-- <section class="card p-3"> -->
                             <h5 class="p-1 pb-3 text-center border-bottom"><strong>Skills Employed</strong></h5>
                             <div v-for='(item, index) in skills.filter(item => 1 == 1)' :key='index'>
-                                <div v-bind:class='index % 2 == 0 ? "row bg-light p-1" : "row bg-gray p-1"'>
+                                <div v-bind:class='index % 2 == 0 ? "row border-bottom p-1" : "row border-bottom p-1"'>
                                     <div class="col-2"><input type='checkbox'/></div>
                                     <div class="col-10">{{item.name}}</div>
                                 </div>
@@ -87,6 +110,7 @@
 import ScreenOverlay from "@/components/ScreenOverlay.vue";
 import NavbarApplications from "@/components/Navbars/Applications.vue";
 import global from "@/global.js";
+import _ from 'lodash';
 
 export default {
     name: "Applications",
@@ -94,16 +118,18 @@ export default {
         ScreenOverlay,
         NavbarApplications
     },
-    mounted: {
-        doStuff: function() {
-            console.log(global.skills)
-        }
+    mounted: function() {
+        var self = this;
+        global.getSkills(function(result) {
+            self.skills = _.orderBy(result, [function(resultItem) { return resultItem.name.toLowerCase() },'name'], 'asc') || [];
+            self.skillsLoaded = true;
+        });
     },
     data() {
-        console.log('***', global.skills)
+        // console.log('***', global.skills)
         return {
             componentKey: 0,
-            skills: global.skills,
+            skills: [],
             skillsLoaded: global.skillsLoaded,
             loadingMessage: `
                 <div>Loading list of Applications...</div>

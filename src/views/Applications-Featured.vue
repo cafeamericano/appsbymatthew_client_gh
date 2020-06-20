@@ -4,7 +4,7 @@
         <section v-if="applicationsLoaded" class='animated fadeIn container pb-4'>
 
             <div class="row">    
-                <div class="col-4" v-for='item in applications.filter(item => item.isFeatured)' :key='item.title'>
+                <div class="col-6" v-for='item in applications.filter(item => item.isFeatured)' :key='item.title'>
                     <div class='card mt-3 mb-1 border rounded-0'>
                         <h5 class='text-left pl-2 pr-2 pt-2'>{{item.title}}</h5>
                         <div class="text-left pl-2 pr-2 pb-1">
@@ -18,9 +18,9 @@
                         </div>
                         <img :src='item.imagePath' style="width: 100%"/>
                         <div class="text-right p-2">
-                            <small v-if="item.deployedLink"><a :href='item.deployedLink' class="p-2">Experience</a></small>
-                            <small v-if="item.frontendRepoLink">|<a :href='item.frontendRepoLink' class="p-2">Client Source</a></small>
-                            <small v-if="item.backendRepoLink">|<a :href='item.backendRepoLink' class="p-2">API Source</a></small>
+                            <small v-if="item.deployedLink"><a :href='item.deployedLink' :target='"_blank"' class="p-2">Experience</a></small>
+                            <small v-if="item.frontendRepoLink">|<a :href='item.frontendRepoLink' :target='"_blank"' class="p-2">Client Source</a></small>
+                            <small v-if="item.backendRepoLink">|<a :href='item.backendRepoLink' :target='"_blank"' class="p-2">API Source</a></small>
                         </div>
                     </div>
                 </div>
@@ -40,7 +40,7 @@
 // @ is an alias to /src
 import ScreenOverlay from "@/components/ScreenOverlay.vue";
 import NavbarApplications from "@/components/Navbars/Applications.vue";
-import global from "@/global.js";
+import global from "@/global";
 
 export default {
     name: "Applications",
@@ -48,16 +48,18 @@ export default {
         ScreenOverlay,
         NavbarApplications
     },
-    mounted: {
-        doStuff: function() {
-            console.log(global.applicationsLoaded)
-        }
+    mounted: function() {
+        var self = this;
+        global.getApplications(function(result) {
+            self.applications = result || [];
+            self.applicationsLoaded = true;
+        });
     },
     data() {
         return {
             componentKey: 0,
-            applications: global.applications,
-            applicationsLoaded: global.applicationsLoaded,
+            applications: [],
+            applicationsLoaded: false,
             loadingMessage: `
                 <div>Loading list of Applications...</div>
                 <div class="spinner-grow text-success" role="status">

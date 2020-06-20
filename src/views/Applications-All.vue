@@ -48,7 +48,7 @@ export default {
     data() {
         return {
             componentKey: 0,
-            allApplications: global.applications,
+            allApplications: global.getApplications(),
             applicationsLoaded: global.applicationsLoaded,
             loadingMessage: `
                 <div>Loading list of applications...</div>

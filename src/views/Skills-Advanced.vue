@@ -1,17 +1,27 @@
 <template>
-    <div>
+    <div style="position: relative">
         <NavbarSkills/>
+
+        <section v-if='isOpenContextMenu'>
+            <FullScreenContextMenu
+                :recordId='recordBeingEditedId'
+                :recordName='recordBeingEditedName'
+                :processEdit='processClickEdit'
+                :processDelete='processClickDelete'
+                :processCancel='processClickCancel'
+                :isConfirmingDeletion='isConfirmingDeletion'
+            />
+        </section>
+
         <section v-if="skillsLoaded" class='animated fadeIn'>
             <StandardTable
                 :columns='tableColumns'
                 :rows='allSkills'
                 :hiddenFields='["_id"]'
+                :filterBar='filterBar'
+                :processRowClick='processRowClick'
+                :processRowRightClick='processRowRightClick'
             />
-            <!-- <table class="table table-striped">
-                <div v-for='(item, index) in allSkills.filter(item => 1 == 1)' :key='index'>
-                    <SkillRow v-bind='item' :rownum='index'/>
-                </div>
-            </table> -->
         </section>
 
         <section v-else>
@@ -25,35 +35,65 @@
 
 // @ is an alias to /src
 
-var z = [
+var tableColumns = [
     {
         header: 'Skill Name',
         width: '200px',
-        textAlignment: 'Left'
+        textAlignment: 'Left',
+        associatedDataField: 'name'
     },
                     {
         header: 'Type',
         width: '200px',
-        textAlignment: 'Left'
+        textAlignment: 'Left',
+        associatedDataField: 'type'
     },
     {
-        header: 'Utilized by App',
+        header: 'Demonstrable',
         width: '150px',
-        textAlignment: 'Left'
+        textAlignment: 'Left',
+        associatedDataField: 'showInGallery'
     },
     {
-        header: 'Display on Portfolio',
+        header: 'Proficient',
         width: '150px',
-        textAlignment: 'Left'
+        textAlignment: 'Left',
+        associatedDataField: 'showOnPortfolio'
     }
+]
+
+var filterBar = [
+    {
+        type: 'text',
+        associatedDataField: 'name'
+    },
+    {
+        type: 'select',
+        options: [
+            {label: 'Language', value: 'language'},
+            {label: 'Front-End Framework', value: 'front-end-framework'},
+            {label: 'Back-End Framework', value: 'back-end-framework'},
+            {label: 'Library', value: 'library'},
+            {label: 'Database', value: 'database'},
+            {label: 'Deployment Technology', value: 'deployment'},
+            {label: 'ORM', value: 'orm'},
+            {label: 'Operating System', value: 'operating-system'},
+            {label: 'Other', value: 'other'},
+        ],
+        associatedDataField: 'type'
+    },
+    {},
+    {}
 ]
 
 import SkillPreview from "@/components/SkillPreview.vue";
 import SkillRow from "@/components/SkillRow.vue";
 import ScreenOverlay from "@/components/ScreenOverlay.vue";
 import NavbarSkills from "@/components/Navbars/Skills.vue";
-import StandardTable from "@/components/StandardTable.vue"
+import StandardTable from "@/components/StandardTable.vue";
+import FullScreenContextMenu from "@/components/FullScreenContextMenu.vue"
 import global from "@/global.js";
+import router from "@/router";
 
 export default {
     name: "Skills",
@@ -62,7 +102,8 @@ export default {
         SkillRow,
         ScreenOverlay,
         NavbarSkills,
-        StandardTable
+        StandardTable,
+        FullScreenContextMenu
     },
     mounted: function() {
         this.formatSkillsForTable();
@@ -77,6 +118,31 @@ export default {
                 skill.showOnPortfolio ? formattedSkill.showOnPortfolio = '<i class="fas fa-check fa-lg"></i>' : formattedSkill.showOnPortfolio = '';
                 self.formattedSkills.push(formattedSkill)
             })
+        },
+        processRowClick: function(data) {
+            confirm('Would you like to edit ' + data + '?')
+        },
+        processRowRightClick: function(id, name, e) {
+            console.log(name)
+            var self = this;
+            self.isOpenContextMenu = true;
+            self.recordBeingEditedId = id;
+            self.recordBeingEditedName = name;
+        },
+        processClickEdit: function() {
+            this.isOpenContextMenu = false;
+            router.push({ name: 'Skills-Edit', params: { record_id: this.recordBeingEditedId } })
+            // alert(this.recordBeingEdited)
+        },
+        processClickDelete: function() {
+            this.isConfirmingDeletion = true;
+            // this.isOpenContextMenu = false;
+            // alert(this.recordBeingEdited)
+            // confirm('are you sure you would like to delete?')
+        },
+        processClickCancel: function() {
+            this.isConfirmingDeletion = false;
+            this.isOpenContextMenu = false;
         }
     },
     data() {
@@ -91,7 +157,13 @@ export default {
                     <span class="sr-only">Loading...</span>
                 </div>
             `,
-            tableColumns: z
+            tableColumns: tableColumns,
+            filterBar: filterBar,
+            isOpenContextMenu: false,
+            recordBeingEditedId: null,
+            recordBeingEditedName: null,
+            isConfirmingDeletion: false
+
         }
     }
 };
