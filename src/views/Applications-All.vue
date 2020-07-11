@@ -1,15 +1,90 @@
 <template>
     <div>
         <NavbarApplications/>
-        <section v-if="applicationsLoaded" class='animated fadeIn'>
-            <StandardTable
-                :columns='tableColumns'
-                :rows='formattedApplications'
-                :hiddenFields='["_id"]'
-                :filterBar='filterBar'
-                :processRowClick='processRowClick'
-                :processRowRightClick='processRowRightClick'
-            />
+        <section v-if="applicationsLoaded" class='animated fadeIn container pb-4'>
+            <div class="row mt-3">
+
+                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+                    <!-- Support Status Filter -->
+                    <multiselect 
+                        v-model="value" 
+                        deselect-label="Can't remove this value"
+                        placeholder="Support Status" 
+                        :options="['Active', 'Inactive', 'Discontinued']" 
+                        :searchable="false" 
+                        :allow-empty="false"
+                    >
+                        <template 
+                            slot="singleLabel" 
+                            slot-scope="{ option }"
+                        >
+                            <strong>{{ option.name }}</strong> is written in<strong>  {{ option.language }}</strong>
+                        </template>
+                    </multiselect>
+                </div>
+                <div class="col-xl-5 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <!-- Skill Filter -->
+                    <multiselect 
+                        v-model="selectedSkills" 
+                        :options="skills" 
+                        :multiple="true" 
+                        :close-on-select="false" 
+                        :clear-on-select="false" 
+                        :preserve-search="true"
+                        placeholder="Skills Employed"
+                        :preselect-first="false"
+                        @input="fetchApps"
+                        >
+                        <template 
+                            slot="selection" 
+                            slot-scope="{ values, search, isOpen }"
+                        >
+                            <span 
+                                class="multiselect__single" 
+                                v-if="selectedSkills.length &amp;&amp; !isOpen">
+                                    {{ selectedSkills.length }} skills selected
+                            </span>
+                        </template>
+                    </multiselect>
+                </div>
+
+                <div class='col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-12'>
+                    <!-- Is Deployed Filter -->
+                    <multiselect 
+                        v-model="value" 
+                        deselect-label="Can't remove this value"
+                        placeholder="Hide Non-Deployed Apps" 
+                        :options="['No', 'Yes']" 
+                        :searchable="false" 
+                        :allow-empty="false"
+                    >
+                        <template 
+                            slot="singleLabel" 
+                            slot-scope="{ option }"
+                        >
+                            <strong>{{ option.name }}</strong> is written in<strong>  {{ option.language }}</strong>
+                        </template>
+                    </multiselect>
+
+                </div>
+
+            </div>
+
+            <hr/>
+
+            <div class="row">    
+                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-12" v-for='item in applications' :key='item.title'>
+                    <AppPreviewMini :data='item'/>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class='col-12'>
+                    <div id='loadMoreAppsButton' class="btn btn-primary w-100" @click="loadMoreApps">Load More Applications</div>
+                </div>
+            </div>
+
         </section>
 
         <section v-else>
@@ -22,169 +97,120 @@
 <script>
 
 // @ is an alias to /src
-import StandardTable from "@/components/StandardTable.vue";
-import ApplicationRow from "@/components/ApplicationRow.vue";
 import ScreenOverlay from "@/components/ScreenOverlay.vue";
 import NavbarApplications from "@/components/Navbars/Applications.vue";
 import global from "@/global";
+import Multiselect from 'vue-multiselect'
+import AppPreviewMini from "@/components/AppPreviewMini.vue";
 
 export default {
     name: "Applications",
     components: {
-        ApplicationRow,
         ScreenOverlay,
         NavbarApplications,
-        StandardTable
+        Multiselect,
+        AppPreviewMini
     },
     mounted: function() {
-        this.formatApplicationsForTable();
+        var self = this;
+        self.fetchApps();
+        self.fetchSkills();
     },
     methods: {
-        formatApplicationsForTable() {
+
+        fetchApps: function(isExtending) {
+            console.log('hi kitty')
             var self = this;
-            self.allApplications.forEach(application => {
-                var formattedApplication = {};
+            var url = "http://localhost:5000/api/applications/filter";
+            var queryString = '?';
 
-                application.title ? formattedApplication.title = application.title : formattedApplication.title = '';
-                application.imagePath ? formattedApplication.imagePath = '<img src="' + application.imagePath + '" style="height: 25px"/>' : formattedApplication.imagePath = '';
-                application.isFeatured ? formattedApplication.isFeatured = '<i class="fas fa-check fa-lg"></i>' : formattedApplication.isFeatured = '';
-                application.publishDate ? formattedApplication.publishDate = application.publishDate : formattedApplication.publishDate = '';
-                application.deployedLink ? formattedApplication.deployedLink = application.deployedLink : formattedApplication.deployedLink = '';
-                application.frontendRepoLink ? formattedApplication.frontendRepoLink = application.frontendRepoLink : formattedApplication.frontendRepoLink = '';
-                application.backendRepoLink ? formattedApplication.backendRepoLink = application.backendRepoLink : formattedApplication.backendRepoLink = '';
-                application.supportStatus ? formattedApplication.supportStatus = application.supportStatus : formattedApplication.supportStatus = '';
-                application.keywords ? formattedApplication.keywords = application.keywords.join(", ") : formattedApplication.keywords = [];
+            queryString += `limit=${this.appsPerPage}&`
+            queryString += `skip=${isExtending == true ? (this.appsPerPage * this.currentPage) : 0}&`
 
-self.formattedApplications.push(formattedApplication)
+            if (this.filterFeatured) { 
+                queryString += `featured=${this.filterFeatured}&`
+            }
+            if(this.selectedSkills.length) {
+                queryString += `keywords=${this.selectedSkills}`;
+            }
+
+            fetch(url + queryString)
+            .then(function (response) {
+                return response.json();
             })
+            .then(function (result) {
+                self.applicationsLoaded = true;
+                console.log(isExtending)
+                if (isExtending == true) {
+                    self.applications = self.applications.concat(result)
+                }
+                else {
+                    self.applications = result;
+                    self.currentPage = 0;
+                }
+                result.length < self.appsPerPage
+                    ? document.getElementById('loadMoreAppsButton').style.display = 'none'
+                    : document.getElementById('loadMoreAppsButton').style.display = 'block'
+            });
+
+        },
+
+        fetchSkills: function() {
+
+            var self = this;
+            var url = "http://localhost:5000/api/skills";
+            var queryString = '?';
+
+            fetch(url + queryString)
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (result) {
+                var skillNames = [];
+                result.forEach(element => {
+                    skillNames.push(element.name)
+                });
+                self.skillsLoaded = true;
+                self.skills = skillNames;
+            });
+
+        },
+        
+        loadMoreApps: function() {
+            this.currentPage += 1;
+            this.fetchApps(true);
+        },
+        toggleFeaturedFilter: function() {
+            if (this.filterFeatured) {
+                this.filterFeatured = false;
+            }
+            else {
+                this.filterFeatured = true;
+            }
+            this.fetchApps();
         }
     },
     data() {
         return {
             componentKey: 0,
-            applicationsLoaded: global.applicationsLoaded,
+            appsPerPage: 6,
+            currentPage: 0,
+            applications: [],
+            skills: [],
+            selectedSkills: [],
+            applicationsLoaded: false,
+            skillsLoaded: false,
+            isInflated: false,
+            filterFeatured: null,
             loadingMessage: `
-                <div>Loading list of applications...</div>
+                <div>Loading list of Applications...</div>
                 <div class="spinner-grow text-success" role="status">
                     <span class="sr-only">Loading...</span>
                 </div>
             `,
-            allApplications: global.applications,
-            formattedApplications: [],
-            tableColumns: tableColumns,
-            filterBar: filterBar
         }
     }
 };
-
-var tableColumns = [
-    {
-        header: 'Application Name',
-        width: '200px',
-        textAlignment: 'Left',
-        associatedDataField: 'title'
-    },
-                    {
-        header: 'Thumbnail',
-        width: '200px',
-        textAlignment: 'Left',
-        associatedDataField: 'imagePath'
-    },
-    {
-        header: 'Featured',
-        width: '150px',
-        textAlignment: 'Left',
-        associatedDataField: 'isFeatured'
-    },
-    {
-        header: 'Publish Date',
-        width: '150px',
-        textAlignment: 'Left',
-        associatedDataField: 'publishDate'
-    },
-    {
-        header: 'Deployed Link',
-        width: '150px',
-        textAlignment: 'Left',
-        associatedDataField: 'deployedLink'
-    },
-    {
-        header: 'Frontend Repo',
-        width: '150px',
-        textAlignment: 'Left',
-        associatedDataField: 'frontendRepoLink'
-    },
-        {
-        header: 'Backend Repo',
-        width: '150px',
-        textAlignment: 'Left',
-        associatedDataField: 'backendRepoLink'
-    },
-    {
-        header: 'Support Status',
-        width: '150px',
-        textAlignment: 'Left',
-        associatedDataField: 'supportStatus'
-    },
-    {
-        header: 'Skills Employed',
-        width: '150px',
-        textAlignment: 'Left',
-        associatedDataField: 'keywords'
-    }
-]
-
-var filterBar = [
-    {
-        type: 'text',
-        associatedDataField: 'title',
-        disabled: false
-    },
-    {
-        type: 'text',
-        disabled: true
-    },
-    {
-        type: 'text',
-        disabled: true
-    },
-    {
-        type: 'text',
-        disabled: true
-    },
-    {
-        type: 'text',
-        disabled: true
-    },
-    {
-        type: 'text',
-        disabled: true
-    },
-    {
-        type: 'text',
-        disabled: true
-    },
-    {
-        type: 'text',
-        disabled: true
-    },
-    {
-        type: 'text',
-        associatedDataField: 'keywords'
-    },
-]
-
 </script>
 
-<style scoped>
-    td {
-        white-space: nowrap;
-    }
-    th {
-        text-align: left;
-        padding-left: 12px;
-    }
-    .table {
-        margin-bottom: 0px;
-    }
-</style>
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>

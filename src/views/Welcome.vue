@@ -3,10 +3,10 @@
         <NavbarWelcome/>
         <div class="container text-left p-3">
             <div class='row'>
-                <div class='col-6'>
+                <div class='col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12'>
                     <div class="animated fadeInUp mt-4 p-3"><h1 id='welcome-sign'>welcome.</h1></div>
                 </div>
-                <div class='col-6 bg-glass p-3 animated fadeInUp'>
+                <div class='col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 bg-glass p-3 animated fadeInUp'>
                     <p>
                         I'm a full-stack web developer with a keen eye for design and a passion for developing
                         applications to solve real-world problems. In addition to more than a year of experience

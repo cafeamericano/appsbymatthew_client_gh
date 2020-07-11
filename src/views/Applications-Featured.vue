@@ -3,7 +3,7 @@
         <NavbarApplications/>
         <section v-if="applicationsLoaded" class='animated fadeIn container pb-4'>
 
-            <div class="row">    
+            <div class="row">
                 <div class="col-6" v-for='item in applications.filter(item => item.isFeatured)' :key='item.title'>
                     <div class='card mt-3 mb-1 border rounded-0'>
                         <h5 class='text-left pl-2 pr-2 pt-2'>{{item.title}}</h5>
@@ -50,9 +50,12 @@ export default {
     },
     mounted: function() {
         var self = this;
-        global.getApplications(function(result) {
-            self.applications = result || [];
+        console.log('prepping')
+        fetch("http://localhost:5000/api/applications/filter?featured=true").then(function (response) {
+            return response.json();
+        }).then(function (result) {
             self.applicationsLoaded = true;
+            self.applications = result;
         });
     },
     data() {
