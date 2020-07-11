@@ -17,6 +17,9 @@
                             <i v-if="item.keywords.includes('Go')" title='Go' class="fa-lg text-primary p-1"><strong>GO</strong></i>
                         </div>
                         <img :src='item.imagePath' style="width: 100%"/>
+                        <p class="p-3 text-left">
+                            {{item.description}}
+                        </p>
                         <div class="text-right p-2">
                             <small v-if="item.deployedLink"><a :href='item.deployedLink' :target='"_blank"' class="p-2">Experience</a></small>
                             <small v-if="item.frontendRepoLink">|<a :href='item.frontendRepoLink' :target='"_blank"' class="p-2">Client Source</a></small>

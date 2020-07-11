@@ -14,11 +14,14 @@
                 <i v-if="$attrs.data.keywords.includes('Go')" title='Go' class="fa-lg text-primary p-1"><strong>GO</strong></i>
             </div>
             <img :src='$attrs.data.imagePath' style="width: 100%"/>
-            <div class="text-right p-2">
+            <div class="text-right p-2" style="padding-bottom: 0px !important">
                 <small v-if="$attrs.data.deployedLink"><a :href='$attrs.data.deployedLink' :target='"_blank"' class="p-2" title="Experience this application"><i class="far fa-play-circle"></i></a></small>
                 <small v-if="$attrs.data.frontendRepoLink">|<a :href='$attrs.data.frontendRepoLink' :target='"_blank"' class="p-2" title='Client Source Code'><i class="fas fa-laptop-code"></i></a></small>
                 <small v-if="$attrs.data.backendRepoLink">|<a :href='$attrs.data.backendRepoLink' :target='"_blank"' class="p-2" title='API Source Code'><i class="fas fa-code-branch"></i></a></small>
                 <small style="opacity: 0">.</small>
+            </div>
+            <div class="text-left p-2" style="padding-top: 0px !important">
+                <small><i class="fas fa-wrench text-secondary"></i></small>
             </div>
         </div>
     </section>

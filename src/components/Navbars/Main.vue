@@ -19,6 +19,11 @@
             </ul>
 
         </nav>
+        <div style='position: relative'>
+            <div style="position: fixed; top: 0px; right: 0px; padding: 5px 10px 5px 0px; z-index: 0">
+                <small>Version 5.0.0</small>
+            </div>
+        </div>
     </div>
 </template>
 

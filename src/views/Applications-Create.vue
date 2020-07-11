@@ -6,92 +6,96 @@
 
                 <div class="row mb-3">
                     <div class="col pr-0 text-right">
-                        <span class="btn btn-secondary rounded-0">Cancel</span>
-                        <span class="btn btn-primary rounded-0">Save</span>
+                        <span @click='goBack' class="btn btn-secondary rounded-0">Cancel</span>
+                        <span @click='processCreate' class="btn btn-primary rounded-0">Save</span>
                     </div>
                 </div>
 
                 <div class="row text-left">
-                    <div class="col-8">
-                        <section class="card p-3 mb-3 shadow">
+                    <div class="col-12 card p-3 mb-3 shadow">
+                        <h5>Basic Info</h5><hr/>
+                        <section class="">
                             
                            <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Title</span>
                                 </div>
-                                <input type="text" class="form-control">
-                            </div>
-
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">Image Thumbnail</span>
-                                </div>
-                                <input type="text" class="form-control">
+                                <input v-model='app.title' type="text" class="form-control">
                             </div>
                             
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text">Application Type</span>
+                                    <span class="input-group-text">Front-End Repo Link</span>
                                 </div>
-                                <input type="text" class="form-control">
+                                <input v-model='app.frontendRepoLink' type="text" class="form-control">
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Back-End Repo Link</span>
+                                </div>
+                                <input v-model='app.backendRepoLink' type="text" class="form-control">
                             </div>
 
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Deployed Link</span>
                                 </div>
-                                <input type="text" class="form-control">
-                            </div>
-
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">Description</span>
-                                </div>
-                                <input type="text" class="form-control">
+                                <input v-model='app.deployedLink' type="text" class="form-control">
                             </div>
 
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Is Featured</span>
                                 </div>
-                                <input type="text" class="form-control">
-                            </div>
-
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">Primary Language</span>
-                                </div>
-                                <input type="text" class="form-control">
+                                <input v-model='app.isFeatured' type="text" class="form-control">
                             </div>
 
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Publish Date</span>
                                 </div>
-                                <input type="text" class="form-control">
+                                <input v-model='app.publishDate' type="date" class="form-control">
                             </div>
 
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Support Status</span>
                                 </div>
-                                <input type="text" class="form-control">
+                                <input v-model='app.supportStatus' type="text" class="form-control">
                             </div>
 
                         </section>
                     </div>
 
-                    <div class="col-4 card p-3 shadow">
-                        <!-- <section class="card p-3"> -->
-                            <h5 class="p-1 pb-3 text-center border-bottom"><strong>Skills Employed</strong></h5>
-                            <div v-for='(item, index) in skills.filter(item => 1 == 1)' :key='index'>
-                                <div v-bind:class='index % 2 == 0 ? "row border-bottom p-1" : "row border-bottom p-1"'>
-                                    <div class="col-2"><input type='checkbox'/></div>
-                                    <div class="col-10">{{item.name}}</div>
+                    <div class="col-12 card p-3 mb-3 shadow">
+                        <h5>Image and Description</h5><hr/>
+                        <section class="">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Image Thumbnail</span>
+                                </div>
+                                <input v-model='app.imagePath' type="text" class="form-control">
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Description</span>
+                                </div>
+                                <textarea v-model='app.description' class="form-control"></textarea>
+                            </div>
+                        </section>
+                    </div>
+
+                    <div class="col-12 card p-3 mb-3 shadow">
+                        <h5>Skills Utilized</h5><hr/>
+                        <section class="row m-0">
+                            <div class="col-4" v-for='(item, index) in skills.filter(item => 1 == 1)' :key='index'>
+                                <div class="row border-bottom mb-1">
+                                    <div><input :value='item.name' v-model='app.keywords' type='checkbox'/><span class='pl-2'>{{item.name}}</span></div>
                                 </div>
                             </div>
-                            <small class="p-1 pb-3 text-center border-top">Displaying {{skills.length}} skills</small>
-                        <!-- </section> -->
+                        </section>
                     </div>
                 </div>
 
@@ -136,8 +140,36 @@ export default {
                 <div class="spinner-grow text-success" role="status">
                     <span class="sr-only">Loading...</span>
                 </div>
-            `
+            `,
+            app: {
+                title: '',
+                frontendRepoLink: '',
+                backendRepoLink: '',
+                deployedLink: '',
+                isFeatured: '',
+                publishDate: '',
+                supportStatus: '',
+                imagePath: '',
+                description: '',
+                keywords: []
+            },
         }
+    },
+    methods: {
+        goBack: function() {
+            this.$router.go(-1)
+        },
+        processCreate: function() {
+            var self = this;
+            var url = 'http://localhost:5000/api/applications'
+            fetch(url, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(self.app)
+            }).then(response => {
+                self.goBack();
+            });
+        },
     }
 };
 </script>

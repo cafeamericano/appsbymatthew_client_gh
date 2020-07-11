@@ -2,29 +2,51 @@
     <div>
         <NavbarApplications/>
         <section v-if="applicationsLoaded" class='animated fadeIn container pb-4'>
+
+            <div class="row mt-3">
+                <div class="col-12">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Search</span>
+                        </div>
+                        <input v-model='suppliedTitle' @input="fetchApps" placeholder='Search by title (case-sensitive)' type="text" class="form-control">
+                    </div>
+                </div>
+            </div>
+
+
             <div class="row mt-3">
 
-                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-xs-12">
-
-                    <!-- Support Status Filter -->
+                <!-- Support Status Filter -->
+                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-2">
                     <multiselect 
-                        v-model="value" 
-                        deselect-label="Can't remove this value"
-                        placeholder="Support Status" 
-                        :options="['Active', 'Inactive', 'Discontinued']" 
-                        :searchable="false" 
-                        :allow-empty="false"
-                    >
-                        <template 
-                            slot="singleLabel" 
-                            slot-scope="{ option }"
+                        v-model="selectedStatuses" 
+                        :options="statuses" 
+                        :multiple="true" 
+                        :close-on-select="false" 
+                        :clear-on-select="false" 
+                        :preserve-search="true"
+                        placeholder="Support Status"
+                        :preselect-first="false"
+                        track-by="value" 
+                        label="label"
+                        @input="fetchApps"
                         >
-                            <strong>{{ option.name }}</strong> is written in<strong>  {{ option.language }}</strong>
+                        <template 
+                            slot="selection" 
+                            slot-scope="{ values, search, isOpen }"
+                        >
+                            <span 
+                                class="multiselect__single" 
+                                v-if="selectedStatuses.length &amp;&amp; !isOpen">
+                                    {{ selectedStatuses.length }} status(es) selected
+                            </span>
                         </template>
                     </multiselect>
                 </div>
-                <div class="col-xl-5 col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                    <!-- Skill Filter -->
+
+                <!-- Skill Filter -->
+                <div class="col-xl-5 col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-2">
                     <multiselect 
                         v-model="selectedSkills" 
                         :options="skills" 
@@ -43,30 +65,32 @@
                             <span 
                                 class="multiselect__single" 
                                 v-if="selectedSkills.length &amp;&amp; !isOpen">
-                                    {{ selectedSkills.length }} skills selected
+                                    {{ selectedSkills.length }} skill(s) selected
                             </span>
                         </template>
                     </multiselect>
                 </div>
 
-                <div class='col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-12'>
-                    <!-- Is Deployed Filter -->
+                <!-- Is Deployed Filter -->
+                <div class='col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-2'>
                     <multiselect 
-                        v-model="value" 
-                        deselect-label="Can't remove this value"
+                        v-model="isDeployedValue" 
+                        deselect-label=""
                         placeholder="Hide Non-Deployed Apps" 
-                        :options="['No', 'Yes']" 
+                        :options="isDeployedOptions"
                         :searchable="false" 
-                        :allow-empty="false"
+                        track-by="value" 
+                        label="label"
+                        :preselect-first="false"
+                        @input="fetchApps"
                     >
                         <template 
                             slot="singleLabel" 
                             slot-scope="{ option }"
                         >
-                            <strong>{{ option.name }}</strong> is written in<strong>  {{ option.language }}</strong>
+                            <strong>Hide undeployed apps: {{ option.label }}</strong>
                         </template>
                     </multiselect>
-
                 </div>
 
             </div>
@@ -119,7 +143,6 @@ export default {
     methods: {
 
         fetchApps: function(isExtending) {
-            console.log('hi kitty')
             var self = this;
             var url = "http://localhost:5000/api/applications/filter";
             var queryString = '?';
@@ -130,8 +153,23 @@ export default {
             if (this.filterFeatured) { 
                 queryString += `featured=${this.filterFeatured}&`
             }
+            if (this.isDeployedValue.value) {
+                queryString += `deployed=true&`
+            }
             if(this.selectedSkills.length) {
                 queryString += `keywords=${this.selectedSkills}`;
+            }
+            if(this.suppliedTitle && this.suppliedTitle.length) {
+                queryString += `title=${this.suppliedTitle}`;
+            }
+            if(this.selectedStatuses.length) {
+                let statusList = []
+                this.selectedStatuses.forEach(status => {
+                    if (status) {
+                        statusList.push(status.value)
+                    }
+                })
+                queryString += `supportStatus=${statusList}`;
             }
 
             fetch(url + queryString)
@@ -188,6 +226,15 @@ export default {
                 this.filterFeatured = true;
             }
             this.fetchApps();
+        },
+        toggleDeployedFilter: function() {
+            if (this.isDeployed) {
+                this.isDeployed = false;
+            }
+            else {
+                this.isDeployed = true;
+            }
+            this.fetchApps();
         }
     },
     data() {
@@ -208,6 +255,18 @@ export default {
                     <span class="sr-only">Loading...</span>
                 </div>
             `,
+            isDeployedValue: false,
+            isDeployedOptions: [
+                {label: "No", value: false},
+                {label: "Yes", value: true}
+            ],
+            selectedStatuses: [],
+            statuses: [
+                {label: "Active", value: 'active'},
+                {label: "Inactive", value: 'inactive'},
+                {label: "Discontinued", value: 'discontinued'}
+            ],
+            suppliedTitle: ''
         }
     }
 };
