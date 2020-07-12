@@ -113,7 +113,7 @@ export default {
         processCreate: function() {
             var self = this;
             self.formatSkillBooleans();
-            var url = 'http://localhost:5000/api/skills'
+            var url = 'https://appsbymatthew-qgzgpr7klq-uc.a.run.app/api/skills'
             fetch(url, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -124,7 +124,7 @@ export default {
         },
         processGet: function() {
             var self = this;
-            var url = `http://localhost:5000/api/skills/filter?id=${self.$route.params.id}`;
+            var url = `https://appsbymatthew-qgzgpr7klq-uc.a.run.app/api/skills/filter?id=${self.$route.params.id}`;
             fetch(url, {
                 method: "GET",
                 headers: { "Content-Type": "application/json" }
@@ -140,7 +140,7 @@ export default {
                 return self.processEdit();
             }
             self.formatSkillBooleans();
-            var url = 'http://localhost:5000/api/skills';
+            var url = 'https://appsbymatthew-qgzgpr7klq-uc.a.run.app/api/skills';
             fetch(url, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -152,7 +152,7 @@ export default {
         processEdit: function() {
             var self = this;
             self.formatSkillBooleans();
-            var url = 'http://localhost:5000/api/skills';
+            var url = 'https://appsbymatthew-qgzgpr7klq-uc.a.run.app/api/skills';
             fetch(url, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
@@ -168,7 +168,7 @@ export default {
         },
         processDelete: function() {
             var self = this;
-            var url = 'http://localhost:5000/api/skill';
+            var url = 'https://appsbymatthew-qgzgpr7klq-uc.a.run.app/api/skill';
             fetch(url, {
                 method: "DELETE",
                 headers: { "Content-Type": "application/json" },

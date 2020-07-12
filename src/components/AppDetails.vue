@@ -171,7 +171,7 @@ export default {
         },
         processGet: function() {
             var self = this;
-            var url = `http://localhost:5000/api/applications/filter?id=${self.$route.params.id}`;
+            var url = `https://appsbymatthew-qgzgpr7klq-uc.a.run.app/api/applications/filter?id=${self.$route.params.id}`;
             fetch(url, {
                 method: "GET",
                 headers: { "Content-Type": "application/json" }
@@ -188,7 +188,7 @@ export default {
                 return self.processEdit();
             }
             self.formatApplicationBooleans();
-            var url = 'http://localhost:5000/api/applications';
+            var url = 'https://appsbymatthew-qgzgpr7klq-uc.a.run.app/api/applications';
             fetch(url, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -200,7 +200,7 @@ export default {
         processEdit: function() {
             var self = this;
             self.formatApplicationBooleans();
-            var url = 'http://localhost:5000/api/applications';
+            var url = 'https://appsbymatthew-qgzgpr7klq-uc.a.run.app/api/applications';
             fetch(url, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
@@ -223,7 +223,7 @@ export default {
         },
         processDelete: function() {
             var self = this;
-            var url = 'http://localhost:5000/api/applications';
+            var url = 'https://appsbymatthew-qgzgpr7klq-uc.a.run.app/api/applications';
             fetch(url, {
                 method: "DELETE",
                 headers: { "Content-Type": "application/json" },

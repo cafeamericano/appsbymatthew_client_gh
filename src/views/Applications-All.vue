@@ -144,7 +144,7 @@ export default {
 
         fetchApps: function(isExtending) {
             var self = this;
-            var url = "http://localhost:5000/api/applications/filter";
+            var url = "https://appsbymatthew-qgzgpr7klq-uc.a.run.app/api/applications/filter";
             var queryString = '?';
 
             queryString += `limit=${this.appsPerPage}&`
@@ -196,7 +196,7 @@ export default {
         fetchSkills: function() {
 
             var self = this;
-            var url = "http://localhost:5000/api/skills";
+            var url = "https://appsbymatthew-qgzgpr7klq-uc.a.run.app/api/skills";
             var queryString = '?';
 
             fetch(url + queryString)
