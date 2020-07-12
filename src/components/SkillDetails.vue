@@ -79,6 +79,10 @@ export default {
     components: {
     },
     mounted: function() {
+        var self = this;
+        if (self.$attrs.isEditing) {
+            self.processGet();
+        }
     },
     data() {
         return {
@@ -118,6 +122,63 @@ export default {
                 self.goBack();
             });
         },
+        processGet: function() {
+            var self = this;
+            var url = `http://localhost:5000/api/skills/filter?id=${self.$route.params.id}`;
+            fetch(url, {
+                method: "GET",
+                headers: { "Content-Type": "application/json" }
+            }).then(function (response) {
+                return response.json();
+            }).then(response => {
+                self.skill = response[0];
+            });
+        },
+        processCreate: function() {
+            var self = this;
+            if (self.$attrs.isEditing) {
+                return self.processEdit();
+            }
+            self.formatSkillBooleans();
+            var url = 'http://localhost:5000/api/skills';
+            fetch(url, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(self.skill)
+            }).then(response => {
+                self.goBack();
+            });
+        },
+        processEdit: function() {
+            var self = this;
+            self.formatSkillBooleans();
+            var url = 'http://localhost:5000/api/skills';
+            fetch(url, {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    _id: this.$route.params.id,
+                    name: this.skill.name,
+                    showOnPortfolio: this.skill.showOnPortfolio,
+                    showInGallery: this.skill.showInGallery
+                })
+            }).then(response => {
+                self.$router.go(-1)
+            });
+        },
+        processDelete: function() {
+            var self = this;
+            var url = 'http://localhost:5000/api/skill';
+            fetch(url, {
+                method: "DELETE",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    _id: this.$route.params.id
+                })
+            }).then(response => {
+                self.$router.go(-1)
+            });
+        }
     }
 }
 

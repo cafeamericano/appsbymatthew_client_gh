@@ -1,8 +1,7 @@
 <template>
     <div style='position: relative'>
         <NavbarSkills/>
-        <SkillDetails/>
-
+        <SkillDetails :isEditing='true'/>
     </div>
 </template>
 

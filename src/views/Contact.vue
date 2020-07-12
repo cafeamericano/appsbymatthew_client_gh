@@ -5,14 +5,14 @@
             <div class="row">
             <ContactCard 
                 :title='"GitHub"'
-                :body='"View my source code and explore my repositories"'
+                :body='"View my source code and explore my repositories (all)."'
                 :linkRef='"https://github.com/cafeamericano"'
                 :linkIcon='"fab fa-github fa-2x"'
             />
 
             <ContactCard 
                 :title='"Bitbucket"'
-                :body='"Connect with me on LinkedIn."'
+                :body='"View my source code and explore my repositories (curated)."'
                 :linkRef='"https://www.linkedin.com/in/matthew-farmer-204930182"'
                 :linkIcon='"fab fa-bitbucket fa-2x text-primary"'
             />
@@ -26,7 +26,7 @@
 
             <ContactCard 
                 :title='"Email"'
-                :body='"Connect with me on LinkedIn."'
+                :body='"Contact me directly by email at: mfarmer5102@gmail.com"'
                 :linkRef='"https://www.linkedin.com/in/matthew-farmer-204930182"'
                 :linkIcon='"far fa-envelope fa-2x text-danger"'
             />
