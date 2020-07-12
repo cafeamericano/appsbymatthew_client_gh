@@ -3,7 +3,7 @@
         <NavbarApplications/>
         <section v-if="applicationsLoaded" class='animated fadeIn container pb-4'>
 
-            <div class="row">    
+            <div class="row">
                 <div class="col-6" v-for='item in applications.filter(item => item.isFeatured)' :key='item.title'>
                     <div class='card mt-3 mb-1 border rounded-0'>
                         <h5 class='text-left pl-2 pr-2 pt-2'>{{item.title}}</h5>
@@ -17,6 +17,9 @@
                             <i v-if="item.keywords.includes('Go')" title='Go' class="fa-lg text-primary p-1"><strong>GO</strong></i>
                         </div>
                         <img :src='item.imagePath' style="width: 100%"/>
+                        <p class="p-3 text-left">
+                            {{item.description}}
+                        </p>
                         <div class="text-right p-2">
                             <small v-if="item.deployedLink"><a :href='item.deployedLink' :target='"_blank"' class="p-2">Experience</a></small>
                             <small v-if="item.frontendRepoLink">|<a :href='item.frontendRepoLink' :target='"_blank"' class="p-2">Client Source</a></small>
@@ -50,9 +53,12 @@ export default {
     },
     mounted: function() {
         var self = this;
-        global.getApplications(function(result) {
-            self.applications = result || [];
+        console.log('prepping')
+        fetch("https://appsbymatthew-qgzgpr7klq-uc.a.run.app/api/applications/filter?featured=true").then(function (response) {
+            return response.json();
+        }).then(function (result) {
             self.applicationsLoaded = true;
+            self.applications = result;
         });
     },
     data() {

@@ -1,7 +1,7 @@
 <template>
     <div>
         <NavbarApplications/>
-        <AppDetails :isEditing='false'/>
+        <AppDetails :isEditing='true'/>
     </div>
 </template>
 
@@ -15,7 +15,7 @@ import global from "@/global.js";
 import _ from 'lodash';
 
 export default {
-    name: "Applications-Create",
+    name: "Applications-Edit",
     components: {
         ScreenOverlay,
         NavbarApplications,

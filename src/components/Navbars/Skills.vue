@@ -4,11 +4,11 @@
 
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <router-link :to="{name:'Skills-Simple'}">Simple View</router-link>
+                    <router-link :to="{name:'Skills-Simple'}">Skill List</router-link>
                 </li>
-                <li class='nav-item'>
+                <!-- <li class='nav-item'>
                     <router-link :to="{name:'Skills-Advanced'}">Advanced View</router-link>
-                </li>
+                </li> -->
                 <li class='nav-item'>
                     <router-link :to="{name:'Skills-Create'}">Add New</router-link>
                 </li>

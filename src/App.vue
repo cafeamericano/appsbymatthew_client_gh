@@ -23,8 +23,6 @@ export default {
         }
 	},
 	mounted: function() {
-		global.getApplications();
-		global.getSkills();
   },
 }
 

@@ -4,7 +4,7 @@ const global = {
             return callback(global.applications);
         }
         else {
-            fetch("https://central-api-flask-cm6ud432ka-uc.a.run.app/AppGalleryLite/api/applications").then(function (response) {
+            fetch("https://appsbymatthew-qgzgpr7klq-uc.a.run.app/api/applications").then(function (response) {
                 return response.json();
             }).then(function (result) {
                 global.applicationsLoaded = true;
@@ -22,7 +22,7 @@ const global = {
             return callback(global.skills);
         }
         else {
-            fetch("https://central-api-go.appspot.com/KeywordFactory/api/allkeywords").then(function (response) {
+            fetch("https://appsbymatthew-qgzgpr7klq-uc.a.run.app/api/skills").then(function (response) {
                 console.log('hmm')
                 return response.json();
             }).then(function (result) {

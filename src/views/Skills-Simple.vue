@@ -8,7 +8,14 @@
             <hr/>
             <div class="row p-2">    
                 <div class="col-4 text-left" v-for='item in skills.filter(item => item.type == "language")' :key='item.title'>
-                    <div class='card mb-2 p-2'>{{item.name}}</div>
+                    <div class='card mb-2 p-2'>
+                        <span>{{item.name}}</span>
+                        <span style="text-align: right; position: absolute; right: 10px; width: 100%">
+                            <router-link :to="{name:'Skills-Edit', params: {id: item._id.$oid || item._id}}">
+                                <small><i class="fas fa-wrench text-secondary"></i></small>
+                            </router-link>
+                        </span>
+                    </div>                
                 </div>
             </div>
 
@@ -17,7 +24,14 @@
             <hr/>
             <div class="row p-2">
                 <div class="col-4 text-left" v-for='item in skills.filter(item => item.type == "front-end-framework")' :key='item.title'>
-                    <div class='card mb-2 p-2'>{{item.name}}</div>
+                    <div class='card mb-2 p-2'>
+                        <span>{{item.name}}</span>
+                        <span style="text-align: right; position: absolute; right: 10px; width: 100%">
+                            <router-link :to="{name:'Skills-Edit', params: {id: item._id.$oid || item._id}}">
+                                <small><i class="fas fa-wrench text-secondary"></i></small>
+                            </router-link>
+                        </span>
+                    </div>                
                 </div>
             </div>
 
@@ -26,7 +40,14 @@
             <hr/>
             <div class="row p-2">
                 <div class="col-4 text-left" v-for='item in skills.filter(item => item.type == "back-end-framework")' :key='item.title'>
-                    <div class='card mb-2 p-2'>{{item.name}}</div>
+                    <div class='card mb-2 p-2'>
+                        <span>{{item.name}}</span>
+                        <span style="text-align: right; position: absolute; right: 10px; width: 100%">
+                            <router-link :to="{name:'Skills-Edit', params: {id: item._id.$oid || item._id}}">
+                                <small><i class="fas fa-wrench text-secondary"></i></small>
+                            </router-link>
+                        </span>
+                    </div>                
                 </div>
             </div>
 
@@ -35,7 +56,14 @@
             <hr/>
             <div class="row p-2">
                 <div class="col-4 text-left" v-for='item in skills.filter(item => item.type == "library")' :key='item.title'>
-                    <div class='card mb-2 p-2'>{{item.name}}</div>
+                    <div class='card mb-2 p-2'>
+                        <span>{{item.name}}</span>
+                        <span style="text-align: right; position: absolute; right: 10px; width: 100%">
+                            <router-link :to="{name:'Skills-Edit', params: {id: item._id.$oid || item._id}}">
+                                <small><i class="fas fa-wrench text-secondary"></i></small>
+                            </router-link>
+                        </span>
+                    </div>                
                 </div>
             </div>
 
@@ -44,7 +72,14 @@
             <hr/>
             <div class="row p-2">
                 <div class="col-4 text-left" v-for='item in skills.filter(item => item.type == "database")' :key='item.title'>
-                    <div class='card mb-2 p-2'>{{item.name}}</div>
+                    <div class='card mb-2 p-2'>
+                        <span>{{item.name}}</span>
+                        <span style="text-align: right; position: absolute; right: 10px; width: 100%">
+                            <router-link :to="{name:'Skills-Edit', params: {id: item._id.$oid || item._id}}">
+                                <small><i class="fas fa-wrench text-secondary"></i></small>
+                            </router-link>
+                        </span>
+                    </div>                
                 </div>
             </div>
 
@@ -53,7 +88,14 @@
             <hr/>
             <div class="row p-2">
                 <div class="col-4 text-left" v-for='item in skills.filter(item => item.type == "orm")' :key='item.title'>
-                    <div class='card mb-2 p-2'>{{item.name}}</div>
+                    <div class='card mb-2 p-2'>
+                        <span>{{item.name}}</span>
+                        <span style="text-align: right; position: absolute; right: 10px; width: 100%">
+                            <router-link :to="{name:'Skills-Edit', params: {id: item._id.$oid || item._id}}">
+                                <small><i class="fas fa-wrench text-secondary"></i></small>
+                            </router-link>
+                        </span>
+                    </div>                
                 </div>
             </div>
 
@@ -62,7 +104,14 @@
             <hr/>
             <div class="row p-2">
                 <div class="col-4 text-left" v-for='item in skills.filter(item => item.type == "deployment")' :key='item.title'>
-                    <div class='card mb-2 p-2'>{{item.name}}</div>
+                    <div class='card mb-2 p-2'>
+                        <span>{{item.name}}</span>
+                        <span style="text-align: right; position: absolute; right: 10px; width: 100%">
+                            <router-link :to="{name:'Skills-Edit', params: {id: item._id.$oid || item._id}}">
+                                <small><i class="fas fa-wrench text-secondary"></i></small>
+                            </router-link>
+                        </span>
+                    </div>
                 </div>
             </div>
 
@@ -71,7 +120,14 @@
             <hr/>
             <div class="row p-2">
                 <div class="col-4 text-left" v-for='item in skills.filter(item => item.type == "other")' :key='item.title'>
-                    <div class='card mb-2 p-2'>{{item.name}}</div>
+                    <div class='card mb-2 p-2'>
+                        <span>{{item.name}}</span>
+                        <span style="text-align: right; position: absolute; right: 10px; width: 100%">
+                            <router-link :to="{name:'Skills-Edit', params: {id: item._id.$oid || item._id}}">
+                                <small><i class="fas fa-wrench text-secondary"></i></small>
+                            </router-link>
+                        </span>
+                    </div>                
                 </div>
             </div>
 
@@ -123,3 +179,9 @@ export default {
     }
 };
 </script>
+
+<style scoped>
+    .fa-wrench {
+        opacity: 10%;
+    }
+</style>
