@@ -4,6 +4,12 @@
         <section v-if="applicationsLoaded" class='animated fadeIn container pb-4'>
 
             <div class="row mt-3">
+                <div class="col text-right">
+                    <small>Total applications in gallery: {{totalAppCount}}</small>
+                </div>
+            </div>
+
+            <div class="row mt-2">
                 <div class="col-12">
                     <div class="input-group">
                         <div class="input-group-prepend">
@@ -139,8 +145,23 @@ export default {
         var self = this;
         self.fetchApps();
         self.fetchSkills();
+        self.grabTotalAppCount();
     },
     methods: {
+
+        grabTotalAppCount: function() {
+            var self = this;
+            var url = "http://localhost:5000/api/applications/countall";
+            var queryString = '?';
+
+            fetch(url + queryString)
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (result) {
+                self.totalAppCount = ~~result;
+            })
+        },
 
         fetchApps: function(isExtending) {
             var self = this;
@@ -249,6 +270,7 @@ export default {
             skillsLoaded: false,
             isInflated: false,
             filterFeatured: null,
+            totalAppCount: 0,
             loadingMessage: `
                 <div>Loading list of Applications...</div>
                 <div class="spinner-grow text-success" role="status">

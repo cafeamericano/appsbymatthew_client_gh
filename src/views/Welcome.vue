@@ -9,11 +9,9 @@
                 <div class='col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 bg-glass p-3 animated fadeInUp'>
                     <p>
                         I'm a full-stack web developer with a keen eye for design and a passion for developing
-                        applications to solve real-world problems. In addition to more than a year of experience
-                        with programming on both the front and back end, I possess more than five years of 
-                        professional experience with creative problem solving (such as creating departmental knowledge 
-                        repositories with search capability and writing code to determine refund amounts for thousands 
-                        of accounts at a large bank).
+                        applications to solve real-world problems. In addition to more than two and a half years of experience
+                        with programming on both the front and back ends, I possess more than seven years of 
+                        professional experience with creative problem solving.
                     </p>
                     <p>
                         My higher education includes a Bachelor’s Degree in Business Management as well as a certification

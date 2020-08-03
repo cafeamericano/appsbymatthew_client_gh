@@ -182,6 +182,6 @@ export default {
 
 <style scoped>
     .fa-wrench {
-        opacity: 10%;
+        opacity: 25%;
     }
 </style>

@@ -13,7 +13,7 @@
             <ContactCard 
                 :title='"Bitbucket"'
                 :body='"View my source code and explore my repositories (curated)."'
-                :linkRef='"https://www.linkedin.com/in/matthew-farmer-204930182"'
+                :linkRef='"https://bitbucket.org/mfarmer5102/"'
                 :linkIcon='"fab fa-bitbucket fa-2x text-primary"'
             />
 
@@ -27,7 +27,6 @@
             <ContactCard 
                 :title='"Email"'
                 :body='"Contact me directly by email at: mfarmer5102@gmail.com"'
-                :linkRef='"https://www.linkedin.com/in/matthew-farmer-204930182"'
                 :linkIcon='"far fa-envelope fa-2x text-danger"'
             />
             </div>
