@@ -165,10 +165,6 @@ export default {
         goBack: function() {
             this.$router.go(-1)
         },
-        formatApplicationBooleans: function() {
-            var self = this;
-            self.app.isFeatured = (self.app.isFeatured == 'true');
-        },
         processGet: function() {
             var self = this;
             var url = `https://appsbymatthew-qgzgpr7klq-uc.a.run.app/api/applications/filter?id=${self.$route.params.id}`;
@@ -187,7 +183,6 @@ export default {
             if (self.$attrs.isEditing) {
                 return self.processEdit();
             }
-            self.formatApplicationBooleans();
             var url = 'https://appsbymatthew-qgzgpr7klq-uc.a.run.app/api/applications';
             fetch(url, {
                 method: "POST",
@@ -199,23 +194,22 @@ export default {
         },
         processEdit: function() {
             var self = this;
-            self.formatApplicationBooleans();
             var url = 'https://appsbymatthew-qgzgpr7klq-uc.a.run.app/api/applications';
             fetch(url, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
-                    _id: this.$route.params.id,
-                    title: this.app.title,
-                    publishDate: this.app.publishDate,
-                    isFeatured: this.app.isFeatured,
-                    imagePath: this.app.imagePath,
-                    description: this.app.description,
-                    deployedLink: this.app.deployedLink,
-                    supportStatus: this.app.supportStatus,
-                    frontendRepoLink: this.app.frontendRepoLink,
-                    backendRepoLink: this.app.backendRepoLink,
-                    keywords: this.app.keywords
+                    _id: self.$route.params.id,
+                    title: self.app.title,
+                    publishDate: self.app.publishDate,
+                    isFeatured: self.app.isFeatured,
+                    imagePath: self.app.imagePath,
+                    description: self.app.description,
+                    deployedLink: self.app.deployedLink,
+                    supportStatus: self.app.supportStatus,
+                    frontendRepoLink: self.app.frontendRepoLink,
+                    backendRepoLink: self.app.backendRepoLink,
+                    keywords: self.app.keywords
                 })
             }).then(response => {
                 self.$router.go(-1)
