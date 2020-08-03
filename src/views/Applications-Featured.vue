@@ -54,7 +54,7 @@ export default {
     mounted: function() {
         var self = this;
         console.log('prepping')
-        fetch("http://localhost:5000/api/applications/filter?featured=true").then(function (response) {
+        fetch("https://appsbymatthew-qgzgpr7klq-uc.a.run.app/api/applications/filter?featured=true").then(function (response) {
             return response.json();
         }).then(function (result) {
             self.applicationsLoaded = true;

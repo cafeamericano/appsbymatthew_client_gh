@@ -4,7 +4,7 @@ const global = {
             return callback(global.applications);
         }
         else {
-            fetch("http://localhost:5000/api/applications").then(function (response) {
+            fetch("https://appsbymatthew-qgzgpr7klq-uc.a.run.app/api/applications").then(function (response) {
                 return response.json();
             }).then(function (result) {
                 global.applicationsLoaded = true;
@@ -22,7 +22,7 @@ const global = {
             return callback(global.skills);
         }
         else {
-            fetch("http://localhost:5000/api/skills").then(function (response) {
+            fetch("https://appsbymatthew-qgzgpr7klq-uc.a.run.app/api/skills").then(function (response) {
                 console.log('hmm')
                 return response.json();
             }).then(function (result) {
