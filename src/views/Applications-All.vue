@@ -151,7 +151,7 @@ export default {
 
         grabTotalAppCount: function() {
             var self = this;
-            var url = "https://appsbymatthew-qgzgpr7klq-uc.a.run.app/applications/countall";
+            var url = "https://appsbymatthew-qgzgpr7klq-uc.a.run.app/api/applications/countall";
             var queryString = '?';
 
             fetch(url + queryString)
