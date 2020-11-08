@@ -1,9 +1,9 @@
 pipelines:
   default:
     - step:
-        name: Alert Opsgenie
+        name: Google App Engine
         script:
         - pipe: atlassian/google-app-engine-deploy:0.7.4
           variables:
             KEY_FILE: $KEY_FILE
-            PROJECT: $PROJECT
+            PROJECT: appsbymatthew_client
