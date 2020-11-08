@@ -1,28 +1,47 @@
-# This is a sample build configuration for JavaScript.
-# Check our guides at https://confluence.atlassian.com/x/14UWN for more examples.
-# Only use spaces to indent your .yml configuration.
-# -----
-# You can specify a custom docker image from Docker Hub as your build environment.
-image: node:10.15.3
+
+# enable Docker for your repository
+options:
+  docker: true
 
 pipelines:
-  default:
-    - step:
-        caches:
-          - node
-        script: # Modify the commands below to build your repository.
-          - npm install
-          - npm test
-          - pipe: atlassian/google-app-engine-deploy:0.7.4
-            variables:
-              KEY_FILE: '<string>'
-              PROJECT: '<string>'
-              # DEPLOYABLES: '<string>' # Optional
-              # VERSION: '<string>' # Optional.
-              # BUCKET: '<string>' # Optional.
-              # IMAGE: '<string>' # Optional.
-              # PROMOTE: '<boolean>' # Optional
-              # STOP_PREVIOUS_VERSION: '<boolean>' # Optional.
-              # EXTRA_ARGS: '<string>' # Optional.
-              # DEBUG: '<boolean>' # Optional.
-              # CLOUD_BUILD_TIMEOUT: '<integer>' # Optional
+  branches:
+    master:
+      - step:
+          name: run-test
+          image: node:10-alpine
+          script:
+            - npm install
+            - npm run test-integration
+
+  tags:
+    release-production-*:
+      - step:
+          name: Build - Push - Deploy to GCP (gcr.io/YourGoogleProject/YourCloudRunServiceName) for Production
+          image: google/cloud-sdk:latest
+          caches:
+            - docker
+          deployment: production
+          script:
+            # set CLOUDSDK_CONFIG environment variables
+            # - export CLOUDSDK_CONFIG=`pwd`/credentials/service-account.json
+            # - gcloud config list
+
+            # set image name
+            - export IMAGE_NAME=$HOSTNAME/$PROJECT_ID/appsbymatthew # ex. gcr.io/my-g-project/my-cr-service 
+            - export SERVICE_NAME=$SERVICE_NAME
+
+            # Build image
+            - docker build -t $IMAGE_NAME .
+
+            # Gcloud auth and check
+            - gcloud auth activate-service-account bitbucket-pipeline@bar.iam.gserviceaccount.com --key-file=credentials/service-account.json
+            - gcloud config list
+
+            # config image registry with gcloud helper
+            - gcloud auth configure-docker -q
+
+            # push image to gcr
+            - docker push $IMAGE_NAME
+
+            # deploy to cloud run
+            - gcloud beta run deploy $SERVICE_NAME --image $IMAGE_NAME --region us-central1 --project $GOOGLE_PROJECT_ID
