@@ -15,7 +15,7 @@
                     </p>
                     <p>
                         My higher education includes a Bachelor’s Degree in Business Management as well as a certification
-                        in web development through the UNC Chapel Hill Coding Bootcamp. Technical skills include HTML/CSS,
+                        in web development through the UNC Chapel Hill Coding Bootcamp. Technical skills include HTML, CSS,
                         JavaScript, NodeJS, ReactJS, and database manipulation. Certified by the American Society of
                         Quality in process improvement, I am highly skilled with process flowcharting (an invaluable
                         tool in application development). In a collaborative environment, I enjoy teaching others and
