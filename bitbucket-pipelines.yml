@@ -6,4 +6,4 @@ pipelines:
         - pipe: atlassian/google-app-engine-deploy:0.7.4
           variables:
             KEY_FILE: $KEY_FILE
-            PROJECT: appsbymatthew_client
+            PROJECT: $PROJECT
