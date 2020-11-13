@@ -31,6 +31,8 @@
 
 <script>
 
+import {config} from "@/config";
+
 export default {
     name: "AppPreviewMini",
     components: {},

@@ -38,6 +38,7 @@
 
 import ContactCard from "@/components/ContactCard.vue";
 import NavbarContact from "@/components/Navbars/Contact.vue";
+import {config} from "@/config";
 
 export default {
     name: 'AddRecord',

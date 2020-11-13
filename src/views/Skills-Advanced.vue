@@ -101,6 +101,7 @@ import NavbarSkills from "@/components/Navbars/Skills.vue";
 import StandardTable from "@/components/StandardTable.vue";
 import FullScreenContextMenu from "@/components/FullScreenContextMenu.vue"
 import global from "@/global.js";
+import {config} from "@/config";v
 import router from "@/router";
 
 export default {

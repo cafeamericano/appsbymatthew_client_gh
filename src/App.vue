@@ -11,6 +11,7 @@
 
 import NavbarMain from "@/components/Navbars/Main.vue";
 import global from "@/global";
+import {config} from "@/config";
 
 export default {
     name: "App",

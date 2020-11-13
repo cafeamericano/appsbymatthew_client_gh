@@ -19,6 +19,8 @@
 
 <script>
 
+import {config} from "@/config";
+
 export default {
     name: 'AppPreview',
     data: function () {

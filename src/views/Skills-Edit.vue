@@ -9,6 +9,7 @@
 
 import NavbarSkills from "@/components/Navbars/Skills.vue";
 import SkillDetails from "@/components/SkillDetails.vue";
+import {config} from "@/config";
 
 export default {
     name: "Skills-Edit",
