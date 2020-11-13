@@ -98,7 +98,7 @@
                     <div class="col-12 card p-3 mb-3 shadow">
                         <h5>Skills Utilized</h5><hr/>
                         <section class="row m-0">
-                            <div class="col-4" v-for='(item, index) in skills.filter(item => 1 == 1)' :key='index'>
+                            <div class="col-xl-4 col-lg-6 col-md-6 col-12" v-for='(item, index) in skills.filter(item => 1 == 1)' :key='index'>
                                 <div class="row border-bottom mb-1">
                                     <div><input :value='item.name' v-model='app.keywords' type='checkbox'/><span class='pl-2'>{{item.name}}</span></div>
                                 </div>
@@ -118,6 +118,7 @@
 // @ is an alias to /src
 import ScreenOverlay from "@/components/ScreenOverlay.vue";
 import global from "@/global.js";
+import {config} from "@/config";
 import _ from 'lodash';
 
 export default {
@@ -167,7 +168,7 @@ export default {
         },
         processGet: function() {
             var self = this;
-            var url = `https://appsbymatthew-qgzgpr7klq-uc.a.run.app/api/applications/filter?id=${self.$route.params.id}`;
+            var url = `${config.apiUrl}/applications/filter?id=${self.$route.params.id}`;
             fetch(url, {
                 method: "GET",
                 headers: { "Content-Type": "application/json" }
@@ -183,7 +184,7 @@ export default {
             if (self.$attrs.isEditing) {
                 return self.processEdit();
             }
-            var url = 'https://appsbymatthew-qgzgpr7klq-uc.a.run.app/api/applications';
+            var url = `${config.apiUrl}/applications`;
             fetch(url, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -194,7 +195,7 @@ export default {
         },
         processEdit: function() {
             var self = this;
-            var url = 'https://appsbymatthew-qgzgpr7klq-uc.a.run.app/api/applications';
+            var url = `${config.apiUrl}/applications`;
             fetch(url, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
@@ -217,7 +218,7 @@ export default {
         },
         processDelete: function() {
             var self = this;
-            var url = 'https://appsbymatthew-qgzgpr7klq-uc.a.run.app/api/applications';
+            var url = `${config.apiUrl}/applications`;
             fetch(url, {
                 method: "DELETE",
                 headers: { "Content-Type": "application/json" },

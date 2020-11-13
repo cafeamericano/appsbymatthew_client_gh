@@ -1,8 +1,14 @@
 <template>
     <div id="nav" class='bg-light' style="width: 100%; overflow-x: scroll;">
-        <nav class="navbar navbar-expand navbar-light bg-light">
-            <a class="navbar-brand" href="#" style=" font-family: 'MuseoModerno', cursive;">appsbymatthew.com</a>
 
+        <nav class="navbar navbar-expand navbar-light bg-light" style="position: relative; height: 35px">
+            <a class="navbar-brand" href="#" style=" font-family: 'MuseoModerno', cursive;">appsbymatthew.com</a>
+            <div class="text-left pl-3" style="position: absolute; right: 10px">
+                <small>Version {{softwareVersion}}</small>
+            </div>
+        </nav>
+        
+        <nav class="navbar navbar-expand navbar-light bg-light">
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <router-link to="/">Welcome</router-link>
@@ -17,15 +23,23 @@
                     <router-link :to="{name:'Contact'}">Contact</router-link>
                 </li>
             </ul>
-
         </nav>
-        <div style='position: relative'>
-            <div style="position: fixed; top: 0px; right: 0px; padding: 5px 10px 5px 0px; z-index: 0">
-                <small>Version 5.1.0</small>
-            </div>
-        </div>
+
     </div>
 </template>
+
+<script>
+
+import packageJson from "../../../package.json";
+export default {
+    name: "NavbarMain",
+    data() {
+        return {
+            softwareVersion: packageJson.version
+        }
+    }
+}
+</script>
 
 <style scoped>
 #app {
@@ -34,7 +48,7 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  min-height: 100vh
+  min-height: 100vh;
 }
 
 #nav a {

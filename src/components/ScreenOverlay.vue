@@ -8,6 +8,8 @@
 
 <script>
 
+import {config} from "@/config";
+
 export default {
     name: 'ScreenOverlay',
     data: function () {

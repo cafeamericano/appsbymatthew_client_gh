@@ -30,6 +30,7 @@
 <script>
 
 import NavbarWelcome from "@/components/Navbars/Welcome.vue";
+import {config} from "@/config";
 
 export default {
     name: "Welcome",
