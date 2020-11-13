@@ -4,7 +4,7 @@
         <section v-if="applicationsLoaded" class='animated fadeIn container pb-4'>
 
             <div class="row">
-                <div class="col-6" v-for='item in applications.filter(item => item.isFeatured)' :key='item.title'>
+                <div class="col-xl-6 col-12" v-for='item in applications.filter(item => item.isFeatured)' :key='item.title'>
                     <div class='card mt-3 mb-1 border rounded-0'>
                         <h5 class='text-left pl-2 pr-2 pt-2'>{{item.title}}</h5>
                         <div class="text-left pl-2 pr-2 pb-1">
@@ -44,6 +44,7 @@
 import ScreenOverlay from "@/components/ScreenOverlay.vue";
 import NavbarApplications from "@/components/Navbars/Applications.vue";
 import global from "@/global";
+import {config} from "@/config";
 
 export default {
     name: "Applications",
@@ -54,7 +55,7 @@ export default {
     mounted: function() {
         var self = this;
         console.log('prepping')
-        fetch("https://appsbymatthew-qgzgpr7klq-uc.a.run.app/api/applications/filter?featured=true").then(function (response) {
+        fetch(`${config.apiUrl}/applications/filter?featured=true`).then(function (response) {
             return response.json();
         }).then(function (result) {
             self.applicationsLoaded = true;

@@ -11,6 +11,7 @@
 import SkillRow from "@/components/SkillRow.vue";
 import ScreenOverlay from "@/components/ScreenOverlay.vue";
 import NavbarSkills from "@/components/Navbars/Skills.vue";
+import {config} from "@/config";
 
 export default {
     name: "Skills",

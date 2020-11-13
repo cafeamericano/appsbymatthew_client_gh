@@ -1,10 +1,12 @@
+import {config} from "@/config";
+
 const global = {
     getApplications: function(callback) {
         if (global.applications.length) {
             return callback(global.applications);
         }
         else {
-            fetch("https://appsbymatthew-qgzgpr7klq-uc.a.run.app/api/applications").then(function (response) {
+            fetch(`${config.apiUrl}/applications`).then(function (response) {
                 return response.json();
             }).then(function (result) {
                 global.applicationsLoaded = true;
@@ -22,7 +24,7 @@ const global = {
             return callback(global.skills);
         }
         else {
-            fetch("https://appsbymatthew-qgzgpr7klq-uc.a.run.app/api/skills").then(function (response) {
+            fetch(`${config.apiUrl}/skills`).then(function (response) {
                 console.log('hmm')
                 return response.json();
             }).then(function (result) {
