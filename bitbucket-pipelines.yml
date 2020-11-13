@@ -1,0 +1,18 @@
+image: node:10.15.0
+
+pipelines:
+  default:
+    - step:
+        name: Build
+        script:
+          - npm install
+          - npm run build
+        artifacts:
+          - docs/**
+    - step:
+        name: Google App Engine
+        script:
+        - pipe: atlassian/google-app-engine-deploy:0.7.4
+          variables:
+            KEY_FILE: $KEY_FILE
+            PROJECT: $PROJECT
