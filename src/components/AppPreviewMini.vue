@@ -15,9 +15,9 @@
             </div>
             <img :src='$attrs.data.imagePath' style="width: 100%"/>
             <div class="text-right p-2" style="padding-bottom: 0px !important">
-                <small v-if="$attrs.data.deployedLink"><a :href='$attrs.data.deployedLink' :target='"_blank"' class="p-2" title="Experience this application"><i class="far fa-play-circle"></i></a></small>
-                <small v-if="$attrs.data.frontendRepoLink">|<a :href='$attrs.data.frontendRepoLink' :target='"_blank"' class="p-2" title='Client Source Code'><i class="fas fa-laptop-code"></i></a></small>
-                <small v-if="$attrs.data.backendRepoLink">|<a :href='$attrs.data.backendRepoLink' :target='"_blank"' class="p-2" title='API Source Code'><i class="fas fa-code-branch"></i></a></small>
+                <small @click="handleDeployLinkClick" v-if="$attrs.data.deployedLink"><a :href='$attrs.data.deployedLink' :target='"_blank"' class="p-2" title="Experience this application"><i class="far fa-play-circle"></i></a></small>
+                <small @click="handleFrontEndRepoLinkClick" v-if="$attrs.data.frontendRepoLink">|<a :href='$attrs.data.frontendRepoLink' :target='"_blank"' class="p-2" title='Client Source Code'><i class="fas fa-laptop-code"></i></a></small>
+                <small @click="handleBackEndRepoLinkClick" v-if="$attrs.data.backendRepoLink">|<a :href='$attrs.data.backendRepoLink' :target='"_blank"' class="p-2" title='API Source Code'><i class="fas fa-code-branch"></i></a></small>
                 <small style="opacity: 0">.</small>
             </div>
             <div class="text-left p-2" style="padding-top: 0px !important">
@@ -32,6 +32,7 @@
 <script>
 
 import {config} from "@/config";
+import global from "@/global";
 
 export default {
     name: "AppPreviewMini",
@@ -44,7 +45,16 @@ export default {
         },
         deflate: function() {
             this.isInflated = false;
-        }
+        },
+        handleDeployLinkClick: function() {
+            global.logClientAction({sublocation: "Applications Page - All", description: `The user has clicked the deployed link for ${this.$attrs.data.title}.`});
+        },
+        handleFrontEndRepoLinkClick: function() {
+            global.logClientAction({sublocation: "Applications Page - All", description: `The user has clicked the frontend repo link for ${this.$attrs.data.title}.`});
+        },
+        handleBackEndRepoLinkClick: function() {
+            global.logClientAction({sublocation: "Applications Page - All", description: `The user has clicked the backend repo link for ${this.$attrs.data.title}.`});
+        },
     },
     data() {
         return {

@@ -23,6 +23,7 @@ export default {
         AppDetails
     },
     mounted: function() {
+        global.logClientAction({sublocation: "Applications - Create", description: "Visited the create new app page."});
     },
     data() {
         return {

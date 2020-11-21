@@ -58,7 +58,6 @@ export default {
         },
         processDelete() {
             var self = this;
-            alert('prepping')
             if (confirm(`Are you sure you would like to delete ${self.$attrs.title}`)){
                 var url = 'https://central-api-flask-cm6ud432ka-uc.a.run.app/AppGalleryLite/api/applications'
                 fetch(url, {

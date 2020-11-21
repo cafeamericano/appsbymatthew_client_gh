@@ -31,12 +31,16 @@
 
 import NavbarWelcome from "@/components/Navbars/Welcome.vue";
 import {config} from "@/config";
+import global from "@/global";
 
 export default {
     name: "Welcome",
     components: {
         NavbarWelcome
-    },    
+    },
+    mounted: function() {
+        global.logClientAction({sublocation: "Welcome Page", description: "The user has landed on the Welcome page."});
+    },  
     data: function() {
         return {
             message: null

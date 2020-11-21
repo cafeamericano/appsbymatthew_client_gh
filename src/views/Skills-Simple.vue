@@ -160,6 +160,7 @@ export default {
     },
     mounted: function() {
         var self = this;
+        global.logClientAction({sublocation: "Skills", description: "Visited the Skills page."});
         global.getSkills(function(result) {
             self.skills = result || [];
             self.skillsLoaded = true;

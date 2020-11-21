@@ -144,6 +144,7 @@ export default {
     },
     mounted: function() {
         var self = this;
+        global.logClientAction({sublocation: "Applications - All", description: "Visited the All Apps page."});
         self.fetchApps();
         self.fetchSkills();
         self.grabTotalAppCount();
