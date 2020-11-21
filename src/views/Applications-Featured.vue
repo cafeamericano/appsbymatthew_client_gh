@@ -1,10 +1,10 @@
 <template>
     <div>
         <NavbarApplications/>
-        <section v-if="applicationsLoaded" class='animated fadeIn container pb-4'>
+        <section v-if="applicationsLoaded" class='animated fadeIn container-fluid pb-4 pl-5 pr-5'>
 
             <div class="row">
-                <div class="col-xl-6 col-12" v-for='item in applications.filter(item => item.isFeatured)' :key='item.title'>
+                <div class="col-xl-4 col-lg-6 col-md-6 col-12" v-for='item in applications.filter(item => item.isFeatured)' :key='item.title'>
                     <div class='card mt-3 mb-1 border rounded-0'>
                         <h5 class='text-left pl-2 pr-2 pt-2'>{{item.title}}</h5>
                         <div class="text-left pl-2 pr-2 pb-1">
@@ -15,6 +15,7 @@
                             <i v-if="item.keywords.includes('JavaScript')" title='JavaScript' class="fab fa-js fa-lg text-warning p-1"></i>
                             <i v-if="item.keywords.includes('Python')" title='Python' class="fab fa-python fa-lg text-info p-1"></i>
                             <i v-if="item.keywords.includes('Go')" title='Go' class="fa-lg text-primary p-1"><strong>GO</strong></i>
+                            <i v-if="item.keywords.includes('Java')" title='Java' class="fab fa-java fa-lg text-danger p-1"></i>
                         </div>
                         <img :src='item.imagePath' style="width: 100%"/>
                         <p class="p-3 text-left">
