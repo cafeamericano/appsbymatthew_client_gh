@@ -21,9 +21,9 @@
                             {{item.description}}
                         </p>
                         <div class="text-right p-2">
-                            <small v-if="item.deployedLink"><a :href='item.deployedLink' :target='"_blank"' class="p-2">Experience</a></small>
-                            <small v-if="item.frontendRepoLink">|<a :href='item.frontendRepoLink' :target='"_blank"' class="p-2">Client Source</a></small>
-                            <small v-if="item.backendRepoLink">|<a :href='item.backendRepoLink' :target='"_blank"' class="p-2">API Source</a></small>
+                            <small @click="handleDeployLinkClick(item.title)" v-if="item.deployedLink"><a :href='item.deployedLink' :target='"_blank"' class="p-2">Experience</a></small>
+                            <small @click="handleFrontEndRepoLinkClick(item.title)" v-if="item.frontendRepoLink">|<a :href='item.frontendRepoLink' :target='"_blank"' class="p-2">Client Source</a></small>
+                            <small @click="handleBackEndRepoLinkClick(item.title)" v-if="item.backendRepoLink">|<a :href='item.backendRepoLink' :target='"_blank"' class="p-2">API Source</a></small>
                         </div>
                     </div>
                 </div>
@@ -54,13 +54,24 @@ export default {
     },
     mounted: function() {
         var self = this;
-        console.log('prepping')
+        global.logClientAction({sublocation: "Applications - Featured", description: "Visited the Featured Apps page."});
         fetch(`${config.apiUrl}/applications/filter?featured=true`).then(function (response) {
             return response.json();
         }).then(function (result) {
             self.applicationsLoaded = true;
             self.applications = result;
         });
+    },
+    methods: {
+        handleDeployLinkClick: function(title) {
+            global.logClientAction({sublocation: "Applications Page - Featured", description: `The user has clicked the deployed link for ${title}.`});
+        },
+        handleFrontEndRepoLinkClick: function(title) {
+            global.logClientAction({sublocation: "Applications Page - Featured", description: `The user has clicked the frontend repo link for ${title}.`});
+        },
+        handleBackEndRepoLinkClick: function(title) {
+            global.logClientAction({sublocation: "Applications Page - Featured", description: `The user has clicked the backend repo link for ${title}.`});
+        },
     },
     data() {
         return {
