@@ -21,6 +21,8 @@
 <style scoped>
     .navbar {
         background-color:darkslategray;
+        overflow-x: scroll;
+        white-space: nowrap;
     }
 
     #nav a {

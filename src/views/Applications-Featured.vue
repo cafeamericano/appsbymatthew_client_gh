@@ -1,10 +1,10 @@
 <template>
     <div>
         <NavbarApplications/>
-        <section v-if="applicationsLoaded" class='animated fadeIn container pb-4'>
+        <section v-if="applicationsLoaded" class='animated fadeIn container-fluid pb-4 pl-5 pr-5'>
 
             <div class="row">
-                <div class="col-6" v-for='item in applications.filter(item => item.isFeatured)' :key='item.title'>
+                <div class="col-xl-4 col-lg-6 col-md-6 col-12" v-for='item in applications.filter(item => item.isFeatured)' :key='item.title'>
                     <div class='card mt-3 mb-1 border rounded-0'>
                         <h5 class='text-left pl-2 pr-2 pt-2'>{{item.title}}</h5>
                         <div class="text-left pl-2 pr-2 pb-1">
@@ -15,15 +15,16 @@
                             <i v-if="item.keywords.includes('JavaScript')" title='JavaScript' class="fab fa-js fa-lg text-warning p-1"></i>
                             <i v-if="item.keywords.includes('Python')" title='Python' class="fab fa-python fa-lg text-info p-1"></i>
                             <i v-if="item.keywords.includes('Go')" title='Go' class="fa-lg text-primary p-1"><strong>GO</strong></i>
+                            <i v-if="item.keywords.includes('Java')" title='Java' class="fab fa-java fa-lg text-danger p-1"></i>
                         </div>
                         <img :src='item.imagePath' style="width: 100%"/>
                         <p class="p-3 text-left">
                             {{item.description}}
                         </p>
                         <div class="text-right p-2">
-                            <small v-if="item.deployedLink"><a :href='item.deployedLink' :target='"_blank"' class="p-2">Experience</a></small>
-                            <small v-if="item.frontendRepoLink">|<a :href='item.frontendRepoLink' :target='"_blank"' class="p-2">Client Source</a></small>
-                            <small v-if="item.backendRepoLink">|<a :href='item.backendRepoLink' :target='"_blank"' class="p-2">API Source</a></small>
+                            <small @click="handleDeployLinkClick(item.title)" v-if="item.deployedLink"><a :href='item.deployedLink' :target='"_blank"' class="p-2">Experience</a></small>
+                            <small @click="handleFrontEndRepoLinkClick(item.title)" v-if="item.frontendRepoLink">|<a :href='item.frontendRepoLink' :target='"_blank"' class="p-2">Client Source</a></small>
+                            <small @click="handleBackEndRepoLinkClick(item.title)" v-if="item.backendRepoLink">|<a :href='item.backendRepoLink' :target='"_blank"' class="p-2">API Source</a></small>
                         </div>
                     </div>
                 </div>
@@ -44,6 +45,7 @@
 import ScreenOverlay from "@/components/ScreenOverlay.vue";
 import NavbarApplications from "@/components/Navbars/Applications.vue";
 import global from "@/global";
+import {config} from "@/config";
 
 export default {
     name: "Applications",
@@ -53,13 +55,24 @@ export default {
     },
     mounted: function() {
         var self = this;
-        console.log('prepping')
-        fetch("https://appsbymatthew-qgzgpr7klq-uc.a.run.app/api/applications/filter?featured=true").then(function (response) {
+        global.logClientAction({sublocation: "Applications - Featured", description: "Visited the Featured Apps page."});
+        fetch(`${config.apiUrl}/applications/filter?featured=true`).then(function (response) {
             return response.json();
         }).then(function (result) {
             self.applicationsLoaded = true;
             self.applications = result;
         });
+    },
+    methods: {
+        handleDeployLinkClick: function(title) {
+            global.logClientAction({sublocation: "Applications Page - Featured", description: `The user has clicked the deployed link for ${title}.`});
+        },
+        handleFrontEndRepoLinkClick: function(title) {
+            global.logClientAction({sublocation: "Applications Page - Featured", description: `The user has clicked the frontend repo link for ${title}.`});
+        },
+        handleBackEndRepoLinkClick: function(title) {
+            global.logClientAction({sublocation: "Applications Page - Featured", description: `The user has clicked the backend repo link for ${title}.`});
+        },
     },
     data() {
         return {

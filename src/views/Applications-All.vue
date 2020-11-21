@@ -130,6 +130,7 @@
 import ScreenOverlay from "@/components/ScreenOverlay.vue";
 import NavbarApplications from "@/components/Navbars/Applications.vue";
 import global from "@/global";
+import {config} from "@/config";
 import Multiselect from 'vue-multiselect'
 import AppPreviewMini from "@/components/AppPreviewMini.vue";
 
@@ -143,6 +144,7 @@ export default {
     },
     mounted: function() {
         var self = this;
+        global.logClientAction({sublocation: "Applications - All", description: "Visited the All Apps page."});
         self.fetchApps();
         self.fetchSkills();
         self.grabTotalAppCount();
@@ -151,7 +153,7 @@ export default {
 
         grabTotalAppCount: function() {
             var self = this;
-            var url = "http://localhost:5000/api/applications/countall";
+            var url = `${config.apiUrl}/applications/countall`;
             var queryString = '?';
 
             fetch(url + queryString)
@@ -165,7 +167,7 @@ export default {
 
         fetchApps: function(isExtending) {
             var self = this;
-            var url = "https://appsbymatthew-qgzgpr7klq-uc.a.run.app/api/applications/filter";
+            var url = `${config.apiUrl}/applications/filter`;
             var queryString = '?';
 
             queryString += `limit=${this.appsPerPage}&`
@@ -217,7 +219,7 @@ export default {
         fetchSkills: function() {
 
             var self = this;
-            var url = "https://appsbymatthew-qgzgpr7klq-uc.a.run.app/api/skills";
+            var url = `${config.apiUrl}/skills`;
             var queryString = '?';
 
             fetch(url + queryString)

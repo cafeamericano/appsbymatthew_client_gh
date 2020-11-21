@@ -23,6 +23,8 @@
 
 <script>
 
+import {config} from "@/config";
+
 export default {
     name: 'SkillPreview',
     data: function () {

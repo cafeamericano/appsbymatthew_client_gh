@@ -38,6 +38,8 @@
 
 import ContactCard from "@/components/ContactCard.vue";
 import NavbarContact from "@/components/Navbars/Contact.vue";
+import {config} from "@/config";
+import global from "@/global";
 
 export default {
     name: 'AddRecord',
@@ -46,6 +48,9 @@ export default {
         ContactCard,
         NavbarContact
     },
+    mounted: function() {
+        global.logClientAction({sublocation: "Contact Page", description: "The user has landed on the Contact page."});
+    },  
     data: function () {
         return {
             isNewRecord: true
