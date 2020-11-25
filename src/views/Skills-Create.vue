@@ -10,7 +10,7 @@
 import NavbarSkills from "@/components/Navbars/Skills.vue";
 import SkillDetails from "@/components/SkillDetails.vue";
 import {config} from "@/config";
-import global from "@/global";
+import common from "@/common";
 
 export default {
     name: "Skills-Create",
@@ -19,7 +19,7 @@ export default {
         SkillDetails
     },
     mounted: function() {
-        global.logClientAction({sublocation: "Skills - Create", description: "Visited the create new skill page."});
+        common.logClientAction({sublocation: "Skills - Create", description: "Visited the create new skill page."});
     }
 }
 </script>

@@ -19,35 +19,35 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Title</span>
                                 </div>
-                                <input v-model='app.title' type="text" class="form-control">
+                                <input v-model='appDetails.title' type="text" class="form-control">
                             </div>
                             
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Front-End Repo Link</span>
                                 </div>
-                                <input v-model='app.frontendRepoLink' type="text" class="form-control">
+                                <input v-model='appDetails.front_end_repo_link' type="text" class="form-control">
                             </div>
 
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Back-End Repo Link</span>
                                 </div>
-                                <input v-model='app.backendRepoLink' type="text" class="form-control">
+                                <input v-model='appDetails.back_end_repo_link' type="text" class="form-control">
                             </div>
 
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Deployed Link</span>
                                 </div>
-                                <input v-model='app.deployedLink' type="text" class="form-control">
+                                <input v-model='appDetails.deployed_link' type="text" class="form-control">
                             </div>
 
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Is Featured</span>
                                 </div>
-                                <select v-model='app.isFeatured' class='form-control'>
+                                <select v-model='appDetails.is_featured' class='form-control'>
                                     <option default disabled>Select featured status</option>
                                     <option value='true'>Yes</option>
                                     <option value='false'>No</option>
@@ -58,18 +58,19 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Publish Date</span>
                                 </div>
-                                <input v-model='app.publishDate' type="date" class="form-control">
+                                <input v-model='appDetails.publish_date' type="date" class="form-control">
                             </div>
 
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Support Status</span>
                                 </div>
-                                <select v-model='app.supportStatus' class='form-control'>
+                                <select v-model='appDetails.support_status_code' class='form-control'>
                                     <option default disabled>Select support status</option>
-                                    <option value='active'>Active</option>
-                                    <option value='inactive'>Inactive</option>
-                                    <option value='discontinued'>Discontinued</option>
+                                    <option value='ACTIVE'>Active</option>
+                                    <option value='INACTIVE'>Inactive</option>
+                                    <option value='DISCONTINUED'>Discontinued</option>
+                                    <option value='EXPERIMENTAL'>Experimental</option>
                                 </select>                            
                             </div>
 
@@ -83,14 +84,14 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Image Thumbnail</span>
                                 </div>
-                                <input v-model='app.imagePath' type="text" class="form-control">
+                                <input v-model='appDetails.image_url' type="text" class="form-control">
                             </div>
 
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Description</span>
                                 </div>
-                                <textarea v-model='app.description' class="form-control"></textarea>
+                                <textarea v-model='appDetails.description' class="form-control"></textarea>
                             </div>
                         </section>
                     </div>
@@ -100,7 +101,7 @@
                         <section class="row m-0">
                             <div class="col-xl-4 col-lg-6 col-md-6 col-12" v-for='(item, index) in skills.filter(item => 1 == 1)' :key='index'>
                                 <div class="row border-bottom mb-1">
-                                    <div><input :value='item.name' v-model='app.keywords' type='checkbox'/><span class='pl-2'>{{item.name}}</span></div>
+                                    <div><input :value='item.code' v-model='appDetails.associated_skill_codes' type='checkbox'/><span class='pl-2'>{{item.name}}</span></div>
                                 </div>
                             </div>
                         </section>
@@ -117,9 +118,10 @@
 
 // @ is an alias to /src
 import ScreenOverlay from "@/components/ScreenOverlay.vue";
-import global from "@/global.js";
+import common from "@/common.js";
 import {config} from "@/config";
 import _ from 'lodash';
+import moment from 'moment';
 
 export default {
     name: "AppDetails",
@@ -128,38 +130,25 @@ export default {
     },
     mounted: function() {
         var self = this;
-        global.getSkills(function(result) {
+        common.getSkills(function(result) {
             self.skills = _.orderBy(result, [function(resultItem) { return resultItem.name.toLowerCase() },'name'], 'asc') || [];
-            self.skillsLoaded = true;
         });
         if (this.$attrs.isEditing) {
             self.processGet();
         }
     },
     data() {
-        // console.log('***', global.skills)
         return {
             componentKey: 0,
             skills: [],
-            skillsLoaded: global.skillsLoaded,
+            skillsLoaded: common.skillsLoaded,
             loadingMessage: `
                 <div>Loading list of Applications...</div>
                 <div class="spinner-grow text-success" role="status">
                     <span class="sr-only">Loading...</span>
                 </div>
             `,
-            app: {
-                title: '',
-                frontendRepoLink: '',
-                backendRepoLink: '',
-                deployedLink: '',
-                isFeatured: '',
-                publishDate: '',
-                supportStatus: '',
-                imagePath: '',
-                description: '',
-                keywords: []
-            },
+            appDetails: {},
         }
     },
     methods: {
@@ -168,50 +157,34 @@ export default {
         },
         processGet: function() {
             var self = this;
-            var url = `${config.apiUrl}/applications/filter?id=${self.$route.params.id}`;
-            fetch(url, {
-                method: "GET",
-                headers: { "Content-Type": "application/json" }
-            }).then(function (response) {
-                return response.json();
-            }).then(response => {
-                self.app = response[0];
-                self.app.publishDate = self.app.publishDate.substring(0,10)
-            });
+            common.superFetch(`${config.apiUrl}/applications?applicationId=${self.$attrs.applicationId}`, 'GET', null, (res) => {
+                self.appDetails = res[0];
+                self.appDetails.publish_date = res[0].publish_date ? moment(res[0].publish_date).format('YYYY-MM-DD') : null;
+            })
         },
         processCreate: function() {
             var self = this;
             if (self.$attrs.isEditing) {
                 return self.processEdit();
             }
-            var url = `${config.apiUrl}/applications`;
-            fetch(url, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(self.app)
-            }).then(response => {
+            console.log(self.appDetails)
+            common.superFetch( `${config.apiUrl}/applications`, 'POST', self.appDetails, (res) => {
                 self.goBack();
-            });
+            })
         },
         processEdit: function() {
             var self = this;
             var url = `${config.apiUrl}/applications`;
+            // var appDetails = self.appDetails;
+            // var x = appDetails.publish_date;
+            // var year = moment(x).format('YYYY')
+            // var month = moment(x).format('MM')
+            // var day = moment(x).format('DD')
+            // appDetails.publish_date = appDetails.publish_date;
             fetch(url, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    _id: self.$route.params.id,
-                    title: self.app.title,
-                    publishDate: self.app.publishDate,
-                    isFeatured: self.app.isFeatured,
-                    imagePath: self.app.imagePath,
-                    description: self.app.description,
-                    deployedLink: self.app.deployedLink,
-                    supportStatus: self.app.supportStatus,
-                    frontendRepoLink: self.app.frontendRepoLink,
-                    backendRepoLink: self.app.backendRepoLink,
-                    keywords: self.app.keywords
-                })
+                body: JSON.stringify(self.appDetails)
             }).then(response => {
                 self.$router.go(-1)
             });

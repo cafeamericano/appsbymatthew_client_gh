@@ -13,7 +13,7 @@ import ApplicationRow from "@/components/ApplicationRow.vue";
 import ScreenOverlay from "@/components/ScreenOverlay.vue";
 import NavbarApplications from "@/components/Navbars/Applications.vue";
 import {config} from "@/config";
-import global from "@/global";
+import common from "@/common";
 
 export default {
     name: "Applications",
@@ -23,7 +23,7 @@ export default {
         NavbarApplications
     },
     mounted: function() {
-        global.logClientAction({sublocation: "Applications Page", description: "The user has landed on the Applications page."});
+        common.logClientAction({sublocation: "Applications Page", description: "The user has landed on the Applications page."});
     },  
     data() {
         return {

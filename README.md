@@ -6,6 +6,10 @@
 
 # Release Notes
 
+### Release 5.3.0 (???)
+
+- Implemented ESLint with git hook on commit via Husky npm package
+
 ### Release 5.2.0 (2020-11-21)
 
 - Implemented user action capture (info forwarded to the Traffic Analyzer API).

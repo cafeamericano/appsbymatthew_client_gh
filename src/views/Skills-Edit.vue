@@ -1,7 +1,7 @@
 <template>
     <div style='position: relative'>
         <NavbarSkills/>
-        <SkillDetails :isEditing='true'/>
+        <SkillDetails :isEditing='true' :skillCode='$route.params.code'/>
     </div>
 </template>
 

@@ -3,18 +3,19 @@
         <NavbarContact/>
         <div class='text-left container p-3 animated fadeIn'>
             <div class="row">
-            <ContactCard 
-                :title='"GitHub"'
-                :body='"View my source code and explore my repositories (all)."'
-                :linkRef='"https://github.com/cafeamericano"'
-                :linkIcon='"fab fa-github fa-2x"'
-            />
 
             <ContactCard 
                 :title='"Bitbucket"'
-                :body='"View my source code and explore my repositories (curated)."'
+                :body='"View my source code and explore my repositories (used for applications in production)."'
                 :linkRef='"https://bitbucket.org/mfarmer5102/"'
                 :linkIcon='"fab fa-bitbucket fa-2x text-primary"'
+            />
+
+            <ContactCard 
+                :title='"GitHub"'
+                :body='"View my source code and explore my repositories (used for issue tracking and applications not in production)."'
+                :linkRef='"https://github.com/cafeamericano"'
+                :linkIcon='"fab fa-github fa-2x"'
             />
 
             <ContactCard 
@@ -39,7 +40,7 @@
 import ContactCard from "@/components/ContactCard.vue";
 import NavbarContact from "@/components/Navbars/Contact.vue";
 import {config} from "@/config";
-import global from "@/global";
+import common from "@/common";
 
 export default {
     name: 'AddRecord',
@@ -49,7 +50,7 @@ export default {
         NavbarContact
     },
     mounted: function() {
-        global.logClientAction({sublocation: "Contact Page", description: "The user has landed on the Contact page."});
+        common.logClientAction({sublocation: "Contact Page", description: "The user has landed on the Contact page."});
     },  
     data: function () {
         return {

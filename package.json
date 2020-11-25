@@ -7,11 +7,13 @@
     "start": "vue-cli-service serve",
     "serve": "npx serve docs",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "eslint": "npx eslint src/"
   },
   "dependencies": {
     "core-js": "^3.6.4",
     "lodash": "^4.17.15",
+    "moment": "^2.29.1",
     "serve": "^11.3.2",
     "vue": "^2.6.11",
     "vue-multiselect": "^2.1.6",
@@ -24,9 +26,10 @@
     "@vue/cli-service": "~4.2.0",
     "@vue/eslint-config-prettier": "^6.0.0",
     "babel-eslint": "^10.0.3",
-    "eslint": "^6.7.2",
+    "eslint": "^6.8.0",
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-vue": "^6.1.2",
+    "husky": "^4.3.0",
     "prettier": "^1.19.1",
     "vue-template-compiler": "^2.6.11"
   },
@@ -48,5 +51,10 @@
   "browserslist": [
     "> 1%",
     "last 2 versions"
-  ]
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run eslint"
+    }
+  }
 }

@@ -37,7 +37,6 @@ export default {
     data: function () {
         var self = this;
         recordId = self.oid
-        console.log(self.data)
         return {
             rowBg: self.rownum % 2 == 0 ? 'bg-light' : 'bg-secondary'
             // Properties go here
@@ -46,9 +45,7 @@ export default {
     props: [],
     methods: {
         processRightClick(e) {
-            console.log(this.$attrs)
             e.preventDefault();
-            // alert(this.$attrs._id.$oid)
         },
         processViewDetails() {
             alert('View details for : ' + this.$attrs.title)
@@ -59,7 +56,7 @@ export default {
         processDelete() {
             var self = this;
             if (confirm(`Are you sure you would like to delete ${self.$attrs.title}`)){
-                var url = 'https://central-api-flask-cm6ud432ka-uc.a.run.app/AppGalleryLite/api/applications'
+                var url = 'https://central-api-flask-cm6ud432ka-uc.a.run.app/AppGalleryLite/api/applications'//
                 fetch(url, {
                     method: "DELETE",
                     headers: { "Content-Type": "application/json" },

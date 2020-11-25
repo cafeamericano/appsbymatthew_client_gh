@@ -15,7 +15,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">Search</span>
                         </div>
-                        <input v-model='suppliedTitle' @input="fetchApps" placeholder='Search by title (case-sensitive)' type="text" class="form-control">
+                        <input v-model='suppliedTitle' @input="fetchApps" placeholder='Search by title' type="text" class="form-control">
                     </div>
                 </div>
             </div>
@@ -26,27 +26,21 @@
                 <!-- Support Status Filter -->
                 <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-2">
                     <multiselect 
-                        v-model="selectedStatuses" 
-                        :options="statuses" 
-                        :multiple="true" 
-                        :close-on-select="false" 
-                        :clear-on-select="false" 
-                        :preserve-search="true"
-                        placeholder="Support Status"
-                        :preselect-first="false"
+                        v-model="selectedStatus" 
+                        deselect-label=""
+                        placeholder="Selected Status" 
+                        :options="statuses"
+                        :searchable="false" 
                         track-by="value" 
                         label="label"
+                        :preselect-first="false"
                         @input="fetchApps"
                         >
                         <template 
-                            slot="selection" 
-                            slot-scope="{ values, search, isOpen }"
+                            slot="singleLabel" 
+                            slot-scope="{ option }"
                         >
-                            <span 
-                                class="multiselect__single" 
-                                v-if="selectedStatuses.length &amp;&amp; !isOpen">
-                                    {{ selectedStatuses.length }} status(es) selected
-                            </span>
+                            <strong>Support status: {{ option.label }}</strong>
                         </template>
                     </multiselect>
                 </div>
@@ -55,7 +49,9 @@
                 <div class="col-xl-5 col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-2">
                     <multiselect 
                         v-model="selectedSkills" 
-                        :options="skills" 
+                        :options="skills"
+                        label="name"
+                        track-by="code"
                         :multiple="true" 
                         :close-on-select="false" 
                         :clear-on-select="false" 
@@ -127,9 +123,10 @@
 <script>
 
 // @ is an alias to /src
+
 import ScreenOverlay from "@/components/ScreenOverlay.vue";
 import NavbarApplications from "@/components/Navbars/Applications.vue";
-import global from "@/global";
+import common from "@/common";
 import {config} from "@/config";
 import Multiselect from 'vue-multiselect'
 import AppPreviewMini from "@/components/AppPreviewMini.vue";
@@ -144,7 +141,7 @@ export default {
     },
     mounted: function() {
         var self = this;
-        global.logClientAction({sublocation: "Applications - All", description: "Visited the All Apps page."});
+        common.logClientAction({sublocation: "Applications - All", description: "Visited the All Apps page."});
         self.fetchApps();
         self.fetchSkills();
         self.grabTotalAppCount();
@@ -161,13 +158,22 @@ export default {
                 return response.json();
             })
             .then(function (result) {
-                self.totalAppCount = ~~result;
+                self.totalAppCount = ~~result[0].total_app_count;
             })
+        },
+
+        pullCodesFromSelectedSkills: function(collection) {
+            var filteredArr = [];
+            for (let i = 0; i < collection.length; i++) {
+                console.log('$$$', collection[i])
+                filteredArr.push(collection[i].code)
+            }
+            return filteredArr;
         },
 
         fetchApps: function(isExtending) {
             var self = this;
-            var url = `${config.apiUrl}/applications/filter`;
+            var url = `${config.apiUrl}/applications`;
             var queryString = '?';
 
             queryString += `limit=${this.appsPerPage}&`
@@ -179,21 +185,26 @@ export default {
             if (this.isDeployedValue.value) {
                 queryString += `deployed=true&`
             }
-            if(this.selectedSkills.length) {
-                queryString += `keywords=${this.selectedSkills}`;
+            console.log(typeof this.selectedSkills)
+            console.log(this.selectedSkills)
+            if(this.selectedSkills && this.selectedSkills.length) {
+                queryString += `skills=${this.pullCodesFromSelectedSkills(this.selectedSkills)}&`;
             }
             if(this.suppliedTitle && this.suppliedTitle.length) {
-                queryString += `title=${this.suppliedTitle}`;
+                queryString += `title=${this.suppliedTitle}&`;
             }
-            if(this.selectedStatuses.length) {
-                let statusList = []
-                this.selectedStatuses.forEach(status => {
-                    if (status) {
-                        statusList.push(status.value)
-                    }
-                })
-                queryString += `supportStatus=${statusList}`;
+            if (this.selectedStatus && this.selectedStatus.value) {
+                queryString += `supportStatus=${this.selectedStatus.value}&`
             }
+            // if(this.selectedStatus.length) {
+            //     let statusList = []
+            //     this.selectedStatus.forEach(status => {
+            //         if (status) {
+            //             statusList.push(status.value)
+            //         }
+            //     })
+            //     queryString += `supportStatus=${statusList}`;
+            // }
 
             fetch(url + queryString)
             .then(function (response) {
@@ -227,12 +238,7 @@ export default {
                 return response.json();
             })
             .then(function (result) {
-                var skillNames = [];
-                result.forEach(element => {
-                    skillNames.push(element.name)
-                });
-                self.skillsLoaded = true;
-                self.skills = skillNames;
+                self.skills = result;
             });
 
         },
@@ -284,11 +290,12 @@ export default {
                 {label: "No", value: false},
                 {label: "Yes", value: true}
             ],
-            selectedStatuses: [],
+            selectedStatus: '',
             statuses: [
-                {label: "Active", value: 'active'},
-                {label: "Inactive", value: 'inactive'},
-                {label: "Discontinued", value: 'discontinued'}
+                {label: "Active", value: 'ACTIVE'},
+                {label: "Inactive", value: 'INACTIVE'},
+                {label: "Discontinued", value: 'DISCONTINUED'},
+                {label: "Experimental", value: 'EXPERIMENTAL'}
             ],
             suppliedTitle: ''
         }

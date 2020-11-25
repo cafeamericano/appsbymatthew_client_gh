@@ -42,17 +42,17 @@ var tableColumns = [
         textAlignment: 'Left',
         associatedDataField: 'name'
     },
-                    {
+    {
+        header: 'Reference Code',
+        width: '200px',
+        textAlignment: 'Left',
+        associatedDataField: 'code'
+    },
+    {
         header: 'Type',
         width: '200px',
         textAlignment: 'Left',
         associatedDataField: 'type'
-    },
-    {
-        header: 'Demonstrable',
-        width: '150px',
-        textAlignment: 'Left',
-        associatedDataField: 'showInGallery'
     },
     {
         header: 'Proficient',
@@ -100,7 +100,7 @@ import ScreenOverlay from "@/components/ScreenOverlay.vue";
 import NavbarSkills from "@/components/Navbars/Skills.vue";
 import StandardTable from "@/components/StandardTable.vue";
 import FullScreenContextMenu from "@/components/FullScreenContextMenu.vue"
-import global from "@/global.js";
+import common from "@/common.js";
 import {config} from "@/config";v
 import router from "@/router";
 
@@ -141,13 +141,9 @@ export default {
         processClickEdit: function() {
             this.isOpenContextMenu = false;
             router.push({ name: 'Skills-Edit', params: { record_id: this.recordBeingEditedId } })
-            // alert(this.recordBeingEdited)
         },
         processClickDelete: function() {
             this.isConfirmingDeletion = true;
-            // this.isOpenContextMenu = false;
-            // alert(this.recordBeingEdited)
-            // confirm('are you sure you would like to delete?')
         },
         processClickCancel: function() {
             this.isConfirmingDeletion = false;
@@ -157,9 +153,9 @@ export default {
     data() {
         return {
             componentKey: 0,
-            allSkills: global.skills,
+            allSkills: common.skills,
             formattedSkills: [],
-            skillsLoaded: global.skillsLoaded,
+            skillsLoaded: common.skillsLoaded,
             loadingMessage: `
                 <div>Loading list of skills...</div>
                 <div class="spinner-grow text-success" role="status">

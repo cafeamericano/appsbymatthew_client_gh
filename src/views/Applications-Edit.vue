@@ -1,7 +1,7 @@
 <template>
     <div>
         <NavbarApplications/>
-        <AppDetails :isEditing='true'/>
+        <AppDetails :isEditing='true' :applicationId='$route.params.applicationId'/>
     </div>
 </template>
 
@@ -11,7 +11,7 @@
 import ScreenOverlay from "@/components/ScreenOverlay.vue";
 import NavbarApplications from "@/components/Navbars/Applications.vue";
 import AppDetails from "@/components/AppDetails.vue";
-import global from "@/global.js";
+import common from "@/common.js";
 import {config} from "@/config";
 import _ from 'lodash';
 
@@ -23,6 +23,7 @@ export default {
         AppDetails
     },
     mounted: function() {
+        console.log(this.$attrs.data._id.$oid)
     },
     data() {
         return {

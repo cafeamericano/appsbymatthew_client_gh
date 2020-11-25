@@ -31,7 +31,7 @@
 
 import NavbarWelcome from "@/components/Navbars/Welcome.vue";
 import {config} from "@/config";
-import global from "@/global";
+import common from "@/common";
 
 export default {
     name: "Welcome",
@@ -39,7 +39,7 @@ export default {
         NavbarWelcome
     },
     mounted: function() {
-        global.logClientAction({sublocation: "Welcome Page", description: "The user has landed on the Welcome page."});
+        common.logClientAction({sublocation: "Welcome Page", description: "The user has landed on the Welcome page."});
     },  
     data: function() {
         return {
