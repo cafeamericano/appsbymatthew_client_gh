@@ -43,7 +43,7 @@ import {config} from "@/config";
 import common from "@/common";
 
 export default {
-    name: 'AddRecord',
+    name: 'Contact',
     props: [],
     components: {
         ContactCard,

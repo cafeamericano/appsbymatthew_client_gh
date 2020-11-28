@@ -18,6 +18,25 @@
     </div>
 </template>
 
+<script>
+
+import common from "@/common";
+
+export default {
+    name: "NavbarSkills",
+    mounted: function() {
+        this.setComponentText();
+    },  
+    methods: {
+    },
+    data() {
+        return {
+            text: {}
+        }
+    }
+}
+</script>
+
 <style scoped>
     .navbar {
         background-color:darkslategray;

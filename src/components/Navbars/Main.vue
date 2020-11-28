@@ -30,8 +30,14 @@
 <script>
 
 import packageJson from "../../../package.json";
+import common from "@/common";
+
 export default {
     name: "NavbarMain",
+    mounted: function() {
+    },  
+    methods: {
+    },
     data() {
         return {
             softwareVersion: packageJson.version

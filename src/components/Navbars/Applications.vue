@@ -18,6 +18,19 @@
     </div>
 </template>
 
+<script>
+
+import common from "@/common";
+
+export default {
+    name: "NavbarApplications",
+    data() {
+        return {
+        }
+    }
+}
+</script>
+
 <style scoped>
     .navbar {
         background-color:darkslategray;

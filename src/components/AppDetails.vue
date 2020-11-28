@@ -17,7 +17,7 @@
                             
                            <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text">Title</span>
+                                    <span class="input-group-text">Title*</span>
                                 </div>
                                 <input v-model='appDetails.title' type="text" class="form-control">
                             </div>
@@ -45,7 +45,7 @@
 
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text">Is Featured</span>
+                                    <span class="input-group-text">Is Featured*</span>
                                 </div>
                                 <select v-model='appDetails.is_featured' class='form-control'>
                                     <option default disabled>Select featured status</option>
@@ -56,14 +56,14 @@
 
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text">Publish Date</span>
+                                    <span class="input-group-text">Publish Date*</span>
                                 </div>
                                 <input v-model='appDetails.publish_date' type="date" class="form-control">
                             </div>
 
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text">Support Status</span>
+                                    <span class="input-group-text">Support Status*</span>
                                 </div>
                                 <select v-model='appDetails.support_status_code' class='form-control'>
                                     <option default disabled>Select support status</option>
@@ -99,7 +99,7 @@
                     <div class="col-12 card p-3 mb-3 shadow">
                         <h5>Skills Utilized</h5><hr/>
                         <section class="row m-0">
-                            <div class="col-xl-4 col-lg-6 col-md-6 col-12" v-for='(item, index) in skills.filter(item => 1 == 1)' :key='index'>
+                            <div class="col-xl-4 col-lg-6 col-md-6 col-12" v-for='(item, index) in skills.filter(item => item.is_visible_in_app_details)' :key='index'>
                                 <div class="row border-bottom mb-1">
                                     <div><input :value='item.code' v-model='appDetails.associated_skill_codes' type='checkbox'/><span class='pl-2'>{{item.name}}</span></div>
                                 </div>
@@ -175,19 +175,9 @@ export default {
         processEdit: function() {
             var self = this;
             var url = `${config.apiUrl}/applications`;
-            // var appDetails = self.appDetails;
-            // var x = appDetails.publish_date;
-            // var year = moment(x).format('YYYY')
-            // var month = moment(x).format('MM')
-            // var day = moment(x).format('DD')
-            // appDetails.publish_date = appDetails.publish_date;
-            fetch(url, {
-                method: "PUT",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(self.appDetails)
-            }).then(response => {
-                self.$router.go(-1)
-            });
+            common.superFetch( `${config.apiUrl}/applications`, 'PUT', self.appDetails, (res) => {
+                self.goBack();
+            })
         },
         processDelete: function() {
             var self = this;

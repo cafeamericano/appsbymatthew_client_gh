@@ -143,7 +143,7 @@ export default {
         var self = this;
         common.logClientAction({sublocation: "Applications - All", description: "Visited the All Apps page."});
         self.fetchApps();
-        self.fetchSkills();
+        common.getSkills((res) => this.skills = res);
         self.grabTotalAppCount();
     },
     methods: {
@@ -151,14 +151,8 @@ export default {
         grabTotalAppCount: function() {
             var self = this;
             var url = `${config.apiUrl}/applications/countall`;
-            var queryString = '?';
-
-            fetch(url + queryString)
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (result) {
-                self.totalAppCount = ~~result[0].total_app_count;
+            common.superFetch(url, 'GET', null, function(res) {
+                self.totalAppCount = ~~res;
             })
         },
 
@@ -196,21 +190,8 @@ export default {
             if (this.selectedStatus && this.selectedStatus.value) {
                 queryString += `supportStatus=${this.selectedStatus.value}&`
             }
-            // if(this.selectedStatus.length) {
-            //     let statusList = []
-            //     this.selectedStatus.forEach(status => {
-            //         if (status) {
-            //             statusList.push(status.value)
-            //         }
-            //     })
-            //     queryString += `supportStatus=${statusList}`;
-            // }
 
-            fetch(url + queryString)
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (result) {
+            common.superFetch(url + queryString, 'GET', null, function(result) {
                 self.applicationsLoaded = true;
                 console.log(isExtending)
                 if (isExtending == true) {
@@ -223,26 +204,9 @@ export default {
                 result.length < self.appsPerPage
                     ? document.getElementById('loadMoreAppsButton').style.display = 'none'
                     : document.getElementById('loadMoreAppsButton').style.display = 'block'
-            });
-
-        },
-
-        fetchSkills: function() {
-
-            var self = this;
-            var url = `${config.apiUrl}/skills`;
-            var queryString = '?';
-
-            fetch(url + queryString)
-            .then(function (response) {
-                return response.json();
             })
-            .then(function (result) {
-                self.skills = result;
-            });
-
         },
-        
+
         loadMoreApps: function() {
             this.currentPage += 1;
             this.fetchApps(true);

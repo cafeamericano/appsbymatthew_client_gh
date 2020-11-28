@@ -3,17 +3,20 @@
         <div class='card mt-3 mb-1 border rounded-0'>
             <h5 class='text-left pl-2 pr-2 pt-2'>{{$attrs.data.title}}</h5>
             <div class="text-left pl-2 pr-2 pb-1">
-                <i v-if="$attrs.data.keywords && $attrs.data.keywords.includes('React')" title='React' class="fab fa-react fa-lg text-primary p-1"></i>
-                <i v-if="$attrs.data.keywords && $attrs.data.keywords.includes('Vue')" title='Vue' class="fab fa-vuejs fa-lg text-success p-1"></i>
-                <i v-if="$attrs.data.keywords && $attrs.data.keywords.includes('Angular')" title='Angular' class="fab fa-angular fa-lg text-danger p-1"></i>
-                <i v-if="$attrs.data.keywords && $attrs.data.keywords.includes('Node')" title='Node' class="fab fa-node fa-lg text-secondary p-1"></i>
-                <i v-if="$attrs.data.keywords && $attrs.data.keywords.includes('JavaScript')" title='JavaScript' class="fab fa-js fa-lg text-warning p-1"></i>
-                <i v-if="$attrs.data.keywords && $attrs.data.keywords.includes('Python')" title='Python' class="fab fa-python fa-lg text-info p-1"></i>
-                <i v-if="$attrs.data.keywords && $attrs.data.keywords.includes('Java')" title='Java' class="fab fa-java fa-lg text-danger p-1"></i>
-                <i v-if="$attrs.data.keywords && $attrs.data.keywords.includes('C++')" title='C++' class="fa-lg text-info p-1">C++</i>
-                <i v-if="$attrs.data.keywords && $attrs.data.keywords.includes('Go')" title='Go' class="fa-lg text-primary p-1"><strong>GO</strong></i>
+                <i v-if="$attrs.data.associated_skill_codes && $attrs.data.associated_skill_codes.includes('REACT')" title='React' class="fab fa-react fa-lg text-primary p-1"></i>
+                <i v-if="$attrs.data.associated_skill_codes && $attrs.data.associated_skill_codes.includes('VUE')" title='Vue' class="fab fa-vuejs fa-lg text-success p-1"></i>
+                <i v-if="$attrs.data.associated_skill_codes && $attrs.data.associated_skill_codes.includes('ANGULAR')" title='Angular' class="fab fa-angular fa-lg text-danger p-1"></i>
+                <i v-if="$attrs.data.associated_skill_codes && $attrs.data.associated_skill_codes.includes('NODE')" title='Node' class="fab fa-node fa-lg text-secondary p-1"></i>
+                <i v-if="$attrs.data.associated_skill_codes && $attrs.data.associated_skill_codes.includes('JAVASCRIPT')" title='JavaScript' class="fab fa-js fa-lg text-warning p-1"></i>
+                <i v-if="$attrs.data.associated_skill_codes && $attrs.data.associated_skill_codes.includes('PYTHON')" title='Python' class="fab fa-python fa-lg text-info p-1"></i>
+                <i v-if="$attrs.data.associated_skill_codes && $attrs.data.associated_skill_codes.includes('JAVA')" title='Java' class="fab fa-java fa-lg text-danger p-1"></i>
+                <i v-if="$attrs.data.associated_skill_codes && $attrs.data.associated_skill_codes.includes('CPP')" title='C++' class="fa-lg text-info p-1">C++</i>
+                <i v-if="$attrs.data.associated_skill_codes && $attrs.data.associated_skill_codes.includes('GO')" title='Go' class="fa-lg text-primary p-1"><strong>GO</strong></i>
             </div>
             <img :src='$attrs.data.image_url' style="width: 100%"/>
+            <p class="p-3 text-left">
+                {{$attrs.data.description}}
+            </p>
             <div class="text-right p-2" style="padding-bottom: 0px !important">
                 <small @click="handleDeployLinkClick" v-if="$attrs.data.deployed_link"><a :href='$attrs.data.deployed_link' :target='"_blank"' class="p-2" title="Experience this application"><i class="far fa-play-circle"></i></a></small>
                 <small @click="handleFrontEndRepoLinkClick" v-if="$attrs.data.front_end_repo_link">|<a :href='$attrs.data.front_end_repo_link' :target='"_blank"' class="p-2" title='Client Source Code'><i class="fas fa-laptop-code"></i></a></small>

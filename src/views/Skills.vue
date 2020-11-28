@@ -8,7 +8,6 @@
 <script>
 
 // @ is an alias to /src
-import SkillRow from "@/components/SkillRow.vue";
 import ScreenOverlay from "@/components/ScreenOverlay.vue";
 import NavbarSkills from "@/components/Navbars/Skills.vue";
 import {config} from "@/config";
@@ -17,7 +16,6 @@ import common from "@/common";
 export default {
     name: "Skills",
     components: {
-        SkillRow,
         ScreenOverlay,
         NavbarSkills
     },

@@ -59,6 +59,17 @@
                                 </select>
                             </div>
 
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="inputGroupSelect01">Allow App Association</label>
+                                </div>
+                                <select v-model='skillDetails.is_visible_in_app_details' class="custom-select" id="inputGroupSelect01">
+                                    <option selected>Choose...</option>
+                                    <option value="true">Yes</option>
+                                    <option value="false">No</option>
+                                </select>
+                            </div>
+
                         </section>
                     </div>
 
@@ -85,9 +96,11 @@ export default {
             self.processGet();
         }
         common.getSkills((res) => this.skillTypes = res);
+        this.setComponentText();
     },
     data() {
         return {
+            text: {},
             componentKey: 0,
             loadingMessage: `
                 <div>Loading list of Applications...</div>
@@ -99,6 +112,12 @@ export default {
         }
     },
     methods: {
+        setComponentText: function() {
+            this.text = {
+                skillList: common.geti18nString('skills.navbar.skillList'),
+                addNew: common.geti18nString('skills.navbar.addNew')
+            }
+        },
         goBack: function() {
             this.$router.go(-1)
         },
@@ -120,24 +139,16 @@ export default {
                 return self.processEdit();
             }
             var url = `${config.apiUrl}/skills`;
-            fetch(url, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(self.skillDetails)
-            }).then(response => {
+            common.superFetch(url, 'POST', self.skillDetails, function(res) {
                 self.goBack();
-            });
+            })
         },
         processEdit: function() {
             var self = this;
             var url = `${config.apiUrl}/skills`;
-            fetch(url, {
-                method: "PUT",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(self.skillDetails)
-            }).then(response => {
-                self.$router.go(-1)
-            });
+            common.superFetch(url, 'PUT', self.skillDetails, function(res) {
+                self.goBack();
+            })
         },
         processDelete: function() {
             var self = this;

@@ -64,12 +64,6 @@ const routes = [
       import(/* webpackChunkName: "edit" */ "../views/Skills-Simple.vue") // Lazy loading
   },
   {
-    path: "/skills/advanced",
-    name: "Skills-Advanced",
-    component: () =>
-      import(/* webpackChunkName: "edit" */ "../views/Skills-Advanced.vue") // Lazy loading
-  },
-  {
     path: "/contact",
     name: "Contact",
     component: () =>
