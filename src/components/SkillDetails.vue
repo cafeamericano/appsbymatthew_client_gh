@@ -17,21 +17,21 @@
                             
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text">Name</span>
+                                    <span class="input-group-text">Name*</span>
                                 </div>
                                 <input v-model='skillDetails.name' type="text" class="form-control">
                             </div>
 
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text">Reference Code</span>
+                                    <span class="input-group-text">Reference Code*</span>
                                 </div>
                                 <input v-model='skillDetails.code' type="text" class="form-control">
                             </div>
 
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <label class="input-group-text" for="inputGroupSelect01">Type</label>
+                                    <label class="input-group-text" for="inputGroupSelect01">Type*</label>
                                 </div>
                                 <select v-model='skillDetails.skill_type_code' class="custom-select" id="inputGroupSelect01">
                                     <option selected>Choose...</option>
@@ -50,7 +50,7 @@
 
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <label class="input-group-text" for="inputGroupSelect01">Proficient</label>
+                                    <label class="input-group-text" for="inputGroupSelect01">Proficient*</label>
                                 </div>
                                 <select v-model='skillDetails.is_proficient' class="custom-select" id="inputGroupSelect01">
                                     <option selected>Choose...</option>
@@ -61,7 +61,7 @@
 
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <label class="input-group-text" for="inputGroupSelect01">Allow App Association</label>
+                                    <label class="input-group-text" for="inputGroupSelect01">Allow App Association*</label>
                                 </div>
                                 <select v-model='skillDetails.is_visible_in_app_details' class="custom-select" id="inputGroupSelect01">
                                     <option selected>Choose...</option>

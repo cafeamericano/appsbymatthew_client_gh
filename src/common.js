@@ -25,7 +25,7 @@ const common = {
             mode: 'cors',
             headers: { 
                 "Content-Type": "application/json",
-                "user-token": url == config.loggerUrl ? null : localStorage.getItem('appsbymatthew-token')
+                "user-token": localStorage.getItem('appsbymatthew-token')
             }
         }
         // For requests not made to the external logger API, add user-token to request header

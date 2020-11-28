@@ -159,7 +159,7 @@ export default {
             var self = this;
             common.superFetch(`${config.apiUrl}/applications?applicationId=${self.$attrs.applicationId}`, 'GET', null, (res) => {
                 self.appDetails = res[0];
-                self.appDetails.publish_date = res[0].publish_date ? moment(res[0].publish_date).format('YYYY-MM-DD') : null;
+                self.appDetails.publish_date = res[0].publish_date ? moment.unix(res[0].publish_date.$date / 1000).format('YYYY-MM-DD') : null; // MongoDB specific date parsing
             })
         },
         processCreate: function() {
