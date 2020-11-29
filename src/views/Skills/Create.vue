@@ -13,7 +13,7 @@ import {config} from "@/config";
 import common from "@/common";
 
 export default {
-    name: "Create",
+    name: "Skills_Create",
     components: {
         NavbarSkills,
         SkillDetails

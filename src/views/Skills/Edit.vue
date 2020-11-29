@@ -12,7 +12,7 @@ import SkillDetails from "@/components/Skills/Details.vue";
 import {config} from "@/config";
 
 export default {
-    name: "Edit",
+    name: "Skills_Edit",
     components: {
         NavbarSkills,
         SkillDetails

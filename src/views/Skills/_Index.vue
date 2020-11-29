@@ -14,7 +14,7 @@ import {config} from "@/config";
 import common from "@/common";
 
 export default {
-    name: "Skills",
+    name: "Skills_Index",
     components: {
         ScreenOverlay,
         NavbarSkills

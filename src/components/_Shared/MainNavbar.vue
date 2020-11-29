@@ -11,16 +11,16 @@
         <nav class="navbar navbar-expand navbar-light bg-light">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <router-link to="/">Welcome</router-link>
+                    <router-link :to="{name:'Welcome_Index'}">Welcome</router-link>
                 </li>
                 <li class='nav-item'>
-                    <router-link :to="{name:'ListFeatured'}">Applications</router-link>
+                    <router-link :to="{name:'Applications_ListFeatured'}">Applications</router-link>
                 </li>
                 <li class='nav-item'>
-                    <router-link :to="{name:'ListAll'}">Skills</router-link>
+                    <router-link :to="{name:'Skills_ListAll'}">Skills</router-link>
                 </li>
                 <li class='nav-item'>
-                    <router-link :to="{name:'Contact'}">Contact</router-link>
+                    <router-link :to="{name:'Contact_Index'}">Contact</router-link>
                 </li>
             </ul>
         </nav>

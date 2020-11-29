@@ -27,7 +27,7 @@ import common from "@/common";
 import {config} from "@/config";
 
 export default {
-    name: "Applications",
+    name: "Applications_ListFeatured",
     components: {
         ScreenOverlay,
         NavbarApplications,

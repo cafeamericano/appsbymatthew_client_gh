@@ -6,66 +6,67 @@ Vue.use(VueRouter);
 const routes = [
 {
     path: "/",
+    name: "Welcome_Index",
     component: () =>
         import(/* webpackChunkName: "" */ "../views/Welcome/_Index.vue") // Lazy loading
     },
   {
     path: "/applications",
-    name: "Applications",
+    name: "Applications_Index",
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/Applications/_Index.vue") // Lazy loading
   },
   {
     path: "/applications/featured",
-    name: "ListFeatured",
+    name: "Applications_ListFeatured",
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/Applications/ListFeatured.vue") // Lazy loading
   },
   {
     path: "/applications/all",
-    name: "ListAll",
+    name: "Applications_ListAll",
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/Applications/ListAll.vue") // Lazy loading
   },
   {
     path: "/applications/create",
-    name: "Create",
+    name: "Applications_Create",
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/Applications/Create.vue") // Lazy loading
   },
   {
     path: "/applications/edit",
-    name: "Edit",
+    name: "Applications_Edit",
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/Applications/Edit.vue") // Lazy loading
   },
   {
     path: "/skills",
-    name: "Skills",
+    name: "Skills_Index",
     component: () =>
       import(/* webpackChunkName: "edit" */ "../views/Skills/_Index.vue") // Lazy loading
   },
   {
     path: "/skills/create",
-    name: "Create",
+    name: "Skills_Create",
     component: () =>
       import(/* webpackChunkName: "edit" */ "../views/Skills/Create.vue") // Lazy loading
   },
   {
     path: "/skills/edit",
-    name: "Edit",
+    name: "Skills_Edit",
     component: () =>
       import(/* webpackChunkName: "edit" */ "../views/Skills/Edit.vue") // Lazy loading
   },
   {
     path: "/skills/simple",
-    name: "ListAll",
+    name: "Skills_ListAll",
     component: () =>
       import(/* webpackChunkName: "edit" */ "../views/Skills/ListAll.vue") // Lazy loading
   },
   {
     path: "/contact",
-    name: "Contact",
+    name: "Contact_Index",
     component: () =>
       import(/* webpackChunkName: "add" */ "../views/Contact/_Index.vue") // Lazy loading
   }

@@ -33,7 +33,7 @@ import {config} from "@/config";
 import common from "@/common";
 
 export default {
-    name: "Welcome",
+    name: "Welcome_Index",
     components: {
         NavbarWelcome
     },
