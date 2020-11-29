@@ -37,8 +37,8 @@
 
 <script>
 
-import ContactCard from "@/components/ContactCard.vue";
-import NavbarContact from "@/components/Navbars/Contact.vue";
+import ContactCard from "@/components/Contact/ContactCard.vue";
+import NavbarContact from "@/components/Contact/Navbar.vue";
 import {config} from "@/config";
 import common from "@/common";
 

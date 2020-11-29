@@ -8,7 +8,7 @@
                 <div class='card mb-2 p-2'>
                     <span>{{item.name}}</span>
                     <span style="text-align: right; position: absolute; right: 10px; width: 100%">
-                        <router-link :to="{name:'Skills-Edit', params: {code: item.code}}">
+                        <router-link :to="{name:'Edit', params: {code: item.code}}">
                             <small><i class="fas fa-wrench text-secondary"></i></small>
                         </router-link>
                     </span>
@@ -22,7 +22,7 @@
 <script>
 
 // @ is an alias to /src
-import SkillPreview from "@/components/SkillPreview.vue";
+import SkillPreview from "@/components/Skills/SkillCard.vue";
 import common from '@/common';
 import {config} from "@/config";
 

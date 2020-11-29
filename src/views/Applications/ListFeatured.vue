@@ -19,9 +19,9 @@
 <script>
 
 // @ is an alias to /src
-import ScreenOverlay from "@/components/ScreenOverlay.vue";
-import NavbarApplications from "@/components/Navbars/Applications.vue";
-import AppPreviewMini from "@/components/AppPreviewMini.vue";
+import ScreenOverlay from "@/components/_Shared/ScreenOverlay.vue";
+import NavbarApplications from "@/components/Applications/Navbar.vue";
+import AppPreviewMini from "@/components/Applications/AppCard.vue";
 
 import common from "@/common";
 import {config} from "@/config";

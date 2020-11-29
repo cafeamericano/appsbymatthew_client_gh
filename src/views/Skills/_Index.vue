@@ -8,8 +8,8 @@
 <script>
 
 // @ is an alias to /src
-import ScreenOverlay from "@/components/ScreenOverlay.vue";
-import NavbarSkills from "@/components/Navbars/Skills.vue";
+import ScreenOverlay from "@/components/_Shared/ScreenOverlay.vue";
+import NavbarSkills from "@/components/Skills/Navbar.vue";
 import {config} from "@/config";
 import common from "@/common";
 

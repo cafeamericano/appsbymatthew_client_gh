@@ -17,17 +17,15 @@
 <script>
 
 // @ is an alias to /src
-import SkillPreview from "@/components/SkillPreview.vue";
-import ScreenOverlay from "@/components/ScreenOverlay.vue";
-import NavbarSkills from "@/components/Navbars/Skills.vue";
-import SkillCategory from "@/components/SkillCategory.vue"
+import ScreenOverlay from "@/components/_Shared/ScreenOverlay.vue";
+import NavbarSkills from "@/components/Skills/Navbar.vue";
+import SkillCategory from "@/components/Skills/SkillCategory.vue"
 import common from '@/common';
 import {config} from "@/config";
 
 export default {
     name: "Skills",
     components: {
-        SkillPreview,
         ScreenOverlay,
         NavbarSkills,
         SkillCategory

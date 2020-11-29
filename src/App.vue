@@ -9,7 +9,7 @@
 
 <script>
 
-import NavbarMain from "@/components/Navbars/Main.vue";
+import NavbarMain from "@/components/_Shared/MainNavbar.vue";
 import common from "@/common";
 import {config} from "@/config";
 

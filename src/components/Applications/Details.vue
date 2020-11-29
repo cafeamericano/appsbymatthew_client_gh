@@ -117,7 +117,7 @@
 <script>
 
 // @ is an alias to /src
-import ScreenOverlay from "@/components/ScreenOverlay.vue";
+import ScreenOverlay from "@/components/_Shared/ScreenOverlay.vue";
 import common from "@/common.js";
 import {config} from "@/config";
 import _ from 'lodash';

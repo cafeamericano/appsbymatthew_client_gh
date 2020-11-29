@@ -7,12 +7,12 @@
 
 <script>
 
-import NavbarSkills from "@/components/Navbars/Skills.vue";
-import SkillDetails from "@/components/SkillDetails.vue";
+import NavbarSkills from "@/components/Skills/Navbar.vue";
+import SkillDetails from "@/components/Skills/Details.vue";
 import {config} from "@/config";
 
 export default {
-    name: "Skills-Edit",
+    name: "Edit",
     components: {
         NavbarSkills,
         SkillDetails

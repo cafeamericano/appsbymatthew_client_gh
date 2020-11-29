@@ -124,12 +124,12 @@
 
 // @ is an alias to /src
 
-import ScreenOverlay from "@/components/ScreenOverlay.vue";
-import NavbarApplications from "@/components/Navbars/Applications.vue";
+import ScreenOverlay from "@/components/_Shared/ScreenOverlay.vue";
+import NavbarApplications from "@/components/Applications/Navbar.vue";
 import common from "@/common";
 import {config} from "@/config";
 import Multiselect from 'vue-multiselect'
-import AppPreviewMini from "@/components/AppPreviewMini.vue";
+import AppPreviewMini from "@/components/Applications/AppCard.vue";
 
 export default {
     name: "Applications",

@@ -28,7 +28,7 @@
 
 <script>
 
-import NavbarWelcome from "@/components/Navbars/Welcome.vue";
+import NavbarWelcome from "@/components/Welcome/Navbar.vue";
 import {config} from "@/config";
 import common from "@/common";
 

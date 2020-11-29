@@ -4,13 +4,13 @@
 
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <router-link :to="{name:'Applications-Featured'}">Featured Apps</router-link>
+                    <router-link :to="{name:'ListAll'}">Skill List</router-link>
                 </li>
+                <!-- <li class='nav-item'>
+                    <router-link :to="{name:'Skills-Advanced'}">Advanced View</router-link>
+                </li> -->
                 <li class='nav-item'>
-                    <router-link :to="{name:'Applications-All'}">All Applications</router-link>
-                </li>
-                <li class='nav-item'>
-                    <router-link :to="{name:'Applications-Create'}">Add New</router-link>
+                    <router-link :to="{name:'Create'}">Add New</router-link>
                 </li>
             </ul>
 
@@ -23,9 +23,15 @@
 import common from "@/common";
 
 export default {
-    name: "NavbarApplications",
+    name: "NavbarSkills",
+    mounted: function() {
+        this.setComponentText();
+    },  
+    methods: {
+    },
     data() {
         return {
+            text: {}
         }
     }
 }
@@ -34,8 +40,6 @@ export default {
 <style scoped>
     .navbar {
         background-color:darkslategray;
-        overflow-x: scroll;
-        white-space: nowrap;
     }
 
     #nav a {
