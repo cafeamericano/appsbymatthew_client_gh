@@ -9,21 +9,19 @@
 <script>
 
 // @ is an alias to /src
-import ApplicationRow from "@/components/ApplicationRow.vue";
-import ScreenOverlay from "@/components/ScreenOverlay.vue";
-import NavbarApplications from "@/components/Navbars/Applications.vue";
+import ScreenOverlay from "@/components/_Shared/ScreenOverlay.vue";
+import NavbarApplications from "@/components/Applications/Navbar.vue";
 import {config} from "@/config";
-import global from "@/global";
+import common from "@/common";
 
 export default {
     name: "Applications",
     components: {
-        ApplicationRow,
         ScreenOverlay,
         NavbarApplications
     },
     mounted: function() {
-        global.logClientAction({sublocation: "Applications Page", description: "The user has landed on the Applications page."});
+        common.logClientAction({sublocation: "Applications Page", description: "The user has landed on the Applications page."});
     },  
     data() {
         return {

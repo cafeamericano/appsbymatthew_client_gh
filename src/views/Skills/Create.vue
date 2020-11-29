@@ -7,19 +7,19 @@
 
 <script>
 
-import NavbarSkills from "@/components/Navbars/Skills.vue";
-import SkillDetails from "@/components/SkillDetails.vue";
+import NavbarSkills from "@/components/Skills/Navbar.vue";
+import SkillDetails from "@/components/Skills/Details.vue";
 import {config} from "@/config";
-import global from "@/global";
+import common from "@/common";
 
 export default {
-    name: "Skills-Create",
+    name: "Create",
     components: {
         NavbarSkills,
         SkillDetails
     },
     mounted: function() {
-        global.logClientAction({sublocation: "Skills - Create", description: "Visited the create new skill page."});
+        common.logClientAction({sublocation: "Skills - Create", description: "Visited the create new skill page."});
     }
 }
 </script>

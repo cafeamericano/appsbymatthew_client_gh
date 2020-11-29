@@ -14,10 +14,10 @@
                     <router-link to="/">Welcome</router-link>
                 </li>
                 <li class='nav-item'>
-                    <router-link :to="{name:'Applications-Featured'}">Applications</router-link>
+                    <router-link :to="{name:'ListFeatured'}">Applications</router-link>
                 </li>
                 <li class='nav-item'>
-                    <router-link :to="{name:'Skills-Simple'}">Skills</router-link>
+                    <router-link :to="{name:'ListAll'}">Skills</router-link>
                 </li>
                 <li class='nav-item'>
                     <router-link :to="{name:'Contact'}">Contact</router-link>
@@ -30,8 +30,14 @@
 <script>
 
 import packageJson from "../../../package.json";
+import common from "@/common";
+
 export default {
     name: "NavbarMain",
+    mounted: function() {
+    },  
+    methods: {
+    },
     data() {
         return {
             softwareVersion: packageJson.version

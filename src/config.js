@@ -1,5 +1,6 @@
 module.exports = {
     config: {
-        apiUrl: `https://appsbymatthew-api-v5omtve52a-uc.a.run.app/api` //`http://192.168.86.22:5000/api`
+        apiUrl: process.env.NODE_ENV == 'development' ?  'http://localhost:5000/api' : 'https://appsbymatthew-api-v5omtve52a-uc.a.run.app/api',
+        loggerUrl: 'https://schokolade.ue.r.appspot.com/api/useraction'
     }
 }

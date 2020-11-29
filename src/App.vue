@@ -9,8 +9,8 @@
 
 <script>
 
-import NavbarMain from "@/components/Navbars/Main.vue";
-import global from "@/global";
+import NavbarMain from "@/components/_Shared/MainNavbar.vue";
+import common from "@/common";
 import {config} from "@/config";
 
 export default {
