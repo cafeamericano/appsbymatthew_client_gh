@@ -16,7 +16,7 @@ import {config} from "@/config";
 import _ from 'lodash';
 
 export default {
-    name: "Edit",
+    name: "Applications_Edit",
     components: {
         ScreenOverlay,
         NavbarApplications,
