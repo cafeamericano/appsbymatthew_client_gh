@@ -8,22 +8,22 @@
 <script>
 
 // @ is an alias to /src
-import ScreenOverlay from "@/components/ScreenOverlay.vue";
-import NavbarApplications from "@/components/Navbars/Applications.vue";
-import AppDetails from "@/components/AppDetails.vue";
-import global from "@/global.js";
+import ScreenOverlay from "@/components/_Shared/ScreenOverlay.vue";
+import NavbarApplications from "@/components/Applications/Navbar.vue";
+import AppDetails from "@/components/Applications/Details.vue";
+import common from "@/common.js";
 import {config} from "@/config";
 import _ from 'lodash';
 
 export default {
-    name: "Applications-Create",
+    name: "Create",
     components: {
         ScreenOverlay,
         NavbarApplications,
         AppDetails
     },
     mounted: function() {
-        global.logClientAction({sublocation: "Applications - Create", description: "Visited the create new app page."});
+        common.logClientAction({sublocation: "Applications - Create", description: "Visited the create new app page."});
     },
     data() {
         return {

@@ -7,73 +7,67 @@ const routes = [
 {
     path: "/",
     component: () =>
-        import(/* webpackChunkName: "" */ "../views/Welcome.vue") // Lazy loading
+        import(/* webpackChunkName: "" */ "../views/Welcome/_Index.vue") // Lazy loading
     },
   {
     path: "/applications",
     name: "Applications",
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/Applications.vue") // Lazy loading
+      import(/* webpackChunkName: "about" */ "../views/Applications/_Index.vue") // Lazy loading
   },
   {
     path: "/applications/featured",
-    name: "Applications-Featured",
+    name: "ListFeatured",
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/Applications-Featured.vue") // Lazy loading
+      import(/* webpackChunkName: "about" */ "../views/Applications/ListFeatured.vue") // Lazy loading
   },
   {
     path: "/applications/all",
-    name: "Applications-All",
+    name: "ListAll",
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/Applications-All.vue") // Lazy loading
+      import(/* webpackChunkName: "about" */ "../views/Applications/ListAll.vue") // Lazy loading
   },
   {
     path: "/applications/create",
-    name: "Applications-Create",
+    name: "Create",
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/Applications-Create.vue") // Lazy loading
+      import(/* webpackChunkName: "about" */ "../views/Applications/Create.vue") // Lazy loading
   },
   {
     path: "/applications/edit",
-    name: "Applications-Edit",
+    name: "Edit",
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/Applications-Edit.vue") // Lazy loading
+      import(/* webpackChunkName: "about" */ "../views/Applications/Edit.vue") // Lazy loading
   },
   {
     path: "/skills",
     name: "Skills",
     component: () =>
-      import(/* webpackChunkName: "edit" */ "../views/Skills.vue") // Lazy loading
+      import(/* webpackChunkName: "edit" */ "../views/Skills/_Index.vue") // Lazy loading
   },
   {
     path: "/skills/create",
-    name: "Skills-Create",
+    name: "Create",
     component: () =>
-      import(/* webpackChunkName: "edit" */ "../views/Skills-Create.vue") // Lazy loading
+      import(/* webpackChunkName: "edit" */ "../views/Skills/Create.vue") // Lazy loading
   },
   {
     path: "/skills/edit",
-    name: "Skills-Edit",
+    name: "Edit",
     component: () =>
-      import(/* webpackChunkName: "edit" */ "../views/Skills-Edit.vue") // Lazy loading
+      import(/* webpackChunkName: "edit" */ "../views/Skills/Edit.vue") // Lazy loading
   },
   {
     path: "/skills/simple",
-    name: "Skills-Simple",
+    name: "ListAll",
     component: () =>
-      import(/* webpackChunkName: "edit" */ "../views/Skills-Simple.vue") // Lazy loading
-  },
-  {
-    path: "/skills/advanced",
-    name: "Skills-Advanced",
-    component: () =>
-      import(/* webpackChunkName: "edit" */ "../views/Skills-Advanced.vue") // Lazy loading
+      import(/* webpackChunkName: "edit" */ "../views/Skills/ListAll.vue") // Lazy loading
   },
   {
     path: "/contact",
     name: "Contact",
     component: () =>
-      import(/* webpackChunkName: "add" */ "../views/Contact.vue") // Lazy loading
+      import(/* webpackChunkName: "add" */ "../views/Contact/_Index.vue") // Lazy loading
   }
 ];
 
