@@ -132,7 +132,7 @@ import Multiselect from 'vue-multiselect'
 import AppPreviewMini from "@/components/Applications/AppCard.vue";
 
 export default {
-    name: "Applications",
+    name: "Applications_ListAll",
     components: {
         ScreenOverlay,
         NavbarApplications,

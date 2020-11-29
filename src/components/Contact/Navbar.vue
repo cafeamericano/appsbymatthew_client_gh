@@ -4,7 +4,7 @@
 
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <router-link to="/"></router-link>
+                    <router-link :to="{name:'Contact_Index'}"></router-link>
                 </li>
             </ul>
 

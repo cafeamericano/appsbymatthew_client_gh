@@ -178,19 +178,6 @@ export default {
             common.superFetch( `${config.apiUrl}/applications`, 'PUT', self.appDetails, (res) => {
                 self.goBack();
             })
-        },
-        processDelete: function() {
-            var self = this;
-            var url = `${config.apiUrl}/applications`;
-            fetch(url, {
-                method: "DELETE",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    _id: this.$route.params.id
-                })
-            }).then(response => {
-                self.$router.go(-1)
-            });
         }
     }
 };

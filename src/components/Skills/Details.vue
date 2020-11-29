@@ -96,7 +96,6 @@ export default {
             self.processGet();
         }
         common.getSkills((res) => this.skillTypes = res);
-        this.setComponentText();
     },
     data() {
         return {
@@ -112,24 +111,13 @@ export default {
         }
     },
     methods: {
-        setComponentText: function() {
-            this.text = {
-                skillList: common.geti18nString('skills.navbar.skillList'),
-                addNew: common.geti18nString('skills.navbar.addNew')
-            }
-        },
         goBack: function() {
             this.$router.go(-1)
         },
         processGet: function() {
             var self = this;
             var url = `${config.apiUrl}/skills/one?skillCode=${self.$attrs.skillCode}`;
-            fetch(url, {
-                method: "GET",
-                headers: { "Content-Type": "application/json" }
-            }).then(function (response) {
-                return response.json();
-            }).then(response => {
+            common.superFetch(url, 'GET', null, function(response) {
                 self.skillDetails = response[0];
             });
         },
@@ -149,19 +137,6 @@ export default {
             common.superFetch(url, 'PUT', self.skillDetails, function(res) {
                 self.goBack();
             })
-        },
-        processDelete: function() {
-            var self = this;
-            var url = `${config.apiUrl}/skill`;
-            fetch(url, {
-                method: "DELETE",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    _id: this.$route.params.id
-                })
-            }).then(response => {
-                self.$router.go(-1)
-            });
         }
     }
 }
