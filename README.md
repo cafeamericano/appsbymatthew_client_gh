@@ -6,7 +6,7 @@
 
 # Release Notes
 
-### Release 5.3.0 (???)
+### Release 5.3.0 (2020-11-28)
 
 - Write actions now require user authentication to prevent vandalism
 - Data validation now enforced on the backend using MongoDB validations and 415 responses on such errors
