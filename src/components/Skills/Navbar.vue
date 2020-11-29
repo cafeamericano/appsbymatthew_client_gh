@@ -4,13 +4,13 @@
 
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <router-link :to="{name:'ListAll'}">Skill List</router-link>
+                    <router-link :to="{name:'Skills_ListAll'}">Skill List</router-link>
                 </li>
                 <!-- <li class='nav-item'>
                     <router-link :to="{name:'Skills-Advanced'}">Advanced View</router-link>
                 </li> -->
                 <li class='nav-item'>
-                    <router-link :to="{name:'Create'}">Add New</router-link>
+                    <router-link :to="{name:'Skills_Create'}">Add New</router-link>
                 </li>
             </ul>
 
@@ -25,7 +25,6 @@ import common from "@/common";
 export default {
     name: "NavbarSkills",
     mounted: function() {
-        this.setComponentText();
     },  
     methods: {
     },
