@@ -130,6 +130,7 @@ import common from "@/common";
 import {config} from "@/config";
 import Multiselect from 'vue-multiselect'
 import AppPreviewMini from "@/components/Applications/AppCard.vue";
+import _ from 'lodash';
 
 export default {
     name: "Applications_ListAll",
@@ -143,7 +144,10 @@ export default {
         var self = this;
         common.logClientAction({sublocation: "Applications - All", description: "Visited the All Apps page."});
         self.fetchApps();
-        common.getSkills((res) => this.skills = res);
+        common.getSkills((res) => {
+            let alphabetizedSkills = _.orderBy(res, [res => res.name.toLowerCase()], ['asc']);
+            this.skills = alphabetizedSkills;
+        });
         self.grabTotalAppCount();
     },
     methods: {
@@ -159,7 +163,6 @@ export default {
         pullCodesFromSelectedSkills: function(collection) {
             var filteredArr = [];
             for (let i = 0; i < collection.length; i++) {
-                console.log('$$$', collection[i])
                 filteredArr.push(collection[i].code)
             }
             return filteredArr;

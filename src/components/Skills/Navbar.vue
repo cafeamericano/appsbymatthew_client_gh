@@ -6,9 +6,6 @@
                 <li class="nav-item">
                     <router-link :to="{name:'Skills_ListAll'}">Skill List</router-link>
                 </li>
-                <!-- <li class='nav-item'>
-                    <router-link :to="{name:'Skills-Advanced'}">Advanced View</router-link>
-                </li> -->
                 <li class='nav-item'>
                     <router-link :to="{name:'Skills_Create'}">Add New</router-link>
                 </li>
@@ -39,6 +36,10 @@ export default {
 <style scoped>
     .navbar {
         background-color:darkslategray;
+    }
+
+    .navbar-nav {
+        height: 24px;
     }
 
     #nav a {

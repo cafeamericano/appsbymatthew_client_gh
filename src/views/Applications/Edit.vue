@@ -23,7 +23,6 @@ export default {
         AppDetails
     },
     mounted: function() {
-        console.log(this.$attrs.data._id.$oid)
     },
     data() {
         return {
