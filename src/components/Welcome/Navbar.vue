@@ -4,7 +4,7 @@
 
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <router-link to="/"></router-link>
+                    <!-- <router-link to="/"></router-link> -->
                 </li>
             </ul>
 
@@ -15,6 +15,10 @@
 <style scoped>
     .navbar {
         background-color:darkslategray;
+    }
+
+    .navbar-nav {
+        height: 24px;
     }
 
     #nav a {

@@ -38,6 +38,10 @@ export default {
         white-space: nowrap;
     }
 
+    .navbar-nav {
+        height: 24px;
+    }
+
     #nav a {
         margin-right: 20px;
         font-weight: bold;

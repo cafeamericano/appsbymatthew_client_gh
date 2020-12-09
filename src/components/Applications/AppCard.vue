@@ -24,7 +24,7 @@
                 <small style="opacity: 0">.</small>
             </div>
             <div class="text-left p-2" style="padding-top: 0px !important">
-                <router-link :to="{name:'Edit', params: {applicationId: $attrs.data._id.$oid}}">
+                <router-link :to="{name:'Applications_Edit', params: {applicationId: $attrs.data._id.$oid}}">
                     <small><i class="fas fa-wrench text-secondary"></i></small>
                 </router-link>
             </div>
