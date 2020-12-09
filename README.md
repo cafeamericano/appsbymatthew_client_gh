@@ -6,6 +6,16 @@
 
 # Release Notes
 
+### Release 5.4.0 (2020-12-09)
+
+- Fixed bug where non-proficient skills were being displayed on the skills page
+- Fixed bug where router was broken and edit apps/skills pages could not be viewed
+- Fixed bug where an empty nav link was showing under the Contact page subnav bar
+- Skills in All Applications filter now sort alphabetically and case-insensitive
+- Skill list now updates after adding a new skill
+- Fixed bug where adding or editing a skill would result in is_proficient becoming false
+- Improved ability to parse booleans on the backend
+
 ### Release 5.3.0 (2020-11-28)
 
 - Write actions now require user authentication to prevent vandalism
