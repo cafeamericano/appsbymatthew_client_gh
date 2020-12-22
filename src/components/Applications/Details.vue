@@ -148,7 +148,9 @@ export default {
                     <span class="sr-only">Loading...</span>
                 </div>
             `,
-            appDetails: {},
+            appDetails: {
+                associated_skill_codes: []
+            },
         }
     },
     methods: {

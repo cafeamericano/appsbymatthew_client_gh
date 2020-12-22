@@ -6,6 +6,11 @@
 
 # Release Notes
 
+### Release 5.4.1 (2020-12-22)
+
+- Fixed bug where new applications could not be created
+- Fixed bug where, during new application skill association, all skills would unexpectedly check
+
 ### Release 5.4.0 (2020-12-09)
 
 - Fixed bug where non-proficient skills were being displayed on the skills page
