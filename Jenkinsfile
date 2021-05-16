@@ -12,16 +12,19 @@ pipeline {
       }
     }
 
-    // BUILDING ////////////////////////////////////////////////////////////////////////////////////////////
+    // BUILDING AND PUSHING /////////////////////////////////////////////////////////////////////////
 
-    /* Build the Docker image */
-    stage('Build') {
+    /* Push the image to Google Container Registry */
+    stage('Push to GCR') {
       steps {
-        sh 'docker build -t mfarmer5102/appsbymatthew-client:latest .'
+        script {
+          docker.withRegistry('https://gcr.io', 'gcr:AppsByMatthew') {
+            def customImage = docker.build("gcr.io/appsbymatthew-client/appsbymatthew-client:latest")
+            customImage.push()
+          }
+        }
       }
     }
-
-    // PUSHING ////////////////////////////////////////////////////////////////////////////////////////////
 
     /* Push the image to Docker Hub */
     stage('Push to Docker Hub') {
