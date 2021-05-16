@@ -19,7 +19,7 @@ pipeline {
       steps {
         script {
           docker.withRegistry('https://gcr.io', 'gcr:AppsByMatthew') {
-            def customImage = docker.build("gcr.io/appsbymatthew-client/appsbymatthew-client:latest")
+            def customImage = docker.build("gcr.io/appsbymatthew-api/appsbymatthew-client:latest")
             customImage.push()
           }
         }
