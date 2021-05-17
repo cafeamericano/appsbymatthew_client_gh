@@ -40,6 +40,7 @@
                                     <option value="BACKENDFRAMEWORK">Back End Framework</option>
                                     <option value="LIBRARY">Library</option>
                                     <option value="DATABASE">Database</option>
+                                    <option value="DATASCIENCE">Data Science and ML</option>
                                     <option value="OPERATINGSYSTEM">Operating System</option>
                                     <option value="CLOUD">Cloud Technology</option>
                                     <option value="DEPLOYMENT">Deployment Technology</option>
