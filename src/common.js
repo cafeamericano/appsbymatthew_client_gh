@@ -6,15 +6,28 @@ const common = {
         if (process.env.NODE_ENV == 'development') {
             return;
         } else {
-            let logObject = {
-                application: "AppsByMatthew.com",
-                sublocation: data.sublocation,
-                operation: "read",
-                description: data.description
+            let queryString = `mutation {
+                addUserAction (
+                    application: "AppsByMatthew.com",
+                    sublocation: "${data.sublocation}",
+                    description: "read",
+                    operation: "${data.description}"
+                )
+                {
+                    id,
+                    application,
+                    sublocation,
+                    description,
+                    operation
+                }
+            }`;
+            let gqlQueryObject = {
+                query: queryString,
+                variables: null
             }
-            this.superFetch(config.loggerUrl, 'POST', logObject, function() {
+            this.superFetch(config.loggerUrl, 'POST', gqlQueryObject, function() {
                 console.log('Logged user action.');
-            })
+            });
         }
     },
 
