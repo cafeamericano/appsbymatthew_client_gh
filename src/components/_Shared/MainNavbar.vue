@@ -22,6 +22,9 @@
                 <li class='nav-item'>
                     <router-link :to="{name:'Contact_Index'}">Contact</router-link>
                 </li>
+                <li class='nav-item'>
+                    <router-link :to="{name:'Metrics_Index'}">Metrics</router-link>
+                </li>
             </ul>
         </nav>
     </div>
