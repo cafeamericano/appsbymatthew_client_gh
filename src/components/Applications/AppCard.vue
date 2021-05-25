@@ -70,6 +70,7 @@ export default {
                 'JAVASCRIPT',
                 'JENKINS',
                 'KUBERNETES',
+                'MARIADB',
                 'MONGODB',
                 'MYSQL',
                 'NODE',
