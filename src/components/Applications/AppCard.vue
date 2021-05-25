@@ -2,67 +2,12 @@
     <section @mouseenter="inflate" @mouseleave="deflate" :class='isInflated ? "animated pulse" : "animated"'>
         <div class='card mt-3 mb-1 border rounded-0'>
             <h5 class='text-left pl-2 pr-2 pt-2'>{{$attrs.data.title}}</h5>
-            <div class="text-left pl-2 pr-2 pb-1">
-                <i v-if="$attrs.data.associated_skill_codes && $attrs.data.associated_skill_codes.includes('REACT')" title='React' class="skill-icon">
-                    <img src="https://applicationthumbnails.s3.amazonaws.com/skill_thumbnails/react.png" height="25px" width="25px"/>
-                </i>
-                <i v-if="$attrs.data.associated_skill_codes && $attrs.data.associated_skill_codes.includes('VUE')" title='Vue' class="skill-icon">
-                    <img src="https://applicationthumbnails.s3.amazonaws.com/skill_thumbnails/vue.png" height="25px" width="25px"/>
-                </i>
-                <i v-if="$attrs.data.associated_skill_codes && $attrs.data.associated_skill_codes.includes('ANGULAR')" title='Angular' class="skill-icon">
-                    <img src="https://applicationthumbnails.s3.amazonaws.com/skill_thumbnails/angular.png" height="25px" width="25px"/>
-                </i>
-                <i v-if="$attrs.data.associated_skill_codes && $attrs.data.associated_skill_codes.includes('NODE')" title='Node' class="skill-icon">
-                    <img src="https://applicationthumbnails.s3.amazonaws.com/skill_thumbnails/node.png" height="25px" width="25px"/>
-                </i>
-                <i v-if="$attrs.data.associated_skill_codes && $attrs.data.associated_skill_codes.includes('JAVASCRIPT')" title='JavaScript' class="skill-icon">
-                    <img src="https://applicationthumbnails.s3.amazonaws.com/skill_thumbnails/javascript.png" height="25px" width="25px"/>
-                </i>
-                <i v-if="$attrs.data.associated_skill_codes && $attrs.data.associated_skill_codes.includes('PYTHON')" title='Python' class="skill-icon">
-                    <img src="https://applicationthumbnails.s3.amazonaws.com/skill_thumbnails/python.png" height="25px" width="25px"/>
-                </i>
-                <i v-if="$attrs.data.associated_skill_codes && $attrs.data.associated_skill_codes.includes('JAVA')" title='Java' class="skill-icon">
-                    <img src="https://applicationthumbnails.s3.amazonaws.com/skill_thumbnails/java.png" height="25px" width="25px"/>
-                </i>
-                <i v-if="$attrs.data.associated_skill_codes && $attrs.data.associated_skill_codes.includes('CPP')" title='C++' class="skill-icon">
-                    <img src="https://applicationthumbnails.s3.amazonaws.com/skill_thumbnails/cpp.png" height="25px" width="25px"/>
-                </i>
-                <i v-if="$attrs.data.associated_skill_codes && $attrs.data.associated_skill_codes.includes('GO')" title='Go' class="skill-icon">
-                    <img src="https://applicationthumbnails.s3.amazonaws.com/skill_thumbnails/golang.png" height="25px" width="25px"/>
-                </i>
-                <i v-if="$attrs.data.associated_skill_codes && $attrs.data.associated_skill_codes.includes('SCALA')" title='Scala' class="skill-icon">
-                    <img src="https://applicationthumbnails.s3.amazonaws.com/skill_thumbnails/scala.png" height="25px" width="25px"/>
-                </i>
-                <i v-if="$attrs.data.associated_skill_codes && $attrs.data.associated_skill_codes.includes('SPARK')" title='Apache Spark' class="skill-icon">
-                    <img src="https://applicationthumbnails.s3.amazonaws.com/skill_thumbnails/spark.png" height="25px" width="25px"/>
-                </i>
-                <i v-if="$attrs.data.associated_skill_codes && $attrs.data.associated_skill_codes.includes('DOCKER')" title='Docker' class="skill-icon">
-                    <img src="https://applicationthumbnails.s3.amazonaws.com/skill_thumbnails/docker.png" height="25px" width="25px"/>
-                </i>
-                <i v-if="$attrs.data.associated_skill_codes && $attrs.data.associated_skill_codes.includes('KUBERNETES')" title='Kubernetes' class="skill-icon">
-                    <img src="https://applicationthumbnails.s3.amazonaws.com/skill_thumbnails/kubernetes.png" height="25px" width="25px"/>
-                </i>
-                <i v-if="$attrs.data.associated_skill_codes && $attrs.data.associated_skill_codes.includes('JENKINS')" title='Jenkins' class="skill-icon">
-                    <img src="https://applicationthumbnails.s3.amazonaws.com/skill_thumbnails/jenkins.png" height="25px" width="25px"/>
-                </i>
-                <i v-if="$attrs.data.associated_skill_codes && $attrs.data.associated_skill_codes.includes('GRAPHQL')" title='GraphQL' class="skill-icon">
-                    <img src="https://applicationthumbnails.s3.amazonaws.com/skill_thumbnails/graphql.png" height="25px" width="25px"/>
-                </i>
-                <i v-if="$attrs.data.associated_skill_codes && $attrs.data.associated_skill_codes.includes('MONGODB')" title='MongoDB' class="skill-icon">
-                    <img src="https://applicationthumbnails.s3.amazonaws.com/skill_thumbnails/mongodb.png" height="25px" width="25px"/>
-                </i>
-                <i v-if="$attrs.data.associated_skill_codes && $attrs.data.associated_skill_codes.includes('MYSQL')" title='MySQL' class="skill-icon">
-                    <img src="https://applicationthumbnails.s3.amazonaws.com/skill_thumbnails/mysql.png" height="25px" width="25px"/>
-                </i>
-                <i v-if="$attrs.data.associated_skill_codes && $attrs.data.associated_skill_codes.includes('MARIADB')" title='MariaDB' class="skill-icon">
-                    <img src="https://applicationthumbnails.s3.amazonaws.com/skill_thumbnails/mariadb.png" height="25px" width="25px"/>
-                </i>
-                <i v-if="$attrs.data.associated_skill_codes && $attrs.data.associated_skill_codes.includes('POSTGRES')" title='PostgreSQL' class="skill-icon">
-                    <img src="https://applicationthumbnails.s3.amazonaws.com/skill_thumbnails/postgres.png" height="25px" width="25px"/>
-                </i>
-                <i v-if="$attrs.data.associated_skill_codes && $attrs.data.associated_skill_codes.includes('REDIS')" title='Redis' class="skill-icon">
-                    <img src="https://applicationthumbnails.s3.amazonaws.com/skill_thumbnails/redis.png" height="25px" width="25px"/>
-                </i>
+            <div class="text-left pl-2 pr-2 pb-1" >
+                <span v-for='thisSkill in skillsWithBadges' :key='thisSkill'>
+                    <i v-if="$attrs.data.associated_skill_codes && $attrs.data.associated_skill_codes.includes(thisSkill)" :title="thisSkill" class="skill-icon">
+                        <img :src="'https://applicationthumbnails.s3.amazonaws.com/skill_thumbnails/' + thisSkill + '.png'" height="25px" width="25px"/>
+                    </i>
+                </span>
             </div>
             <img :src='$attrs.data.image_url' style="width: 100%"/>
             <p class="p-3 text-left">
@@ -114,7 +59,28 @@ export default {
         return {
             componentKey: 0,
             isInflated: false,
-            filterFeatured: null
+            filterFeatured: null,
+            skillsWithBadges: [
+                'ANGULAR',
+                'CPP',
+                'DOCKER',
+                'GO',
+                'GRAPHQL',
+                'JAVA',
+                'JAVASCRIPT',
+                'JENKINS',
+                'KUBERNETES',
+                'MONGODB',
+                'MYSQL',
+                'NODE',
+                'POSTGRES',
+                'PYTHON',
+                'REACT',
+                'REDIS',
+                'SCALA',
+                'SPARK',
+                'VUE'
+            ]
         }
     }
 };
