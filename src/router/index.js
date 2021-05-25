@@ -69,6 +69,12 @@ const routes = [
     name: "Contact_Index",
     component: () =>
       import(/* webpackChunkName: "add" */ "../views/Contact/_Index.vue") // Lazy loading
+  },
+  {
+    path: "/metrics",
+    name: "Metrics_Index",
+    component: () =>
+      import(/* webpackChunkName: "add" */ "../views/Metrics/_Index.vue") // Lazy loading
   }
 ];
 
