@@ -66,12 +66,16 @@ const common = {
                 console.log(response)
                 return callback(response);
             })
-            .catch( err => {
-                if (err.status == 401) {
-                    alert('You are not authorized to perform this action.')
+            .catch(err => {
+                if (err.status == 401 && url.includes("/trafficReports")) {
+                    alert('Only administrators may view portfolio metrics.');
+                    window.history.back();
                 }
-                if (err.status == 415) {
-                    alert('Please provide information for all required fields.')
+                else if (err.status == 401) {
+                    alert('You are not authorized to perform this action.');
+                }
+                else if (err.status == 415) {
+                    alert('Please provide information for all required fields.');
                 }
             });
     },
