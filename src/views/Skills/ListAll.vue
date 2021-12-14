@@ -3,7 +3,10 @@
         <NavbarSkills/>
         <section v-if="skillsLoaded && skillTypesLoaded" class='animated fadeIn container pb-4'>
             <div v-for='type in skillTypes' :key='type.code'>
-                <SkillCategory :categoryName='type.label' :items="skills.filter(item => item.skill_type_code == type.code)"/>
+                <SkillCategory :categoryName='type.label' :items="skills.filter(item => (
+                    // Filter out skills of other categories AND skills that would require a disclaimer
+                    item.skill_type_code == type.code) && !item.provide_disclaimer
+                )"/>
             </div>
         </section>
 

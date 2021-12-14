@@ -5,15 +5,8 @@
             <div class="row">
 
             <ContactCard 
-                :title='"Bitbucket"'
-                :body='"View my source code and explore my repositories (used for applications in production)."'
-                :linkRef='"https://bitbucket.org/mfarmer5102/"'
-                :linkIcon='"fab fa-bitbucket fa-2x text-primary"'
-            />
-
-            <ContactCard 
                 :title='"GitHub"'
-                :body='"View my source code and explore my repositories (used for issue tracking and applications not in production)."'
+                :body='"View my source code and explore my repositories."'
                 :linkRef='"https://github.com/cafeamericano"'
                 :linkIcon='"fab fa-github fa-2x"'
             />
@@ -25,11 +18,6 @@
                 :linkIcon='"fab fa-linkedin fa-2x text-primary"'
             />
 
-            <ContactCard 
-                :title='"Email"'
-                :body='"Contact me directly by email at: mfarmer5102@gmail.com"'
-                :linkIcon='"far fa-envelope fa-2x text-danger"'
-            />
             </div>
         </div>
     </div>
