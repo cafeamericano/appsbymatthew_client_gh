@@ -10,7 +10,7 @@
                     <span style="text-align: right; position: absolute; right: 10px; width: 100%">
                         <router-link :to="{name:'Skills_Edit', params: {code: item.code}}">
                             <small>
-                                <i class="fas fa-wrench text-secondary mr-2"></i>
+                                <i class="fas fa-wrench text-dark mr-2"></i>
                             </small>
                             <small v-if="item.provide_disclaimer" title="Non-proficient but utilized in an application.">
                                 <i class="fas fa-exclamation-circle text-danger"></i>
@@ -23,7 +23,7 @@
                             </small>
                         </router-link>
                     </span>
-                </div>                
+                </div>           
             </div>
         </div>
 

@@ -10,8 +10,8 @@
                 <div class='col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 bg-glass p-3 animated fadeInUp'>
                     <p>
                         I'm a professional full-stack web developer with a keen eye for design and a passion for developing
-                        applications to solve real-world problems. In addition to more than two years of experience
-                        with programming on both the front and back ends, I possess more than seven years of 
+                        applications to solve real-world problems. In addition to almost 2.5 years of experience
+                        as a professional full-stack developer, I possess more than 7 years of 
                         professional experience with creative problem solving.
                     </p>
                     <p>
