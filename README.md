@@ -6,7 +6,7 @@
 
 # Release Notes
 
-### Release 5.4.3 (2021-12-13)
+### Release 5.4.4 (2021-12-13)
 
 - Darkened edit icon on Skill cards
 - Removed Bitbucket and Email from Contact page
@@ -20,10 +20,10 @@
 - Metrics/traffic now captured with GraphQL (appsbymatthew-logs) and processed with Apache Spark and Scala (appsbymatthew-spark); admins can view in the UI under the new metrics tab
 - All skills now show on the skill page with indication of proficiency provided
 
-### Release 5.4.2 (2020-12-22)
+### Release 5.4.2 (2021-05-16)
 
-- Fixed bug where new applications could not be created
-- Fixed bug where, during new application skill association, all skills would unexpectedly check
+- Application prepared for CI/CD with Jenkins
+- Added Data Science & ML as a new skill category
 
 ### Release 5.4.1 (2020-12-22)
 
