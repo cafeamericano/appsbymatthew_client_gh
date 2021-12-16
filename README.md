@@ -6,13 +6,16 @@
 
 # Release Notes
 
+### Release 5.4.5 (2021-12-15)
+
+- Moved from Jenkins to GCR CI/CD
+
 ### Release 5.4.4 (2021-12-13)
 
 - Darkened edit icon on Skill cards
 - Removed Bitbucket and Email from Contact page
 - Skills requiring a disclaimer are now hidden altogether
 - Updated time-specific verbiage on welcome page
-- Moved from Jenkins to GCR CI/CD
 
 ### Release 5.4.3 (2021-05-25)
 
