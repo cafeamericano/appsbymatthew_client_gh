@@ -12,6 +12,7 @@
 - Removed Bitbucket and Email from Contact page
 - Skills requiring a disclaimer are now hidden altogether
 - Updated time-specific verbiage on welcome page
+- Moved from Jenkins to GCR CI/CD
 
 ### Release 5.4.3 (2021-05-25)
 
