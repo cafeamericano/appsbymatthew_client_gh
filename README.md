@@ -6,6 +6,10 @@
 
 # Release Notes
 
+### Release 5.4.7 (2022-06-04)
+
+- Updated years of experience
+
 ### Release 5.4.6 (2021-12-27)
 
 - GCR CI/CD test
