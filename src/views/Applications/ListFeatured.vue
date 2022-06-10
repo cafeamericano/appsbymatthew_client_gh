@@ -25,6 +25,7 @@ import AppPreviewMini from "@/components/Applications/AppCard.vue";
 
 import common from "@/common";
 import {config} from "@/config";
+import commonUtils from '@cafeamericano/common-js-utils';
 
 export default {
     name: "Applications_ListFeatured",
@@ -35,7 +36,12 @@ export default {
     },
     mounted: function() {
         var self = this;
-        common.logClientAction({sublocation: "Applications - Featured", description: "Visited the Featured Apps page."});
+        commonUtils.behaviorAnalyzer.recordAction({
+            location: window.location.hostname,
+            sublocation: "Applications - Featured", 
+            description: "Visited the Featured Apps page.",
+            details: {}
+        });
         common.superFetch(`${config.apiUrl}/applications?featured=true`, 'GET', null, function (response) {
             self.applicationsLoaded = true;
             self.applications = response;

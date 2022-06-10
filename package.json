@@ -1,6 +1,6 @@
 {
   "name": "AppsByMatthew",
-  "version": "5.4.7",
+  "version": "5.4.8",
   "private": true,
   "scripts": {
     "dev": "vue-cli-service serve",
@@ -11,6 +11,7 @@
     "eslint": "npx eslint src/"
   },
   "dependencies": {
+    "@cafeamericano/common-js-utils": "^1.0.13",
     "core-js": "^3.6.4",
     "lodash": "^4.17.15",
     "moment": "^2.29.1",
