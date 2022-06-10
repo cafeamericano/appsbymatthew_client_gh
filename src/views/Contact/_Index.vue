@@ -39,7 +39,7 @@ export default {
         NavbarContact
     },
     mounted: function() {
-        commonUtils.behaviorAnalyzer.recordAction({
+        commonUtils.analyticsDashboard.recordAction({
             location: window.location.hostname,
             sublocation: "Contact Page", 
             description: "The user has landed on the Contact page.",

@@ -143,7 +143,7 @@ export default {
     },
     mounted: function() {
         var self = this;
-        commonUtils.behaviorAnalyzer.recordAction({
+        commonUtils.analyticsDashboard.recordAction({
             location: window.location.hostname,
             sublocation: "Applications - All", 
             description: "Visited the All Apps page.",

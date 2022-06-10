@@ -47,7 +47,7 @@ export default {
             this.isInflated = false;
         },
         handleDeployLinkClick: function() {
-            commonUtils.behaviorAnalyzer.recordAction({
+            commonUtils.analyticsDashboard.recordAction({
                 location: window.location.hostname,
                 sublocation: "Applications Page - All", 
                 description: `The user has clicked the deployed link for ${this.$attrs.data.title}.`,
@@ -55,7 +55,7 @@ export default {
             });
         },
         handleFrontEndRepoLinkClick: function() {
-            commonUtils.behaviorAnalyzer.recordAction({
+            commonUtils.analyticsDashboard.recordAction({
                 location: window.location.hostname,
                 sublocation: "Applications Page - All", 
                 description: `The user has clicked the frontend repo link for ${this.$attrs.data.title}.`,
@@ -63,7 +63,7 @@ export default {
             });
         },
         handleBackEndRepoLinkClick: function() {
-            commonUtils.behaviorAnalyzer.recordAction({
+            commonUtils.analyticsDashboard.recordAction({
                 location: window.location.hostname,
                 sublocation: "Applications Page - All", 
                 description: `The user has clicked the backend repo link for ${this.$attrs.data.title}.`,

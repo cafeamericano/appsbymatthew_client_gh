@@ -22,7 +22,7 @@ export default {
         NavbarApplications
     },
     mounted: function() {
-        commonUtils.behaviorAnalyzer.recordAction({
+        commonUtils.analyticsDashboard.recordAction({
             location: window.location.hostname,
             sublocation: "Applications Page", 
             description: "The user has landed on the Applications page.",

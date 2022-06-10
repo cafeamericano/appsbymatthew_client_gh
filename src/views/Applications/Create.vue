@@ -24,7 +24,7 @@ export default {
         AppDetails
     },
     mounted: function() {
-        commonUtils.behaviorAnalyzer.recordAction({
+        commonUtils.analyticsDashboard.recordAction({
             location: window.location.hostname,
             sublocation: "Applications - Create", 
             description: "Visited the create new app page.",

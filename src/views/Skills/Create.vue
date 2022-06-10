@@ -20,7 +20,7 @@ export default {
         SkillDetails
     },
     mounted: function() {
-        commonUtils.behaviorAnalyzer.recordAction({
+        commonUtils.analyticsDashboard.recordAction({
             location: window.location.hostname,
             sublocation: "Skills - Create", 
             description: "Visited the create new skill page.",

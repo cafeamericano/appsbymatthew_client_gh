@@ -40,7 +40,7 @@ export default {
         NavbarWelcome
     },
     mounted: function() {
-        commonUtils.behaviorAnalyzer.recordAction({
+        commonUtils.analyticsDashboard.recordAction({
             location: window.location.hostname,
             sublocation: "Welcome Page", 
             description: "The user has landed on the Welcome page.",

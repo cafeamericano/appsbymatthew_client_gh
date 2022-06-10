@@ -36,7 +36,7 @@ export default {
     },
     mounted: function() {
         var self = this;
-        commonUtils.behaviorAnalyzer.recordAction({
+        commonUtils.analyticsDashboard.recordAction({
             location: window.location.hostname,
             sublocation: "Skills", 
             description: "Visited the Skills page.",

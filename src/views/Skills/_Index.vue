@@ -21,7 +21,7 @@ export default {
         NavbarSkills
     },
     mounted: function() {
-        commonUtils.behaviorAnalyzer.recordAction({
+        commonUtils.analyticsDashboard.recordAction({
             location: window.location.hostname,
             sublocation: "Skills Page", 
             description: "The user has landed on the Skills page.",
