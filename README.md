@@ -10,6 +10,7 @@
 
 - Updating API URL
 - Updating logger URL
+- Upating exposed port in Dockerfile
 
 ### Release 5.4.7 (2022-06-04)
 
