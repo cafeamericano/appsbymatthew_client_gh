@@ -32,7 +32,7 @@
 import NavbarWelcome from "@/components/Welcome/Navbar.vue";
 import {config} from "@/config";
 import common from "@/common";
-import commonUtils from '@cafeamericano/common-js-utils';
+// import commonUtils from '@cafeamericano/common-js-utils';
 
 export default {
     name: "Welcome_Index",
@@ -40,12 +40,12 @@ export default {
         NavbarWelcome
     },
     mounted: function() {
-        commonUtils.analyticsDashboard.recordAction({
-            location: window.location.hostname,
-            sublocation: "Welcome Page", 
-            description: "The user has landed on the Welcome page.",
-            details: {}
-        });
+        // commonUtils.analyticsDashboard.recordAction({
+        //     location: window.location.hostname,
+        //     sublocation: "Welcome Page", 
+        //     description: "The user has landed on the Welcome page.",
+        //     details: {}
+        // });
     },  
     data: function() {
         return {
