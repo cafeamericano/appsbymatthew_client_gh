@@ -20,7 +20,7 @@ export default {
     },
     data: function() {
         return {
-            copyrightMessage: '©2020 Matthew Farmer'
+            copyrightMessage: '©2022 Matthew Farmer'
         }
 	},
 	mounted: function() {

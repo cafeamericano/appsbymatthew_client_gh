@@ -11,6 +11,8 @@
 - Updating API URL
 - Temporary disable of logging package usage
 - Updating GitHub URL to match updated username
+- Hiding metrics from Navbar
+- Updated copyright year
 
 ### Release 5.4.7 (2022-06-04)
 
