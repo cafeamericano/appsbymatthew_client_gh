@@ -11,6 +11,7 @@
 - Updating API URL
 - Upating exposed port in Dockerfile
 - Temporary disable of logging package usage
+- Updating GitHub URL to match updated username
 
 ### Release 5.4.7 (2022-06-04)
 

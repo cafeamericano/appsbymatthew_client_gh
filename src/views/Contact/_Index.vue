@@ -7,7 +7,7 @@
             <ContactCard 
                 :title='"GitHub"'
                 :body='"View my source code and explore my repositories."'
-                :linkRef='"https://github.com/cafeamericano"'
+                :linkRef='"https://github.com/mfarmer5102"'
                 :linkIcon='"fab fa-github fa-2x"'
             />
 
