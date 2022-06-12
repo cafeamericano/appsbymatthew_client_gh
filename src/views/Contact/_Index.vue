@@ -29,7 +29,7 @@ import ContactCard from "@/components/Contact/ContactCard.vue";
 import NavbarContact from "@/components/Contact/Navbar.vue";
 import {config} from "@/config";
 import common from "@/common";
-// import commonUtils from '@cafeamericano/common-js-utils';
+import analytics from '@/analytics';
 
 export default {
     name: 'Contact_Index',
@@ -39,12 +39,12 @@ export default {
         NavbarContact
     },
     mounted: function() {
-        // commonUtils.analyticsDashboard.recordAction({
-        //     location: window.location.hostname,
-        //     sublocation: "Contact Page", 
-        //     description: "The user has landed on the Contact page.",
-        //     details: {}
-        // });
+        analytics.recordAction({
+            location: window.location.hostname,
+            sublocation: "Contact Page", 
+            description: "The user has landed on the Contact page.",
+            details: {}
+        });
     },  
     data: function () {
         return {

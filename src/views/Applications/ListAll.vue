@@ -131,7 +131,7 @@ import {config} from "@/config";
 import Multiselect from 'vue-multiselect'
 import AppPreviewMini from "@/components/Applications/AppCard.vue";
 import _ from 'lodash';
-// import commonUtils from '@cafeamericano/common-js-utils';
+import analytics from '@/analytics';
 
 export default {
     name: "Applications_ListAll",
@@ -143,12 +143,12 @@ export default {
     },
     mounted: function() {
         var self = this;
-        // commonUtils.analyticsDashboard.recordAction({
-        //     location: window.location.hostname,
-        //     sublocation: "Applications - All", 
-        //     description: "Visited the All Apps page.",
-        //     details: {}
-        // });
+        analytics.recordAction({
+            location: window.location.hostname,
+            sublocation: "Applications - All", 
+            description: "Visited the All Apps page.",
+            details: {}
+        });
         self.fetchApps();
         common.getSkills((res) => {
             let alphabetizedSkills = _.orderBy(res, [res => res.name.toLowerCase()], ['asc']);

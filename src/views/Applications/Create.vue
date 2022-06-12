@@ -14,7 +14,7 @@ import AppDetails from "@/components/Applications/Details.vue";
 import common from "@/common.js";
 import {config} from "@/config";
 import _ from 'lodash';
-// import commonUtils from '@cafeamericano/common-js-utils';
+import analytics from '@/analytics';
 
 export default {
     name: "Applications_Create",
@@ -24,12 +24,12 @@ export default {
         AppDetails
     },
     mounted: function() {
-        // commonUtils.analyticsDashboard.recordAction({
-        //     location: window.location.hostname,
-        //     sublocation: "Applications - Create", 
-        //     description: "Visited the create new app page.",
-        //     details: {}
-        // });
+        analytics.recordAction({
+            location: window.location.hostname,
+            sublocation: "Applications - Create", 
+            description: "Visited the create new app page.",
+            details: {}
+        });
     },
     data() {
         return {

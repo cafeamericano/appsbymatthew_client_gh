@@ -32,7 +32,7 @@
 
 import {config} from "@/config";
 import common from "@/common";
-// import commonUtils from '@cafeamericano/common-js-utils';
+import analytics from '@/analytics';
 
 export default {
     name: "AppPreviewMini",
@@ -47,28 +47,28 @@ export default {
             this.isInflated = false;
         },
         handleDeployLinkClick: function() {
-            // commonUtils.analyticsDashboard.recordAction({
-            //     location: window.location.hostname,
-            //     sublocation: "Applications Page - All", 
-            //     description: `The user has clicked the deployed link for ${this.$attrs.data.title}.`,
-            //     details: {}
-            // });
+            analytics.recordAction({
+                location: window.location.hostname,
+                sublocation: "Applications Page - All", 
+                description: `The user has clicked the deployed link for ${this.$attrs.data.title}.`,
+                details: {}
+            });
         },
         handleFrontEndRepoLinkClick: function() {
-            // commonUtils.analyticsDashboard.recordAction({
-            //     location: window.location.hostname,
-            //     sublocation: "Applications Page - All", 
-            //     description: `The user has clicked the frontend repo link for ${this.$attrs.data.title}.`,
-            //     details: {}
-            // });
+            analytics.recordAction({
+                location: window.location.hostname,
+                sublocation: "Applications Page - All", 
+                description: `The user has clicked the frontend repo link for ${this.$attrs.data.title}.`,
+                details: {}
+            });
         },
         handleBackEndRepoLinkClick: function() {
-            // commonUtils.analyticsDashboard.recordAction({
-            //     location: window.location.hostname,
-            //     sublocation: "Applications Page - All", 
-            //     description: `The user has clicked the backend repo link for ${this.$attrs.data.title}.`,
-            //     details: {}
-            // });
+            analytics.recordAction({
+                location: window.location.hostname,
+                sublocation: "Applications Page - All", 
+                description: `The user has clicked the backend repo link for ${this.$attrs.data.title}.`,
+                details: {}
+            });
         },
     },
     data() {
