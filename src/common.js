@@ -2,35 +2,6 @@
 import {config} from "@/config";
 const common = {
 
-    logClientAction: function(data) {
-        if (process.env.NODE_ENV == 'development') {
-            return;
-        } else {
-            let queryString = `mutation {
-                addUserAction (
-                    application: "AppsByMatthew.com",
-                    sublocation: "${data.sublocation}",
-                    description: "read",
-                    operation: "${data.description}"
-                )
-                {
-                    id,
-                    application,
-                    sublocation,
-                    description,
-                    operation
-                }
-            }`;
-            let gqlQueryObject = {
-                query: queryString,
-                variables: null
-            }
-            this.superFetch(config.loggerUrl, 'POST', gqlQueryObject, function() {
-                console.log('Logged user action.');
-            });
-        }
-    },
-
     superFetch: function(url, method, reqBody, callback) {
         // Define the minimum object for Fetch's second argument
         let fetchObj = {

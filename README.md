@@ -6,6 +6,12 @@
 
 # Release Notes
 
+### Release 5.4.8 (2022-06-11)
+
+- Updating API URL
+- Updating logger URL
+- Upating exposed port in Dockerfile
+
 ### Release 5.4.7 (2022-06-04)
 
 - Updated years of experience

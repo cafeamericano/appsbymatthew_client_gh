@@ -13,6 +13,7 @@ import ScreenOverlay from "@/components/_Shared/ScreenOverlay.vue";
 import NavbarApplications from "@/components/Applications/Navbar.vue";
 import {config} from "@/config";
 import common from "@/common";
+import commonUtils from '@cafeamericano/common-js-utils';
 
 export default {
     name: "Applications_Index",
@@ -21,7 +22,12 @@ export default {
         NavbarApplications
     },
     mounted: function() {
-        common.logClientAction({sublocation: "Applications Page", description: "The user has landed on the Applications page."});
+        commonUtils.analyticsDashboard.recordAction({
+            location: window.location.hostname,
+            sublocation: "Applications Page", 
+            description: "The user has landed on the Applications page.",
+            details: {}
+        });
     },  
     data() {
         return {

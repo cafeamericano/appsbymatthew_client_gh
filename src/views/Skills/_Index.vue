@@ -12,6 +12,7 @@ import ScreenOverlay from "@/components/_Shared/ScreenOverlay.vue";
 import NavbarSkills from "@/components/Skills/Navbar.vue";
 import {config} from "@/config";
 import common from "@/common";
+import commonUtils from '@cafeamericano/common-js-utils';
 
 export default {
     name: "Skills_Index",
@@ -20,7 +21,12 @@ export default {
         NavbarSkills
     },
     mounted: function() {
-        common.logClientAction({sublocation: "Skills Page", description: "The user has landed on the Skills page."});
+        commonUtils.analyticsDashboard.recordAction({
+            location: window.location.hostname,
+            sublocation: "Skills Page", 
+            description: "The user has landed on the Skills page.",
+            details: {}
+        });
     },  
     data() {
         return {
