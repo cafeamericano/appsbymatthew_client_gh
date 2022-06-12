@@ -12,9 +12,6 @@ const common = {
                 "user-token": localStorage.getItem('appsbymatthew-token')
             }
         }
-        // For requests not made to the external logger API, add user-token to request header
-        if (url === config.loggerUrl) { delete fetchObj.headers['user-token']}
-
         // Only attach a request body if it's not a GET request
         if (method != 'GET') {
             fetchObj = {

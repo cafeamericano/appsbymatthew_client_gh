@@ -9,8 +9,8 @@
 ### Release 5.4.8 (2022-06-11)
 
 - Updating API URL
-- Updating logger URL
 - Upating exposed port in Dockerfile
+- Temporary disable of logging package usage
 
 ### Release 5.4.7 (2022-06-04)
 

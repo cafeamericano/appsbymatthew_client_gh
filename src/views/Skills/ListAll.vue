@@ -25,7 +25,7 @@ import NavbarSkills from "@/components/Skills/Navbar.vue";
 import SkillCategory from "@/components/Skills/SkillCategory.vue"
 import common from '@/common';
 import {config} from "@/config";
-import commonUtils from '@cafeamericano/common-js-utils';
+// import commonUtils from '@cafeamericano/common-js-utils';
 
 export default {
     name: "Skills_ListAll",
@@ -36,12 +36,12 @@ export default {
     },
     mounted: function() {
         var self = this;
-        commonUtils.analyticsDashboard.recordAction({
-            location: window.location.hostname,
-            sublocation: "Skills", 
-            description: "Visited the Skills page.",
-            details: {}
-        });
+        // commonUtils.analyticsDashboard.recordAction({
+        //     location: window.location.hostname,
+        //     sublocation: "Skills", 
+        //     description: "Visited the Skills page.",
+        //     details: {}
+        // });
         common.getSkills(function(result) {
             self.skills = result || [];
             self.skillsLoaded = true;
